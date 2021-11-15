@@ -10,14 +10,10 @@
             background-color: indigo;
             height: 2000px;
         }
-        .container{
-            position: relative;
-            min-height: 100%;
-        }
+        
     </style>
 </head>
 <body>
-<div class="container">
 <?php 
 include('header.php');
 ?>
@@ -25,6 +21,5 @@ include('header.php');
 <?php 
 include('footer.php');
 ?>
-</div>
 </body>
 </html>
