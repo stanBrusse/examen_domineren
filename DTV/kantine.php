@@ -11,9 +11,9 @@
 </head>
 
 <body>
-        <?php include('header.php'); ?>
-    <main style="margin-top: 150px; margin-bottom: 163px;">
-
+    <header><?php include('header.php'); ?></header>
+    <main>
+    <div class="container">
         <div class="kantine-item-card">
             <div class="item_Card-Top">
                 <div class="img-container">
@@ -23,14 +23,13 @@
                 </div>
             </div>
             <div class="card-info">
-                <p>Naam: <span>snacker decker</span></p>
-                <p>Prijs: <span>$99,99</span></p>
-                <p>Category: <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate, cumque delectus eveniet sequi! Explicabo inventore beatae sapiente minima!</span></p>
+                <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>$99,99</span></p>
+                <p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>
             </div>
         </div>
-        
+    </div>
     </main>
-    <?php include('footer.php'); ?>
+    <footer><?php include('footer.php'); ?></footer>
 </body>
 
 </html>
