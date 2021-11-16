@@ -16,7 +16,7 @@
 
             <div class="kantine-item-card">
                 <div class="item_Card-Top">
-                    <div class="img-container">
+                    <div class="img-container" style="background-image: url('images/340x260.png');;">
                         <div class="identifier snack">
                             <span>SNACK</span>
                         </div>
