@@ -12,7 +12,7 @@
 <body>
     <header><?php include('header.php'); ?></header>
     <main>
-        <div class="container">
+        <div class="kantine-container">
             <div class="kantine-item-card">
                 <div class="item_Card-Top">
                     <div class="img-container">

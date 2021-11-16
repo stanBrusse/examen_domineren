@@ -1,6 +1,5 @@
 <style>
-  .container {
-    position: relative;
+  .header-container {
     min-height: 100%;
   }
 
@@ -36,7 +35,7 @@
     float: right;
   }
 </style>
-<div class="container">
+<div class="header-container">
   <div class="header">
     <img src="images/DTV.jpg"></img>
     <div class="header-right">
