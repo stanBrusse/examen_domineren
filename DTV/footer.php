@@ -1,13 +1,13 @@
 <style>
 .footer{
-  position: absolute;
-  bottom: 0;
+    height: 160px;
+    margin-top: -160px;
   width: 100%;
   background-color: black;
   color: white;
 }
 
-p{    
+.footer p{    
   float: right;
   margin-top: 50px;
   font-size: 12px;
@@ -19,16 +19,16 @@ p{
   font-size: 18px;
   margin-right: 10px;
 }
-.menu a{    
+.footer .menu a{    
     color: cornflowerblue;
 }
-.menu a:hover{
+.footer .menu a:hover{
   color: white;
 }
-.menu{
+.footer .menu{
     float: left;
 }
-.info{
+.footer .info{
     margin-left: 500px;
 }
 .footer ul{
@@ -40,7 +40,7 @@ p{
     <div class="menu">
     <ul>
         <li>
-    <a class="active" href="#home">Home</a>
+    <a class="active" href="index.php">Home</a>
         </li>
         <li>
     <a href="#banen">Banen Reserveren</a>
@@ -49,7 +49,7 @@ p{
     <a href="#toernooien">Toernooien</a>
         </li>
         <li>
-    <a href="#kantine">Kantine</a>
+    <a href="kantine.php">Kantine</a>
         </li>
         <li>
     <a href="#inlog">Inloggen</a>

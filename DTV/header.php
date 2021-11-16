@@ -40,10 +40,10 @@
 <div class="header">
   <img src="images/DTV.jpg"></img>
   <div class="header-right">
-    <a class="active" href="#home">Home</a>
+    <a class="active" href="index.php">Home</a>
     <a href="#banen">Banen Reserveren</a>
     <a href="#toernooien">Toernooien</a>
-    <a href="#kantine">Kantine</a>
+    <a href="kantine.php">Kantine</a>
     <a href="#inlog">Inloggen</a>
   </div>
 </div>
