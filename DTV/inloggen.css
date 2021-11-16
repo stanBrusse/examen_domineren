@@ -1,0 +1,88 @@
+body{
+    background-color: indigo;
+    height: 2000px;
+}
+.container{
+    margin-top: 150px;
+    position: relative;
+    height: 100%;
+    
+}
+.login{
+    border: 1px solid white;
+    height: 600px;
+    width: 300px;
+    justify-content: center;
+    margin: 0px auto;
+    text-align: center;
+    background-color: lightgoldenrodyellow;
+}
+button{
+    width: 150px;
+    float: left;
+    height: 50px;
+}
+.btninloggen
+{
+    background-color: white;
+    border: 1px solid white;
+
+}
+.btninloggen:hover
+{
+    border: 1px solid black;
+
+}
+.btnregistreren{
+    background-color: lightgray;
+    border: 1px solid lightgray;
+}
+.btnregistreren:hover
+{
+    border: 1px solid black;
+}
+h4{
+    margin: 15px;
+    padding-right: 55px;
+}
+.buttonInloggen
+{
+    width: 200px;
+    height: 50px;
+    background-color: lightskyblue;
+    border: 1px solid lightskyblue;
+    margin-top: 140px;
+
+}
+.buttonInloggen:hover
+{
+    border: 1px solid black;
+
+}
+input{
+    padding: 12px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.h4wachtwoord{
+    padding-right: 85px;
+}
+.h4email
+{
+    padding-right: 137px;
+}
+.h4wachtwoordherhalen
+{
+    padding-right: 25px;
+}
+h5{
+    font-weight: 100;
+}
+.aterug
+{
+    text-decoration: none;
+    float: right;
+    color: black;
+}
