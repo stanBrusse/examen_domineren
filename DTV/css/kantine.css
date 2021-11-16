@@ -34,10 +34,16 @@
 }
 
 .kantine-item-card .img-container .identifier{
-    background-color: rgba(255, 255, 255, 0.6);
     border-radius: 50%;
     width: 84px;
     top:0;
     left:0;
     padding: 33px 0px;
+}
+
+.snack{
+    background: #F97943
+}
+.drink{
+    background: #00FBED;
 }
