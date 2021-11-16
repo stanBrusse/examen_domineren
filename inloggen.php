@@ -4,32 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>registreren</title>
+    <title>inloggen</title>
     <link rel="stylesheet" href="css/inloggen.css">
-<style>
-.btninloggen
-{
-    background-color: lightgray;
-    border: 1px solid lightgray;
-}
-.btninloggen:hover
-{
-    border: 1px solid black;
 
-}
-.btnregistreren{
-    background-color: white;
-    border: 1px solid white;
-}
-.btnregistreren:hover
-{
-    border: 1px solid black;
-}
-.buttonInloggen
-{
-    margin-top: 0px;
-}
-</style>
 </head>
 <body>
 <?php 
@@ -40,18 +17,13 @@ include('header.php');
 <br> <hr>
 <a href="inloggen.php"><button class="btninloggen" >inloggen</button></a>
 <a href="registreren.php"><button class="btnregistreren">registreren</button></a>
-<form action="registreren.php" method="POST">
+<form action="inloggen.php" method="POST">
     <h4>Gebruikersnaam</h4>
     <input type="text" placeholder="gebruikersnaam">
-      <h4 class="h4email">email</h4>
-      <input type="email" placeholder="email">
     <h4 class="h4wachtwoord">Wachtwoord</h4>
     <input type="password" placeholder="wachtwoord">
-      <h4 class="h4wachtwoordherhalen" >Wachtwoord herhalen</h4>
-      <input type="password" placeholder="wachtwoord">
-      <br>
-      <br>
-    <input type="submit" value="regristreren"class="buttonInloggen">
+    <h5><a href="wachtwoordvergeten.php">wachtwoord vergeten?</a></h5>
+    <input type="submit" value="inloggen"class="buttonInloggen">
 </form>
 
 </div>

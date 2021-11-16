@@ -44,7 +44,6 @@
 
 <div class="footer">
     <div class="menu">
-<<<<<<< Updated upstream
         <ul>
             <li>
                 <a class="active" href="index.php">Home</a>
@@ -59,28 +58,9 @@
                 <a href="kantine.php">Kantine</a>
             </li>
             <li>
-                <a href="#inlog">Inloggen</a>
+                <a href="inlogggen.php">Inloggen</a>
             </li>
         </ul>
-=======
-    <ul>
-        <li>
-    <a class="active" href="#home">Home</a>
-        </li>
-        <li>
-    <a href="#banen">Banen Reserveren</a>
-        </li>
-        <li>
-    <a href="#toernooien">Toernooien</a>
-        </li>
-        <li>
-    <a href="#kantine">Kantine</a>
-        </li>
-        <li>
-    <a href="inloggen.php">Inloggen</a>
-        </li>
-    </ul>
->>>>>>> Stashed changes
     </div>
     <div class="info">
         <ul>
