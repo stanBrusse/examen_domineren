@@ -13,21 +13,21 @@
 <body>
     <header><?php include('header.php'); ?></header>
     <main>
-    <div class="container">
-        <div class="kantine-item-card">
-            <div class="item_Card-Top">
-                <div class="img-container">
-                    <div class="identifier">
-                        <span>SNACK</span>
+        <div class="container">
+            <div class="kantine-item-card">
+                <div class="item_Card-Top">
+                    <div class="img-container">
+                        <div class="identifier">
+                            <span>SNACK</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="card-info">
-                <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>$99,99</span></p>
-                <p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>
+                <div class="card-info">
+                    <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>$99,99</span></p>
+                    <p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>
+                </div>
             </div>
         </div>
-    </div>
     </main>
     <footer><?php include('footer.php'); ?></footer>
 </body>
