@@ -1,80 +1,22 @@
-<style>
-    .footer {
-        height: 163px;
-        bottom: 0px;
-        width: 100%;
-        background-color: black;
-        color: white;
-        float: right;
-    }
+<footer class="site-footer">
+          <div class="container">
+               <div class="row">
 
-    .footer p {
-        float: right;
-        margin-top: 50px;
-        font-size: 12px;
-        margin-right: 10px;
-    }
+                    <div class="ml-auto col-lg-4 col-md-5">
+                        <p class="copyright-text">Copyright &copy; 2020 Gymso Fitness Co.
+                        
+                        <br>Design: <a href="https://www.tooplate.com">Tooplate</a></p>
+                    </div>
 
-    .footer a {
-        text-decoration: none;
-        font-size: 18px;
-        margin-right: 10px;
-    }
+                    <div class="d-flex justify-content-center mx-auto col-lg-5 col-md-7 col-12">
+                        <p class="mr-4">
+                            <i class="fa fa-envelope-o mr-1"></i>
+                            <a href="#">hello@company.co</a>
+                        </p>
 
-    .footer .menu a {
-        color: cornflowerblue;
-    }
-
-    .footer .menu a:hover {
-        color: white;
-    }
-
-    .footer .menu {
-        float: left;
-    }
-
-    .footer .info {
-        margin-left: 500px;
-    }
-
-    .footer ul {
-        list-style: none;
-    }
-</style>
-
-<div class="footer">
-    <div class="menu">
-        <ul>
-            <li>
-                <a class="active" href="index.php">Home</a>
-            </li>
-            <li>
-                <a href="#banen">Banen Reserveren</a>
-            </li>
-            <li>
-                <a href="#toernooien">Toernooien</a>
-            </li>
-            <li>
-                <a href="kantine.php">Kantine</a>
-            </li>
-            <li>
-                <a href="inlogggen.php">Inloggen</a>
-            </li>
-        </ul>
-    </div>
-    <div class="info">
-        <ul>
-            <li>
-                EMAIL: Contact@DTV.nl
-            </li>
-            <li>
-                TEL: 06-12345678
-            </li>
-            <li>
-                LOCATIE: 7000 GE, DOETINCHEM, Doetinchemse straat 4
-            </li>
-        </ul>
-    </div>
-    <p>Geprogammeerd door Achterhoek Programming AP</p>
-</div>
-</div>
+                        <p><i class="fa fa-phone mr-1"></i> 010-020-0840</p>
+                    </div>
+                    
+               </div>
+          </div>
+     </footer>
