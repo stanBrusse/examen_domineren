@@ -1,48 +1,47 @@
-<style>
-  .header-container {
-    min-height: 100%;
-  }
+ <link rel="stylesheet" href="css/bootstrap.min.css">
+ <link rel="stylesheet" href="css/font-awesome.min.css">
+ <link rel="stylesheet" href="css/aos.css">
+ <link rel="stylesheet" href="css/Main.css">
 
-  .header {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    background-color: black;
-    max-width: auto;
-  }
+<nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
 
-  .header a {
-    float: left;
-    color: white;
-    text-align: center;
-    padding: 60px;
-    text-decoration: none;
-    font-size: 18px;
-    margin-right: 10px;
-  }
+            <a class="navbar-brand" href="index.html">Gymso Fitness</a>
 
-  .header a:hover {
-    background-color: #ddd;
-    color: black;
-  }
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-  .header a.active {
-    background-color: white;
-    color: black;
-  }
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-lg-auto">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link smoothScroll">Home</a>
+                    </li>
 
-  .header-right {
-    float: right;
-  }
-</style>
-<div class="header-container">
-  <div class="header">
-    <img src="images/DTV.jpg"></img>
-    <div class="header-right">
-      <a class="active" href="index.php">Home</a>
-      <a href="#banen">Banen Reserveren</a>
-      <a href="#toernooien">Toernooien</a>
-      <a href="kantine.php">Kantine</a>
-      <a href="#inlog">Inloggen</a>
-    </div>
-  </div>
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link smoothScroll">About Us</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#class" class="nav-link smoothScroll">Classes</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#schedule" class="nav-link smoothScroll">Schedules</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link smoothScroll">Contact</a>
+                    </li>
+                </ul>
+
+                <ul class="social-icon ml-lg-3">
+                    <li><a href="https://fb.com/tooplate" class="fa fa-facebook"></a></li>
+                    <li><a href="#" class="fa fa-twitter"></a></li>
+                    <li><a href="#" class="fa fa-instagram"></a></li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
