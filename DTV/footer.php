@@ -1,8 +1,3 @@
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/font-awesome.min.css">
-<link rel="stylesheet" href="css/aos.css">
-<link rel="stylesheet" href="css/Main.css">
-
 <footer class="site-footer">
     <div class="container">
         <div class="row">
