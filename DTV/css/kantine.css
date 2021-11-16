@@ -5,9 +5,10 @@
 .kantine-container{
     margin-top: 150px;
     margin-bottom: 163px;
+    padding: 50px 70px;
 }
 .kantine-item-card{
-    width: 300px;
+    width: 100%;
     height: 400px;
     background-color: #eee;
     border-radius: 20px;
@@ -17,6 +18,7 @@
     max-width: 300px;
     max-height: 400px;
     float: left;
+    position: relative;
 }
 
 .kantine-item-card .card-info{
@@ -34,8 +36,8 @@
 .kantine-item-card .img-container .identifier{
     background-color: rgba(255, 255, 255, 0.6);
     border-radius: 50%;
-    width: 150px;
+    width: 84px;
     top:0;
     left:0;
-    padding: 66.5px 0px;
+    padding: 33px 0px;
 }

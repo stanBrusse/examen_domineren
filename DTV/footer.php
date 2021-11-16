@@ -1,11 +1,11 @@
 <style>
     .footer {
         height: 163px;
-        position: absolute;
         bottom: 0px;
         width: 100%;
         background-color: black;
         color: white;
+        float: right;
     }
 
     .footer p {
