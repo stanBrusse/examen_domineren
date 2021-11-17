@@ -5,16 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <style>
-        body{
-            background-color: indigo;
-            height: 2000px;
-        }
-        .container{
-            position: relative;
-            min-height: 100%;
-        }
-    </style>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 <div class="container">
@@ -23,21 +18,16 @@ include('pages/header.php');
 ?>
 <section class="hero d-flex flex-column justify-content-center align-items-center" id="home">
 
-    <div class="bg-overlay"></div>
-
     <div class="container">
         <div class="row">
 
             <div class="col-lg-8 col-md-10 mx-auto col-12">
                 <div class="hero-text mt-5 text-center">
 
-                    <h6 data-aos="fade-up" data-aos-delay="300">new way to build a healthy lifestyle!</h6>
 
-                    <h1 class="text-white" data-aos="fade-up" data-aos-delay="500">Upgrade your body at Gymso Fitness</h1>
+                    <h1 class="text-dark">DTV</h1>
 
-                    <a href="#feature" class="btn custom-btn mt-3" data-aos="fade-up" data-aos-delay="600">Get started</a>
-
-                    <a href="#about" class="btn custom-btn bordered mt-3" data-aos="fade-up" data-aos-delay="700">learn more</a>
+                    <h6>Sport- & Familieclub DTV wil iedereen enthousiast maken voor onze mooie tennissport, wil elke tennisser, zowel recreatief als prestatief, een stapje verder brengen in zijn of haar ontwikkeling en voorzien van een volledig wedstrijdaanbod. DTV wil in de regio Oost-Nederland toonaangevend zijn in de tennisbeleving door middel van uiterst bekwame, betrokken en leergierige tennisleraren, een transparante en warme samenwerking met de KNLTB, tennisverenigingen en andere tennisorganisaties. DTV wil de continuïteit van kwaliteit waarborgen door optimaal te faciliteren en zich altijd te blijven doorontwikkelen.</h6>
 
                 </div>
             </div>
