@@ -25,7 +25,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="#class" class="nav-link smoothScroll">Classes</a>
+                        <a href="pages/kantine.php" class="nav-link smoothScroll">Kantine</a>
                     </li>
 
                     <li class="nav-item">
