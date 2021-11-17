@@ -37,17 +37,17 @@ include('header.php');
                     <tr>
                         <td><small class="">7:00 am</small></td>
                         <td>
-                            <strong class="text-dark"><a href="">Toernooi</a></strong>
+                            <strong class="text-dark"><a href="toernooiDetail.php">Toernooi</a></strong>
                             <span>7:00 am - 9:00 am</span>
                         </td>
                         <td>
-                            <strong class="text-dark"><a href="">Toernooi</a></strong>
+                            <strong class="text-dark"><a href="toernooiDetail.php">Toernooi</a></strong>
                             <span>7:00 am - 9:00 am</span>
                         </td>
                         <td></td>
                         <td></td>
                         <td>
-                            <strong class="text-dark"><a href="">Toernooi</a></strong>
+                            <strong class="text-dark"><a href="toernooiDetail.php">Toernooi</a></strong>
                             <span>7:00 am - 9:00 am</span>
                         </td>
                         <td>
@@ -58,16 +58,16 @@ include('header.php');
                         <td></td>
                         <td></td>
                         <td>
-                            <strong class="text-dark"><a href="">Toernooi</a></strong>
+                            <strong class="text-dark"><a href="toernooiDetail.php">Toernooi</a></strong>
                             <span>8:00 am - 9:00 am</span>
                         </td>
                         <td>
-                            <strong class="text-dark"><a href="">Toernooi</a></strong>
+                            <strong class="text-dark"><a href="toernooiDetail.php">Toernooi</a></strong>
                             <span>8:00 am - 9:00 am</span>
                         </td>
                         <td></td>
                         <td>
-                            <strong class="text-dark"><a href="">Toernooi</a></strong>
+                            <strong class="text-dark"><a href="toernooiDetail.php">Toernooi</a></strong>
                             <span>8:00 am - 9:00 am</span>
                         </td>
                     </tr>
@@ -76,16 +76,16 @@ include('header.php');
                         <td><small>11:00 am</small></td>
                         <td></td>
                         <td>
-                            <strong class="text-dark"><a href="">Toernooi</a></strong>
+                            <strong class="text-dark"><a href="toernooiDetail.php">Toernooi</a></strong>
                             <span>11:00 am - 2:00 pm</span>
                         </td>
                         <td>
-                            <strong class="text-dark"><a href="">Toernooi</a></strong>
+                            <strong class="text-dark"><a href="toernooiDetail.php">Toernooi</a></strong>
                             <span>11:30 am - 3:30 pm</span>
                         </td>
                         <td></td>
                         <td>
-                            <strong class="text-dark"><a href="">Toernooi</a></strong>
+                            <strong class="text-dark"><a href="toernooiDetail.php">Toernooi</a></strong>
                             <span>11:50 am - 5:20 pm</span>
                         </td>
                         <td></td>
@@ -94,21 +94,21 @@ include('header.php');
                     <tr>
                         <td><small>2:00 pm</small></td>
                         <td>
-                            <strong class="text-dark"><a href="">Toernooi</a></strong>
+                            <strong class="text-dark"><a href="toernooiDetail.php">Toernooi</a></strong>
                             <span>2:00 pm - 4:00 pm</span>
                         </td>
                         <td>
-                            <strong class="text-dark"><a href="">Toernooi</a></strong>
+                            <strong class="text-dark"><a href="toernooiDetail.php">Toernooi</a></strong>
                             <span>3:00 pm - 6:00 pm</span>
                         </td>
                         <td></td>
                         <td>
-                            <strong class="text-dark"><a href="">Toernooi</a></strong>
+                            <strong class="text-dark"><a href="toernooiDetail.php">Toernooi</a></strong>
                             <span>6:00 pm - 9:00 pm</span>
                         </td>
                         <td></td>
                         <td>
-                            <strong class="text-dark"><a href="">Toernooi</a></strong>
+                            <strong class="text-dark"><a href="toernooiDetail.php">Toernooi</a></strong>
                             <span>5:00 pm - 7:00 pm</span>
                         </td>
                     </tr>
