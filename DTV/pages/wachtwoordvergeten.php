@@ -12,16 +12,16 @@
 <?php 
 include('header.php');
 ?>
-<div class="container">
+<div class="cont">
 <div class="login">
 <a class="aterug" href="inloggen.php">X</a>
 <br> <hr>
 
 <form action="wachtwoordvergeten.php" method="POST">
-    <h4>wachtwoord vergeten</h4>
+    <h4 class="h4wachtwoordvergeten">wachtwoord <br>vergeten</h4>
     <h4 class="h4email">email</h4>
     <input type="email" placeholder="email">
-    <h5>Vul hier uw E-Mail in dan sturen <br>wij u een mail om uw<br> wachtwoord te veranderen</h5>
+    <h6 class="h6wachtwoordvergeten">Vul hier uw E-Mail in dan sturen <br>wij u een mail om uw<br> wachtwoord te veranderen</h6>
     <br>
     <input type="submit" value="verzenden"class="buttonInloggen">
 </form>

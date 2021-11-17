@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>profiel</title>
-    <link rel="stylesheet" href="../css/inloggen.css">
+    <!-- <link rel="stylesheet" href="../css/inloggen.css"> -->
     <style> 
 
 body
@@ -29,13 +29,16 @@ td
     text-decoration: none;
     color: black;
 }
+
 </style>
 </head>
 <body>
 <?php
     include('header.php');
 ?>
-<div class="container">
+
+
+<div class="cont">
     <div class="containerlinks">
         <form action="#uitloggen">
         <input type="submit" value="uitloggen"><br><br>
