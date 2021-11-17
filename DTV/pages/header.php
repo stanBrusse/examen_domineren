@@ -1,13 +1,12 @@
- <link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/bootstrap.min.css">
  <link rel="stylesheet" href="../css/font-awesome.min.css">
  <link rel="stylesheet" href="../css/aos.css">
- <link rel="stylesheet" href="../css/Main.css">
- <link rel="stylesheet" href="../css/inloggen.css">
+ <link rel="stylesheet" href="../css/main.css">
 
 <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
 
-            <a class="navbar-brand" href="index.html">Gymso Fitness</a>
+            <a class="navbar-brand" href="index.php">Gymso Fitness</a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -17,23 +16,23 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-lg-auto">
                     <li class="nav-item">
-                        <a href="#home" class="nav-link smoothScroll">Home</a>
+                        <a href="kantine.php" class="nav-link smoothScroll">Kantine</a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="#about" class="nav-link smoothScroll">About Us</a>
+                        <a href="inloggen.php" class="nav-link smoothScroll">Inloggen</a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="pages/kantine.php" class="nav-link smoothScroll">Kantine</a>
+                        <a href="toernooien.php" class="nav-link smoothScroll">Toernooien</a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="#schedule" class="nav-link smoothScroll">Schedules</a>
+                        <a href="banen.php" class="nav-link smoothScroll">Banen</a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="#contact" class="nav-link smoothScroll">Contact</a>
+                        <a href="contact.php" class="nav-link smoothScroll">Contact</a>
                     </li>
                 </ul>
 

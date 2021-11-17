@@ -6,15 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/aos.css">
-    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 <div class="container">
 <?php 
-include('pages/header.php');
+include('header.php');
 ?>
 <section class="hero d-flex flex-column justify-content-center align-items-center" id="home">
 
@@ -35,9 +31,8 @@ include('pages/header.php');
         </div>
     </div>
 </section>
-
 <?php 
-include('pages/footer.php');
+include('footer.php');
 ?>
 </div>
 </body>
