@@ -46,3 +46,6 @@
 
         </div>
     </nav>
+ <section class="hero d-flex flex-column justify-content-center align-items-center" id="home">
+
+     <div class="container">
