@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <title>Kantine</title>
-    <link rel="stylesheet" href="css/kantine.css">
+    <link rel="stylesheet" href="../css/kantine.css">
 </head>
 <body>
     <header><?php include('header.php'); ?></header>

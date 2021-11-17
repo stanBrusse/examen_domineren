@@ -19,11 +19,11 @@
 <body>
 <div class="container">
 <?php 
-include('header.php');
+include('pages/header.php');
 ?>
 
 <?php 
-include('footer.php');
+include('pages/footer.php');
 ?>
 </div>
 </body>

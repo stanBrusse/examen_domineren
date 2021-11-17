@@ -1,7 +1,7 @@
- <link rel="stylesheet" href="css/bootstrap.min.css">
- <link rel="stylesheet" href="css/font-awesome.min.css">
- <link rel="stylesheet" href="css/aos.css">
- <link rel="stylesheet" href="css/Main.css">
+ <link rel="stylesheet" href="../css/bootstrap.min.css">
+ <link rel="stylesheet" href="../css/font-awesome.min.css">
+ <link rel="stylesheet" href="../css/aos.css">
+ <link rel="stylesheet" href="../css/Main.css">
 
 <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
