@@ -86,3 +86,38 @@ h5{
     float: right;
     color: black;
 }
+.containerlinks
+{
+    width: 49.9%;
+    height: auto;
+    float: left;
+    text-align: center;
+    
+    border-right: 1px solid black;
+}
+
+.containerrechts
+{
+    text-align: center;
+    float: left;
+    width: 50%;
+    height: 400px;
+}
+table{
+    color: black;
+margin-left: auto;
+margin-right: auto;
+width: 450px;
+border-collapse: collapse;
+
+}
+.td1
+{
+    border: 0px;
+    background-color: rgba(211, 211, 211, 0.517);
+}
+.td2
+{
+    border: 0px;
+    background-color: white;
+}

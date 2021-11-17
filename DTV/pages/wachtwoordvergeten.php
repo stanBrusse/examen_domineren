@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>wachtwoord vergeten</title>
     </head>
-    <link rel="stylesheet" href="css/inloggen.css">
+    <link rel="stylesheet" href="../css/inloggen.css">
 
 <body>
 <?php 
