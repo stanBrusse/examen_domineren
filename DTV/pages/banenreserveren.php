@@ -37,177 +37,177 @@ include('header.php');
                     </tr>
                     <tr>
                         <td>12:00 - 13:00</td>
-                        <td style="background-color: greenyellow;">Beschikbaar</td>
+                        <td style="background-color: greenyellow;"><a href="">Beschikbaar</a></td>
                         <td>12:00 - 13:00</td>
-                        <td style="background-color: orange;">Gereserveerd</td>
+                        <td style="background-color: orange;"><a href="">Gereserveerd</a></td>
                         <td>12:00 - 13:00</td>
-                        <td style="background-color: greenyellow;">Beschikbaar</td>
+                        <td style="background-color: greenyellow;"><a href="">Beschikbaar</a></td>
                         <td>12:00 - 13:00</td>
-                        <td style="background-color: red;">Gereserveerd</td>
+                        <td style="background-color: red;"><a href="">Gereserveerd</a></td>
                         <td>12:00 - 13:00</td>
-                        <td style="background-color: greenyellow;">Beschikbaar</td> 
+                        <td style="background-color: greenyellow;"><a href="">Beschikbaar</a></td> 
                         <td>12:00 - 13:00</td>
-                        <td style="background-color: greenyellow;">Beschikbaar</td>
+                        <td style="background-color: greenyellow;"><a href="">Beschikbaar</a></td>
                         <td>12:00 - 13:00</td>
-                        <td style="background-color: greenyellow;">Beschikbaar</td>  
+                        <td style="background-color: greenyellow;"><a href="">Beschikbaar</a></td>  
                     </tr>
                     <tr>
                         <td>13:00 - 14:00</td>
-                        <td style="background-color: red;">Gereserveerd</td>
+                        <td style="background-color: red;"><a href="">Gereserveerd</a></td>
                         <td>13:00 - 14:00</td>
-                        <td style="background-color: red;">Gereserveerd</td>
+                        <td style="background-color: red;"><a href="">Gereserveerd</a></td>
                         <td>13:00 - 14:00</td>
-                        <td style="background-color: red;">Gereserveerd</td>
+                        <td style="background-color: red;"><a href="">Gereserveerd</a></td>
                         <td>13:00 - 14:00</td>
-                        <td style="background-color: red;">Gereserveerd</td>
+                        <td style="background-color: red;"><a href="">Gereserveerd</a></td>
                         <td>13:00 - 14:00</td>
-                        <td style="background-color: greenyellow;">Beschikbaar</td>
+                        <td style="background-color: greenyellow;"><a href="">Beschikbaar</a></td>
                         <td>13:00 - 14:00</td>
-                        <td style="background-color: greenyellow;">Beschikbaar</td>
+                        <td style="background-color: greenyellow;"><a href="">Beschikbaar</a></td>
                         <td>13:00 - 14:00</td>
-                        <td style="background-color: red;">Gereserveerd</td> 
+                        <td style="background-color: red;"><a href="">Gereserveerd</a></td> 
                     </tr>
                     <tr>
                         <td>14:00 - 15:00</td>
-                        <td style="background-color: greenyellow;">Beschikbaar</td>
+                        <td style="background-color: greenyellow;"><a href="">Beschikbaar</a></td>
                         <td>14:00 - 15:00</td>
-                        <td style="background-color: red;">Gereserveerd</td>
+                        <td style="background-color: red;"><a href="">Gereserveerd</a></td>
                         <td>14:00 - 15:00</td>
-                        <td style="background-color: greenyellow;">Beschikbaar</td>
+                        <td style="background-color: greenyellow;"><a href="">Beschikbaar</a></td>
                         <td>14:00 - 15:00</td>
-                        <td style="background-color: red;">Gereserveerd</td>
+                        <td style="background-color: red;"><a href="">Gereserveerd</a></td>
                         <td>14:00 - 15:00</td>
-                        <td style="background-color: greenyellow;">Beschikbaar</td> 
+                        <td style="background-color: greenyellow;"><a href="">Beschikbaar</a></td> 
                         <td>14:00 - 15:00</td>
-                        <td style="background-color: greenyellow;">Beschikbaar</td>
+                        <td style="background-color: greenyellow;"><a href="">Beschikbaar</a></td>
                         <td>14:00 - 15:00</td>
-                        <td style="background-color: greenyellow;">Beschikbaar</td>  
+                        <td style="background-color: greenyellow;"><a href="">Beschikbaar</a></td>  
                     </tr>
                     <tr>
                         <td>15:00 - 16:00</td>
-                        <td style="background-color: red;">Gereserveerd</td>
+                        <td style="background-color: red;"><a href="">Gereserveerd</a></td>
                         <td>15:00 - 16:00</td>
-                        <td style="background-color: red;">Gereserveerd</td>
+                        <td style="background-color: red;"><a href="">Gereserveerd</a></td>
                         <td>15:00 - 16:00</td>
-                        <td style="background-color: red;">Gereserveerd</td>
+                        <td style="background-color: red;"><a href="">Gereserveerd</a></td>
                         <td>15:00 - 16:00</td>
-                        <td style="background-color: orange;">Gereserveerd</td>
+                        <td style="background-color: orange;"><a href="">Gereserveerd</a></td>
                         <td>15:00 - 16:00</td>
-                        <td style="background-color: greenyellow;">Beschikbaar</td>
+                        <td style="background-color: greenyellow;"><a href="">Beschikbaar</a></td>
                         <td>15:00 - 16:00</td>
-                        <td style="background-color: greenyellow;">Beschikbaar</td>
+                        <td style="background-color: greenyellow;"><a href="">Beschikbaar</a></td>
                         <td>15:00 - 16:00</td>
-                        <td style="background-color: red;">Gereserveerd</td> 
+                        <td style="background-color: red;"><a href="">Gereserveerd</a></td> 
                     <tr>
                         <td>16:00 - 17:00</td>
-                        <td style="background-color: greenyellow;">Beschikbaar</td>
+                        <td style="background-color: greenyellow;"><a href="">Beschikbaar</a></td>
                         <td>16:00 - 17:00</td>
-                        <td style="background-color: red;">Gereserveerd</td>
+                        <td style="background-color: red;"><a href="">Gereserveerd</a></td>
                         <td>16:00 - 17:00</td>
-                        <td style="background-color: greenyellow;">Beschikbaar</td> 
+                        <td style="background-color: greenyellow;"><a href="">Beschikbaar</a></td> 
                         <td>16:00 - 17:00</td>
-                        <td style="background-color: greenyellow;">Beschikbaar</td>
+                        <td style="background-color: greenyellow;"><a href="">Beschikbaar</a></td>
                         <td>16:00 - 17:00</td>
-                        <td style="background-color: greenyellow;">Beschikbaar</td>  
+                        <td style="background-color: greenyellow;"><a href="">Beschikbaar</a></td>  
                         <td>16:00 - 17:00</td>
-                        <td style="background-color: red;">Gereserveerd</td>
+                        <td style="background-color: red;"><a href="">Gereserveerd</a></td>
                         <td>16:00 - 17:00</td>
-                        <td style="background-color: greenyellow;">Beschikbaar</td>
+                        <td style="background-color: greenyellow;"><a href="">Beschikbaar</a></td>
                     </tr>
                     <tr>
                         <td>17:00 - 18:00</td>
-                        <td style="background-color: red;">Gereserveerd</td>
+                        <td style="background-color: red;"><a href="">Gereserveerd</a></td>
                         <td>17:00 - 18:00</td>
-                        <td style="background-color: greenyellow;">Beschikbaar</td>
+                        <td style="background-color: greenyellow;"><a href="">Beschikbaar</a></td>
                         <td>17:00 - 18:00</td>
-                        <td style="background-color: red;">Gereserveerd</td>
+                        <td style="background-color: red;"><a href="">Gereserveerd</a></td>
                         <td>17:00 - 18:00</td>
-                        <td style="background-color: red;">Gereserveerd</td>
+                        <td style="background-color: red;"><a href="">Gereserveerd</a></td>
                         <td>17:00 - 18:00</td>
-                        <td style="background-color: red;">Gereserveerd</td>
+                        <td style="background-color: red;"><a href="">Gereserveerd</a></td>
                         <td>17:00 - 18:00</td>
-                        <td style="background-color: greenyellow;">Beschikbaar</td>
+                        <td style="background-color: greenyellow;"><a href="">Beschikbaar</a></td>
                         <td>17:00 - 18:00</td>
-                        <td style="background-color: red;">Gereserveerd</td> 
+                        <td style="background-color: red;"><a href="">Gereserveerd</a></td> 
                     </tr>
                     <tr>
                         <td>18:00 - 19:00</td>
-                        <td style="background-color: greenyellow;">Beschikbaar</td>
+                        <td style="background-color: greenyellow;"><a href="">Beschikbaar</a></td>
                         <td>18:00 - 19:00</td>
-                        <td style="background-color: red;">Gereserveerd</td>
+                        <td style="background-color: red;"><a href="">Gereserveerd</a></td>
                         <td>18:00 - 19:00</td>
-                        <td style="background-color: greenyellow;">Beschikbaar</td>
+                        <td style="background-color: greenyellow;"><a href="">Beschikbaar</a></td>
                         <td>18:00 - 19:00</td>
-                        <td style="background-color: greenyellow;">Beschikbaar</td>
+                        <td style="background-color: greenyellow;"><a href="">Beschikbaar</a></td>
                         <td>18:00 - 19:00</td>
-                        <td style="background-color: greenyellow;">Beschikbaar</td>  
+                        <td style="background-color: greenyellow;"><a href="">Beschikbaar</a></td>  
                         <td>18:00 - 19:00</td>
-                        <td style="background-color: red;">Gereserveerd</td>
+                        <td style="background-color: red;"><a href="">Gereserveerd</a></td>
                         <td>18:00 - 19:00</td>
-                        <td style="background-color: greenyellow;">Beschikbaar</td> 
+                        <td style="background-color: greenyellow;"><a href="">Beschikbaar</a></td> 
                     </tr>
                     <tr>
                         <td>19:00 - 20:00</td>
-                        <td style="background-color: red;">Gereserveerd</td>
+                        <td style="background-color: red;"><a href="">Gereserveerd</a></td>
                         <td>19:00 - 20:00</td>
-                        <td style="background-color: greenyellow;">Beschikbaar</td>
+                        <td style="background-color: greenyellow;"><a href="">Beschikbaar</a></td>
                         <td>19:00 - 20:00</td>
-                        <td style="background-color: red;">Gereserveerd</td>
+                        <td style="background-color: red;"><a href="">Gereserveerd</a></td>
                         <td>19:00 - 20:00</td>
-                        <td style="background-color: red;">Gereserveerd</td>
+                        <td style="background-color: red;"><a href="">Gereserveerd</a></td>
                         <td>19:00 - 20:00</td>
-                        <td style="background-color: red;">Gereserveerd</td>
+                        <td style="background-color: red;"><a href="">Gereserveerd</a></td>
                         <td>19:00 - 20:00</td>
-                        <td style="background-color: greenyellow;">Beschikbaar</td>
+                        <td style="background-color: greenyellow;"><a href="">Beschikbaar</a></td>
                         <td>19:00 - 20:00</td>
-                        <td style="background-color: red;">Gereserveerd</td> 
+                        <td style="background-color: red;"><a href="">Gereserveerd</a></td> 
                     <tr>
                         <td>20:00 - 21:00</td>
-                        <td style="background-color: red;">Gereserveerd</td>
+                        <td style="background-color: red;"><a href="">Gereserveerd</a></td>
                         <td>20:00 - 21:00</td>
-                        <td style="background-color: red;">Gereserveerd</td>
+                        <td style="background-color: red;"><a href="">Gereserveerd</a></td>
                         <td>20:00 - 21:00</td>
-                        <td style="background-color: greenyellow;">Beschikbaar</td>
+                        <td style="background-color: greenyellow;"><a href="">Beschikbaar</a></td>
                         <td>20:00 - 21:00</td>
-                        <td style="background-color: greenyellow;">Beschikbaar</td>
+                        <td style="background-color: greenyellow;"><a href="">Beschikbaar</a></td>
                         <td>20:00 - 21:00</td>
-                        <td style="background-color: red;">Gereserveerd</td>
+                        <td style="background-color: red;"><a href="">Gereserveerd</a></td>
                         <td>20:00 - 21:00</td>
-                        <td style="background-color: red;">Gereserveerd</td>
+                        <td style="background-color: red;"><a href="">Gereserveerd</a></td>
                         <td>20:00 - 21:00</td>
-                        <td style="background-color: orange;">Gereserveerd</td> 
+                        <td style="background-color: orange;"><a href="">Gereserveerd</a></td> 
                     </tr>
                     <tr>
                         <td>21:00 - 22:00</td>
-                        <td style="background-color: greenyellow;">Beschikbaar</td> 
+                        <td style="background-color: greenyellow;"><a href="">Beschikbaar</a></td> 
                         <td>21:00 - 22:00</td>
-                        <td style="background-color: greenyellow;">Beschikbaar</td>
+                        <td style="background-color: greenyellow;"><a href="">Beschikbaar</a></td>
                         <td>21:00 - 22:00</td>
-                        <td style="background-color: greenyellow;">Beschikbaar</td> 
+                        <td style="background-color: greenyellow;"><a href="">Beschikbaar</a></td> 
                         <td>21:00 - 22:00</td>
-                        <td style="background-color: greenyellow;">Beschikbaar</td>
+                        <td style="background-color: greenyellow;"><a href="">Beschikbaar</a></td>
                         <td>21:00 - 22:00</td>
-                        <td style="background-color: red;">Gereserveerd</td>
+                        <td style="background-color: red;"><a href="">Gereserveerd</a></td>
                         <td>21:00 - 22:00</td>
-                        <td style="background-color: greenyellow;">Beschikbaar</td>
+                        <td style="background-color: greenyellow;"><a href="">Beschikbaar</a></td>
                         <td>21:00 - 22:00</td>
-                        <td style="background-color: red;">Gereserveerd</td> 
+                        <td style="background-color: red;"><a href="">Gereserveerd</a></td> 
                     </tr>
                     <tr>
                         <td>22:00 - 23:00</td>
-                        <td style="background-color: red;">Gereserveerd</td>
+                        <td style="background-color: red;"><a href="">Gereserveerd</a></td>
                         <td>22:00 - 23:00</td>
-                        <td style="background-color: red;">Gereserveerd</td>
+                        <td style="background-color: red;"><a href="">Gereserveerd</a></td>
                         <td>22:00 - 23:00</td>
-                        <td style="background-color: greenyellow;">Beschikbaar</td>
+                        <td style="background-color: greenyellow;"><a href="">Beschikbaar</a></td>
                         <td>22:00 - 23:00</td>
-                        <td style="background-color: red;">Gereserveerd</td>
+                        <td style="background-color: red;"><a href="">Gereserveerd</a></td>
                         <td>22:00 - 23:00</td>
-                        <td style="background-color: red;">Gereserveerd</td>
+                        <td style="background-color: red;"><a href="">Gereserveerd</a></td>
                         <td>22:00 - 23:00</td>
-                        <td style="background-color: greenyellow;">Beschikbaar</td>
+                        <td style="background-color: greenyellow;"><a href="">Beschikbaar</a></td>
                         <td>22:00 - 23:00</td>
-                        <td style="background-color: red;">Gereserveerd</td> 
+                        <td style="background-color: red;"><a href="">Gereserveerd</a></td> 
                     </tr>
             </table>
             </section>
