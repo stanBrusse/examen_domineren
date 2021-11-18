@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="card-info">
-                    <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>$99,99</span></p>
+                    <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>€99,99</span></p>
                     <p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                     </div>
                 </div>
                 <div class="card-info">
-                    <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>$99,99</span></p>
+                    <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>€99,99</span></p>
                     <p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>
                 </div>
             </div>
@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 <div class="card-info">
-                    <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>$99,99</span></p>
+                    <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>€99,99</span></p>
                     <p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>
                 </div>
             </div>
@@ -75,7 +75,7 @@
                     </div>
                 </div>
                 <div class="card-info">
-                    <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>$99,99</span></p>
+                    <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>€99,99</span></p>
                     <p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>
                 </div>
             </div><div class="kantine-item-card snack-card" id="snack">
@@ -87,7 +87,7 @@
                     </div>
                 </div>
                 <div class="card-info">
-                    <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>$99,99</span></p>
+                    <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>€99,99</span></p>
                     <p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>
                 </div>
             </div>
@@ -101,7 +101,7 @@
                     </div>
                 </div>
                 <div class="card-info">
-                    <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>$99,99</span></p>
+                    <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>€99,99</span></p>
                     <p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>
                 </div>
             </div><div class="kantine-item-card snack-card" id="snack">
@@ -113,7 +113,7 @@
                     </div>
                 </div>
                 <div class="card-info">
-                    <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>$99,99</span></p>
+                    <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>€99,99</span></p>
                     <p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>
                 </div>
             </div>
@@ -127,7 +127,7 @@
                     </div>
                 </div>
                 <div class="card-info">
-                    <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>$99,99</span></p>
+                    <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>€99,99</span></p>
                     <p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>
                 </div>
             </div><div class="kantine-item-card snack-card" id="snack">
@@ -139,7 +139,7 @@
                     </div>
                 </div>
                 <div class="card-info">
-                    <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>$99,99</span></p>
+                    <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>€99,99</span></p>
                     <p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>
                 </div>
             </div>
@@ -153,7 +153,7 @@
                     </div>
                 </div>
                 <div class="card-info">
-                    <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>$99,99</span></p>
+                    <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>€99,99</span></p>
                     <p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>
                 </div>
             </div><div class="kantine-item-card snack-card" id="snack">
@@ -165,7 +165,7 @@
                     </div>
                 </div>
                 <div class="card-info">
-                    <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>$99,99</span></p>
+                    <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>€99,99</span></p>
                     <p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>
                 </div>
             </div>
@@ -179,7 +179,7 @@
                     </div>
                 </div>
                 <div class="card-info">
-                    <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>$99,99</span></p>
+                    <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>€99,99</span></p>
                     <p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>
                 </div>
             </div><div class="kantine-item-card snack-card" id="snack">
@@ -191,7 +191,7 @@
                     </div>
                 </div>
                 <div class="card-info">
-                    <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>$99,99</span></p>
+                    <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>€99,99</span></p>
                     <p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>
                 </div>
             </div>
@@ -205,7 +205,7 @@
                     </div>
                 </div>
                 <div class="card-info">
-                    <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>$99,99</span></p>
+                    <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>€99,99</span></p>
                     <p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>
                 </div>
             </div><div class="kantine-item-card snack-card" id="snack">
@@ -217,7 +217,7 @@
                     </div>
                 </div>
                 <div class="card-info">
-                    <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>$99,99</span></p>
+                    <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>€99,99</span></p>
                     <p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>
                 </div>
             </div>
@@ -231,7 +231,7 @@
                     </div>
                 </div>
                 <div class="card-info">
-                    <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>$99,99</span></p>
+                    <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>€99,99</span></p>
                     <p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>
                 </div>
             </div>
