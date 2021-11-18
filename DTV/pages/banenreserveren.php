@@ -39,7 +39,7 @@ include('header.php');
                         <td>12:00 - 13:00</td>
                         <td style="background-color: greenyellow;">Beschikbaar</td>
                         <td>12:00 - 13:00</td>
-                        <td style="background-color: red;">Gereserveerd</td>
+                        <td style="background-color: orange;">Gereserveerd</td>
                         <td>12:00 - 13:00</td>
                         <td style="background-color: greenyellow;">Beschikbaar</td>
                         <td>12:00 - 13:00</td>
@@ -91,7 +91,7 @@ include('header.php');
                         <td>15:00 - 16:00</td>
                         <td style="background-color: red;">Gereserveerd</td>
                         <td>15:00 - 16:00</td>
-                        <td style="background-color: red;">Gereserveerd</td>
+                        <td style="background-color: orange;">Gereserveerd</td>
                         <td>15:00 - 16:00</td>
                         <td style="background-color: greenyellow;">Beschikbaar</td>
                         <td>15:00 - 16:00</td>
@@ -175,7 +175,7 @@ include('header.php');
                         <td>20:00 - 21:00</td>
                         <td style="background-color: red;">Gereserveerd</td>
                         <td>20:00 - 21:00</td>
-                        <td style="background-color: red;">Gereserveerd</td> 
+                        <td style="background-color: orange;">Gereserveerd</td> 
                     </tr>
                     <tr>
                         <td>21:00 - 22:00</td>
