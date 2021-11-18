@@ -28,7 +28,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="banen.php" class="nav-link smoothScroll">Banen</a>
+                        <a href="banen.php" class="nav-link smoothScroll">Banen Reserveren</a>
                     </li>
 
                     <li class="nav-item">

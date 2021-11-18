@@ -25,16 +25,16 @@
 include('header.php');
 ?>
 <section class="content">
-<h1>Baan 1 (Tennisbaan)</h1>
+<h1>Maandag 15-11-2021</h1>
 <table border="black 1px" align="center" cellpadding="5px">
                     <tr>
-                        <th colspan="2">Maandag</th>
-                        <th colspan="2">Dinsdag</th>
-                        <th colspan="2">Woensdag</th>
-                        <th colspan="2">Donderdag</th>
-                        <th colspan="2">Vrijdag</th>
-                        <th colspan="2">Zaterdag</th>
-                        <th colspan="2">Zondag</th>
+                        <th colspan="2">Baan 1 (Tennisbaan)</th>
+                        <th colspan="2">Baan 2 (Tennisbaan)</th>
+                        <th colspan="2">Baan 3 (Tennisbaan)</th>
+                        <th colspan="2">Baan 4 (Tennisbaan)</th>
+                        <th colspan="2">Baan 5 (Squashbaan)</th>
+                        <th colspan="2">Baan 6 (Squashbaan)</th>
+                        <th colspan="2">Baan 7 (Squashbaan)</th>
                     </tr>
                     <tr>
                         <td>12:00 - 13:00</td>

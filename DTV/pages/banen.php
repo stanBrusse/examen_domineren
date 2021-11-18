@@ -20,32 +20,47 @@
 <?php 
 include('header.php');
 ?>
-<h1 style="text-align: center;">Alle banen</h1>
+<h1 style="text-align: center;">Wanneer wilt u een baan reserveren</h1>
 <table border="black 1px" align="center" cellpadding="10px">
                 <thead>
                     <tr>
-                        <th>Baan nummer</th>
-                        <th>Type baan</th>
+                        <th>Dag</th>
+                        <th>Datum</th>
                         <th>Reserveren</th>
                     </tr>
                     <tr>
-                        <td>1</td>
-                        <td>Tennisbaan</td>
+                        <td>Maandag</td>
+                        <td>15-11-2021</td>
                         <td><a href="banenreserveren.php">Klik</a></td>
                     </tr>
                     <tr>
-                        <td>2</td>
-                        <td>Squashbaan</td>
+                        <td>Dindag</td>
+                        <td>16-11-2021</td>
                         <td><a href="banenreserveren.php">Klik</a></td>
                     </tr>
                     <tr>
-                        <td>3</td>
-                        <td>Tennisbaan</td>
+                        <td>Woensdag</td>
+                        <td>17-11-2021</td>
                         <td><a href="banenreserveren.php">Klik</a></td>
                     </tr>
                     <tr>
-                        <td>4</td>
-                        <td>Squashbaan</td>
+                        <td>Donderdag</td>
+                        <td>18-11-2021</td>
+                        <td><a href="banenreserveren.php">Klik</a></td>
+                    </tr>
+                    <tr>
+                        <td>Vrijdag</td>
+                        <td>19-11-2021</td>
+                        <td><a href="banenreserveren.php">Klik</a></td>
+                    </tr>
+                    <tr>
+                        <td>Zaterdag</td>
+                        <td>20-11-2021</td>
+                        <td><a href="banenreserveren.php">Klik</a></td>
+                    </tr>
+                    <tr>
+                        <td>Zondag</td>
+                        <td>21-11-2021</td>
                         <td><a href="banenreserveren.php">Klik</a></td>
                     </tr>
             </table>
