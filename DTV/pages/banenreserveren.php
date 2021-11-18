@@ -8,14 +8,15 @@
     <style>        
         table, th{
             background-color: gray;
-            border: 4px solid black;            
+            border: 4px solid black;    
         }
         tr, td{
             color: white;
-            border: 3px solid black;
+            border: 3px solid black;    
         }
         .content{
             margin-top: 100px;
+            line-height: 1;       
         }
     </style>
 </head>
@@ -25,7 +26,7 @@ include('header.php');
 ?>
 <section class="content">
 <h1>Baan 1 (Tennisbaan)</h1>
-<table border="black 1px" align="center" cellpadding="10px">
+<table border="black 1px" align="center" cellpadding="5px">
                     <tr>
                         <th colspan="2">Maandag</th>
                         <th colspan="2">Dinsdag</th>
