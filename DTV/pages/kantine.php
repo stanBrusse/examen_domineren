@@ -14,7 +14,7 @@
 
 <body>
     <?php include('header.php'); ?>
-    
+</div>
         <div class="kantine-container">
 
             <div class="kantine-filter">
@@ -29,215 +29,215 @@
                 <div class="item_Card-Top">
                     <div class="img-container" style="background-image: url('../images/340x260.png');;">
                         <div class="identifier snack">
-                            <span>SNACK</span>
+                        <label class="identifier-label">SNACK</label>
                         </div>
                     </div>
                 </div>
                 <div class="card-info">
                     <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>€99,99</span></p>
-                    <p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>
+                    <!--<p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>-->
                 </div>
             </div>
 
             <div class="kantine-item-card drink-card" id="drink">
                 <div class="item_Card-Top">
-                    <div class="img-container">
+                    <div class="img-container" style="background-image: url('../images/340x260.png');;">
                         <div class="identifier drink">
-                            <span>DRINK</span>
+                        <label class="identifier-label">DRINK</label>
                         </div>
                     </div>
                 </div>
                 <div class="card-info">
                     <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>€99,99</span></p>
-                    <p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>
+                    <!--<p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>-->
                 </div>
             </div>
             <div class="kantine-item-card snack-card" id="snack">
                 <div class="item_Card-Top">
                     <div class="img-container" style="background-image: url('../images/340x260.png');;">
                         <div class="identifier snack">
-                            <span>SNACK</span>
+                            <label class="identifier-label">SNACK</label>
                         </div>
                     </div>
                 </div>
                 <div class="card-info">
                     <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>€99,99</span></p>
-                    <p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>
+                    <!--<p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>-->
                 </div>
             </div>
 
             <div class="kantine-item-card drink-card" id="drink">
                 <div class="item_Card-Top">
-                    <div class="img-container">
+                    <div class="img-container" style="background-image: url('../images/340x260.png');;">
                         <div class="identifier drink">
-                            <span>DRINK</span>
+                        <label class="identifier-label">DRINK</label>
                         </div>
                     </div>
                 </div>
                 <div class="card-info">
                     <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>€99,99</span></p>
-                    <p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>
+                    <!--<p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>-->
                 </div>
             </div><div class="kantine-item-card snack-card" id="snack">
                 <div class="item_Card-Top">
                     <div class="img-container" style="background-image: url('../images/340x260.png');;">
                         <div class="identifier snack">
-                            <span>SNACK</span>
+                            <label class="identifier-label">SNACK</label>
                         </div>
                     </div>
                 </div>
                 <div class="card-info">
                     <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>€99,99</span></p>
-                    <p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>
+                    <!--<p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>-->
                 </div>
             </div>
 
             <div class="kantine-item-card drink-card" id="drink">
                 <div class="item_Card-Top">
-                    <div class="img-container">
+                    <div class="img-container" style="background-image: url('../images/340x260.png');;">
                         <div class="identifier drink">
-                            <span>DRINK</span>
+                        <label class="identifier-label">DRINK</label>
                         </div>
                     </div>
                 </div>
                 <div class="card-info">
                     <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>€99,99</span></p>
-                    <p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>
+                    <!--<p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>-->
                 </div>
             </div><div class="kantine-item-card snack-card" id="snack">
                 <div class="item_Card-Top">
                     <div class="img-container" style="background-image: url('../images/340x260.png');;">
                         <div class="identifier snack">
-                            <span>SNACK</span>
+                            <label class="identifier-label">SNACK</label>
                         </div>
                     </div>
                 </div>
                 <div class="card-info">
                     <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>€99,99</span></p>
-                    <p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>
+                    <!--<p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>-->
                 </div>
             </div>
 
             <div class="kantine-item-card drink-card" id="drink">
                 <div class="item_Card-Top">
-                    <div class="img-container">
+                    <div class="img-container" style="background-image: url('../images/340x260.png');;">
                         <div class="identifier drink">
-                            <span>DRINK</span>
+                        <label class="identifier-label">DRINK</label>
                         </div>
                     </div>
                 </div>
                 <div class="card-info">
                     <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>€99,99</span></p>
-                    <p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>
+                    <!--<p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>-->
                 </div>
             </div><div class="kantine-item-card snack-card" id="snack">
                 <div class="item_Card-Top">
                     <div class="img-container" style="background-image: url('../images/340x260.png');;">
                         <div class="identifier snack">
-                            <span>SNACK</span>
+                            <label class="identifier-label">SNACK</label>
                         </div>
                     </div>
                 </div>
                 <div class="card-info">
                     <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>€99,99</span></p>
-                    <p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>
+                    <!--<p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>-->
                 </div>
             </div>
 
             <div class="kantine-item-card drink-card" id="drink">
                 <div class="item_Card-Top">
-                    <div class="img-container">
+                    <div class="img-container" style="background-image: url('../images/340x260.png');;">
                         <div class="identifier drink">
-                            <span>DRINK</span>
+                        <label class="identifier-label">DRINK</label>
                         </div>
                     </div>
                 </div>
                 <div class="card-info">
                     <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>€99,99</span></p>
-                    <p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>
+                    <!--<p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>-->
                 </div>
             </div><div class="kantine-item-card snack-card" id="snack">
                 <div class="item_Card-Top">
                     <div class="img-container" style="background-image: url('../images/340x260.png');;">
                         <div class="identifier snack">
-                            <span>SNACK</span>
+                            <label class="identifier-label">SNACK</label>
                         </div>
                     </div>
                 </div>
                 <div class="card-info">
                     <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>€99,99</span></p>
-                    <p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>
+                    <!--<p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>-->
                 </div>
             </div>
 
             <div class="kantine-item-card drink-card" id="drink">
                 <div class="item_Card-Top">
-                    <div class="img-container">
+                    <div class="img-container" style="background-image: url('../images/340x260.png');;">
                         <div class="identifier drink">
-                            <span>DRINK</span>
+                        <label class="identifier-label">DRINK</label>
                         </div>
                     </div>
                 </div>
                 <div class="card-info">
                     <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>€99,99</span></p>
-                    <p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>
+                    <!--<p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>-->
                 </div>
             </div><div class="kantine-item-card snack-card" id="snack">
                 <div class="item_Card-Top">
                     <div class="img-container" style="background-image: url('../images/340x260.png');;">
                         <div class="identifier snack">
-                            <span>SNACK</span>
+                            <label class="identifier-label">SNACK</label>
                         </div>
                     </div>
                 </div>
                 <div class="card-info">
                     <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>€99,99</span></p>
-                    <p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>
+                    <!--<p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>-->
                 </div>
             </div>
 
             <div class="kantine-item-card drink-card" id="drink">
                 <div class="item_Card-Top">
-                    <div class="img-container">
+                    <div class="img-container" style="background-image: url('../images/340x260.png');;">
                         <div class="identifier drink">
-                            <span>DRINK</span>
+                        <label class="identifier-label">DRINK</label>
                         </div>
                     </div>
                 </div>
                 <div class="card-info">
                     <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>€99,99</span></p>
-                    <p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>
+                    <!--<p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>-->
                 </div>
             </div><div class="kantine-item-card snack-card" id="snack">
                 <div class="item_Card-Top">
                     <div class="img-container" style="background-image: url('../images/340x260.png');;">
                         <div class="identifier snack">
-                            <span>SNACK</span>
+                            <label class="identifier-label">SNACK</label>
                         </div>
                     </div>
                 </div>
                 <div class="card-info">
                     <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>€99,99</span></p>
-                    <p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>
+                    <!--<p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>-->
                 </div>
             </div>
 
             <div class="kantine-item-card drink-card" id="drink">
                 <div class="item_Card-Top">
-                    <div class="img-container">
+                    <div class="img-container" style="background-image: url('../images/340x260.png');;">
                         <div class="identifier drink">
-                            <span>DRINK</span>
+                            <label class="identifier-label">DRINK</label>
                         </div>
                     </div>
                 </div>
                 <div class="card-info">
                     <p><strong>Naam:</strong> <span>snacker decker</span> <strong>Prijs:</strong> <span>€99,99</span></p>
-                    <p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>
+                    <!--<p><strong>Category:</strong> <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae quibusdam commodi quas, veniam qui, cupiditate distinctio tempora totam laudantium necessitatibus voluptate!</span></p>-->
                 </div>
             </div>
             
         </div>
-
+<div>
     <?php include('footer.php'); ?>
 
 </body>
