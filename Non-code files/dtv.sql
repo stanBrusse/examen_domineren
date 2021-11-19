@@ -108,12 +108,12 @@ CREATE TABLE IF NOT EXISTS `activiteit_werknemer` (
 --
 
 CREATE TABLE IF NOT EXISTS `artikelen` (
-  `Nummer` int(11) NOT NULL,
-  `Naam` int(11) NOT NULL,
-  `Descriptie` int(11) NOT NULL,
-  `Foto` int(11) NOT NULL,
-  `Prijs` int(11) NOT NULL,
-  `Categorie` int(11) NOT NULL
+  `Nummer` int(11) NOT NULL AUTO_INCREMENT COMMENT 'AI',
+  `Naam` varchar(25) NOT NULL,
+  `Descriptie` varchar(55) NOT NULL,
+  `Foto` varchar(25) NOT NULL,
+  `Prijs` decimal(2,2) NOT NULL,
+  `Categorie` varchar(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
