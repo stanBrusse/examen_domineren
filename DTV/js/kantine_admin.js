@@ -1,16 +1,13 @@
 $(document).ready(function () {
-    const btn_remove = document.getElementById("remove");
-    const btn_change = document.getElementById("change");
-    const btn_create = document.getElementById("create");
-
     let remove = document.getElementById("kantine-remove");
     let change = document.getElementById("kantine-change");
     let create = document.getElementById("kantine-create");
     remove.style.display = "none";
     change.style.display = "none";
     create.style.display = "none";
+});
 
-    btn_create.onclick = function () {
+    function create(id) {
         let main = document.getElementById("kantine-main");
         let remove = document.getElementById("kantine-remove");
         let change = document.getElementById("kantine-change");
@@ -27,7 +24,7 @@ $(document).ready(function () {
             create.style.display = "block";
         }
     }
-    btn_remove.onclick = function () {
+    function remove(id) {
         let main = document.getElementById("kantine-main");
         let remove = document.getElementById("kantine-remove");
         let change = document.getElementById("kantine-change");
@@ -44,7 +41,7 @@ $(document).ready(function () {
             remove.style.display = "block";
         }
     }
-    btn_change.onclick = function () {
+    function change(id) {
         let main = document.getElementById("kantine-main");
         let remove = document.getElementById("kantine-remove");
         let change = document.getElementById("kantine-change");
@@ -61,4 +58,3 @@ $(document).ready(function () {
             change.style.display = "block";
         }
     }
-});
