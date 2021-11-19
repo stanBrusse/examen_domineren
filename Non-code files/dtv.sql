@@ -38,12 +38,12 @@ CREATE TABLE `accounts` (
   `adres_straat_naam` varchar(25) NOT NULL,
   `adres_straat_nummer` varchar(11) NOT NULL,
   `adres_plaats_postcode` varchar(6) NOT NULL COMMENT '4 nummers + 2 lettrs',
-  `Adres_Plaats_Naam` varchar(25) NOT NULL,
-  `Geboorte_Datum` date NOT NULL,
-  `Geslacht` varchar(6) NOT NULL,
-  `Email` varchar(55) NOT NULL,
-  `Telefoon` text NOT NULL,
-  `Account_Rol` varchar(11) NOT NULL DEFAULT 'Lid' COMMENT 'Lid of Werknemer'
+  `adres_plaats_naam` varchar(25) NOT NULL,
+  `geboorte_datum` date NOT NULL,
+  `geslacht` varchar(6) NOT NULL,
+  `email` varchar(55) NOT NULL,
+  `telefoon` text NOT NULL,
+  `account_rol` varchar(11) NOT NULL DEFAULT 'Lid' COMMENT 'Lid of Werknemer'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -58,8 +58,8 @@ CREATE TABLE `accounts` (
 
 DROP TABLE IF EXISTS `account_bevoeging`;
 CREATE TABLE `account_bevoeging` (
-  `Werknemer_nummer` int(11) NOT NULL,
-  `Bevoeging_Level` varchar(11) NOT NULL
+  `werknemer_nummer` int(11) NOT NULL,
+  `bevoeging_level` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -77,11 +77,11 @@ CREATE TABLE `account_bevoeging` (
 DROP TABLE IF EXISTS `activiteiten`;
 CREATE TABLE `activiteiten` (
   `nummer` int(11) NOT NULL,
-  `Title` varchar(55) NOT NULL,
-  `Datum_Activiteit` date NOT NULL COMMENT 'op daze datum begint toernooi',
-  `Datum_Ingeschreven` date NOT NULL COMMENT 'voor deze datum moet lid geregistreerd zijn',
-  `Tijd_Start` int(4) NOT NULL COMMENT '1200 wordt 12:00 uur',
-  `Tijd_Eind` int(4) NOT NULL COMMENT '1230 wordt 12:30 uur'
+  `title` varchar(55) NOT NULL,
+  `datum_activiteit` date NOT NULL COMMENT 'op daze datum begint toernooi',
+  `datum_ingeschreven` date NOT NULL COMMENT 'voor deze datum moet lid geregistreerd zijn',
+  `tijd_start` int(4) NOT NULL COMMENT '1200 wordt 12:00 uur',
+  `tijd_eind` int(4) NOT NULL COMMENT '1230 wordt 12:30 uur'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -96,8 +96,8 @@ CREATE TABLE `activiteiten` (
 
 DROP TABLE IF EXISTS `activiteit_banen`;
 CREATE TABLE `activiteit_banen` (
-  `Activiteit_nummer` int(11) NOT NULL,
-  `Baan_nummer` int(11) NOT NULL
+  `activiteit_nummer` int(11) NOT NULL,
+  `baan_nummer` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -116,9 +116,9 @@ CREATE TABLE `activiteit_banen` (
 
 DROP TABLE IF EXISTS `activiteit_werknemer`;
 CREATE TABLE `activiteit_werknemer` (
-  `Activiteit_nummer` int(11) NOT NULL,
-  `Werknemer_nummer` int(11) NOT NULL,
-  `Rol` varchar(55) NOT NULL COMMENT 'Schijdrechter, Woordvoeder'
+  `activiteit_nummer` int(11) NOT NULL,
+  `werknemer_nummer` int(11) NOT NULL,
+  `rol` varchar(55) NOT NULL COMMENT 'Schijdrechter, Woordvoeder'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -138,11 +138,11 @@ CREATE TABLE `activiteit_werknemer` (
 DROP TABLE IF EXISTS `artikelen`;
 CREATE TABLE `artikelen` (
   `nummer` int(11) NOT NULL,
-  `Naam` varchar(25) NOT NULL,
-  `Descriptie` varchar(55) NOT NULL,
-  `Foto` varchar(55) NOT NULL,
-  `Prijs` decimal(4,2) NOT NULL,
-  `Categorie` varchar(6) NOT NULL
+  `naam` varchar(25) NOT NULL,
+  `descriptie` varchar(55) NOT NULL,
+  `foto` varchar(55) NOT NULL,
+  `prijs` decimal(4,2) NOT NULL,
+  `categorie` varchar(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -158,14 +158,14 @@ CREATE TABLE `artikelen` (
 DROP TABLE IF EXISTS `banen`;
 CREATE TABLE `banen` (
   `nummer` int(11) NOT NULL COMMENT 'AI',
-  `Code` varchar(3) NOT NULL COMMENT 'Letter + Code',
-  `Soort` varchar(25) NOT NULL,
-  `Ligging` text NOT NULL,
-  `Afmeting_Lengte` decimal(2,2) NOT NULL,
-  `Afmeting_Breedte` decimal(2,2) NOT NULL,
-  `Vloer` text NOT NULL,
-  `Check_Datum` date NOT NULL,
-  `Service_Datum` date NOT NULL
+  `code` varchar(3) NOT NULL COMMENT 'Letter + Code',
+  `soort` varchar(25) NOT NULL,
+  `ligging` text NOT NULL,
+  `afmeting_lengte` decimal(2,2) NOT NULL,
+  `afmeting_breedte` decimal(2,2) NOT NULL,
+  `vloer` text NOT NULL,
+  `check_datum` date NOT NULL,
+  `service_datum` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -180,9 +180,9 @@ CREATE TABLE `banen` (
 
 DROP TABLE IF EXISTS `registratie_activiteit`;
 CREATE TABLE `registratie_activiteit` (
-  `Activiteit_nummer` int(11) NOT NULL,
-  `Lid_nummer` int(11) NOT NULL,
-  `Datum_Inschrijfing` timestamp NOT NULL DEFAULT current_timestamp()
+  `activiteit_nummer` int(11) NOT NULL,
+  `lid_nummer` int(11) NOT NULL,
+  `datum_inschrijfing` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -202,11 +202,11 @@ CREATE TABLE `registratie_activiteit` (
 DROP TABLE IF EXISTS `reservatie_baan`;
 CREATE TABLE `reservatie_baan` (
   `nummer` int(11) NOT NULL,
-  `Datum` date NOT NULL,
-  `Baan_nummer` int(11) NOT NULL,
-  `Tijd_Begin` int(4) NOT NULL COMMENT '2000 wordt 20:00 uur',
-  `Tijd_Eind` int(4) NOT NULL COMMENT '2100 wordt 21:00 uur',
-  `Lid_nummer` int(11) NOT NULL
+  `datum` date NOT NULL,
+  `baan_nummer` int(11) NOT NULL,
+  `tijd_Begin` int(4) NOT NULL COMMENT '2000 wordt 20:00 uur',
+  `tijd_Eind` int(4) NOT NULL COMMENT '2100 wordt 21:00 uur',
+  `lid_nummer` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -231,7 +231,7 @@ ALTER TABLE `accounts`
 -- Indexes for table `account_bevoeging`
 --
 ALTER TABLE `account_bevoeging`
-  ADD KEY `Werknemer_nummer_Account_Bevoeging` (`Werknemer_nummer`);
+  ADD KEY `werknemer_nummer_account_bevoeging` (`werknemer_nummer`);
 
 --
 -- Indexes for table `activiteiten`
@@ -243,15 +243,15 @@ ALTER TABLE `activiteiten`
 -- Indexes for table `activiteit_banen`
 --
 ALTER TABLE `activiteit_banen`
-  ADD KEY `Toernooi_nummer_Toernooi_Baan_Reservatie` (`Activiteit_nummer`),
-  ADD KEY `Baan_nummer_Toernooi_Baan_Reservatie` (`Baan_nummer`);
+  ADD KEY `toernooi_nummer_toernooi_baan_reservatie` (`activiteit_nummer`),
+  ADD KEY `baan_nummer_toernooi_baan_reservatie` (`baan_nummer`);
 
 --
 -- Indexes for table `activiteit_werknemer`
 --
 ALTER TABLE `activiteit_werknemer`
-  ADD KEY `Toernooi_nummer_Toernooi_Werknemer` (`Activiteit_nummer`),
-  ADD KEY `Werknemer_nummer_Toernooi_Werknemer` (`Werknemer_nummer`);
+  ADD KEY `toernooi_nummer_toernooi_werknemer` (`activiteit_nummer`),
+  ADD KEY `werknemer_nummer_toernooi_werknemer` (`werknemer_nummer`);
 
 --
 -- Indexes for table `artikelen`
@@ -269,16 +269,16 @@ ALTER TABLE `banen`
 -- Indexes for table `registratie_activiteit`
 --
 ALTER TABLE `registratie_activiteit`
-  ADD KEY `Lid_nummer_Toernooi_registratie` (`Lid_nummer`),
-  ADD KEY `Toernooi_nummer_Regitratie_Toernooi` (`Activiteit_nummer`);
+  ADD KEY `lid_nummer_toernooi_registratie` (`lid_nummer`),
+  ADD KEY `toernooi_nummer_regitratie_toernooi` (`activiteit_nummer`);
 
 --
 -- Indexes for table `reservatie_baan`
 --
 ALTER TABLE `reservatie_baan`
   ADD PRIMARY KEY (`nummer`),
-  ADD KEY `Baan_nummer_Reservatie_Baan` (`Baan_nummer`),
-  ADD KEY `Lid_nummer_Reservatie_Baan` (`Lid_nummer`);
+  ADD KEY `baan_nummer_reservatie_baan` (`baan_nummer`),
+  ADD KEY `lid_nummer_reservatie_baan` (`lid_nummer`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -322,35 +322,35 @@ ALTER TABLE `reservatie_baan`
 -- Constraints for table `account_bevoeging`
 --
 ALTER TABLE `account_bevoeging`
-  ADD CONSTRAINT `Werknemer_nummer_Account_Bevoeging` FOREIGN KEY (`Werknemer_nummer`) REFERENCES `accounts` (`nummer`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `werknemer_nummer_account_bevoeging` FOREIGN KEY (`werknemer_nummer`) REFERENCES `accounts` (`nummer`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `activiteit_banen`
 --
 ALTER TABLE `activiteit_banen`
-  ADD CONSTRAINT `Baan_nummer_Toernooi_Baan_Reservatie` FOREIGN KEY (`Baan_nummer`) REFERENCES `banen` (`nummer`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `Toernooi_nummer_Toernooi_Baan_Reservatie` FOREIGN KEY (`Activiteit_nummer`) REFERENCES `activiteiten` (`nummer`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `baan_nummer_toernooi_baan_reservatie` FOREIGN KEY (`baan_nummer`) REFERENCES `banen` (`nummer`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `toernooi_nummer_toernooi_baan_reservatie` FOREIGN KEY (`activiteit_nummer`) REFERENCES `activiteiten` (`nummer`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `activiteit_werknemer`
 --
 ALTER TABLE `activiteit_werknemer`
-  ADD CONSTRAINT `Toernooi_nummer_Toernooi_Werknemer` FOREIGN KEY (`Activiteit_nummer`) REFERENCES `activiteiten` (`nummer`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `Werknemer_nummer_Toernooi_Werknemer` FOREIGN KEY (`Werknemer_nummer`) REFERENCES `accounts` (`nummer`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `toernooi_nummer_toernooi_werknemer` FOREIGN KEY (`activiteit_nummer`) REFERENCES `activiteiten` (`nummer`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `werknemer_nummer_toernooi_werknemer` FOREIGN KEY (`werknemer_nummer`) REFERENCES `accounts` (`nummer`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `registratie_activiteit`
 --
 ALTER TABLE `registratie_activiteit`
-  ADD CONSTRAINT `Lid_nummer_Toernooi_registratie` FOREIGN KEY (`Lid_nummer`) REFERENCES `accounts` (`nummer`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `Toernooi_nummer_Regitratie_Toernooi` FOREIGN KEY (`Activiteit_nummer`) REFERENCES `activiteiten` (`nummer`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `lid_nummer_toernooi_registratie` FOREIGN KEY (`lid_nummer`) REFERENCES `accounts` (`nummer`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `toernooi_nummer_regitratie_toernooi` FOREIGN KEY (`activiteit_nummer`) REFERENCES `activiteiten` (`nummer`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `reservatie_baan`
 --
 ALTER TABLE `reservatie_baan`
-  ADD CONSTRAINT `Baan_nummer_Reservatie_Baan` FOREIGN KEY (`Baan_nummer`) REFERENCES `banen` (`nummer`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `Lid_nummer_Reservatie_Baan` FOREIGN KEY (`Lid_nummer`) REFERENCES `accounts` (`nummer`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `baan_nummer_reservatie_baan` FOREIGN KEY (`baan_nummer`) REFERENCES `banen` (`nummer`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `lid_nummer_reservatie_baan` FOREIGN KEY (`lid_nummer`) REFERENCES `accounts` (`nummer`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
