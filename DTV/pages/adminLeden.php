@@ -1,3 +1,38 @@
+<?php 
+//dit is om te testen. kan weg
+//geeft alles een naam
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "examen";
+    $charset = "utf8mb4";
+
+    //maakt de connectie aan 
+    $dsn = "mysql:host=" . $servername . "; dbname=" . $dbname . "; charset=" . $charset;
+    $pdo = new PDO($dsn, $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    if(isset($_POST['zoek'])){
+        $zoek = $_POST['zoek'];
+        $zoek = "%". $zoek . "%";
+        $selecteerLeden = $pdo->prepare("SELECT * FROM accounts WHERE Naam_Voor LIKE?");
+        $selecteerLeden->bindParam(1, $zoek);
+        
+        if(!empty($selecteerLeden->execute()))
+        {
+            echo "sucses";
+        }else{
+            echo"sfsdfadsffdasdfsfadsfasdadsf";
+        }
+        
+
+    }else{
+        $selecteerLeden = $pdo->prepare("SELECT * FROM accounts ORDER BY Lidnr"); 
+        $selecteerLeden->execute();
+    }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,8 +87,10 @@ include('header.php');
 
 <section class="hero d-flex flex-column justify-content-center align-items-center" id="home">
 <form action="adminLeden.php" method="POST">
-    <input type="text" placeholder="zoek op voornaam">
+    <input type="text" name="zoek" placeholder="zoek op voornaam">
     <input type="submit" placeholder="zoek">
+<a href="adminLeden.php">Reset</a>
+
 </form>
 <table >
     <thead>    
@@ -64,166 +101,20 @@ include('header.php');
         <th>adres</th>
         <th>telnummer</th>
     </thead>
-    <tr>
-        <td>1234</td>
-        <td>voornaam</td>
-        <td>achternaam</td>
-        <td>voornaam.achternaam@gmail.com</td>
-        <td>straatnaam 2 <br>doetinchem</td>
-        <td>06 12345678</td>
-    </tr>
-    <tr>
-        <td>1234</td>
-        <td>voornaam</td>
-        <td>achternaam</td>
-        <td>voornaam.achternaam@gmail.com</td>
-        <td>straatnaam 2 <br>doetinchem</td>
-        <td>06 12345678</td>
-    </tr>
-    <tr>
-        <td>1234</td>
-        <td>voornaam</td>
-        <td>achternaam</td>
-        <td>voornaam.achternaam@gmail.com</td>
-        <td>straatnaam 2 <br>doetinchem</td>
-        <td>06 12345678</td>
-    </tr>
-    <tr>
-        <td>1234</td>
-        <td>voornaam</td>
-        <td>achternaam</td>
-        <td>voornaam.achternaam@gmail.com</td>
-        <td>straatnaam 2 <br>doetinchem</td>
-        <td>06 12345678</td>
-    </tr>
-    <tr>
-        <td>1234</td>
-        <td>voornaam</td>
-        <td>achternaam</td>
-        <td>voornaam.achternaam@gmail.com</td>
-        <td>straatnaam 2 <br>doetinchem</td>
-        <td>06 12345678</td>
-    </tr>
-    <tr>
-        <td>1234</td>
-        <td>voornaam</td>
-        <td>achternaam</td>
-        <td>voornaam.achternaam@gmail.com</td>
-        <td>straatnaam 2 <br>doetinchem</td>
-        <td>06 12345678</td>
-    </tr>
-    <tr>
-        <td>1234</td>
-        <td>voornaam</td>
-        <td>achternaam</td>
-        <td>voornaam.achternaam@gmail.com</td>
-        <td>straatnaam 2 <br>doetinchem</td>
-        <td>06 12345678</td>
-    </tr>
-    <tr>
-        <td>1234</td>
-        <td>voornaam</td>
-        <td>achternaam</td>
-        <td>voornaam.achternaam@gmail.com</td>
-        <td>straatnaam 2 <br>doetinchem</td>
-        <td>06 12345678</td>
-    </tr>
-    <tr>
-        <td>1234</td>
-        <td>voornaam</td>
-        <td>achternaam</td>
-        <td>voornaam.achternaam@gmail.com</td>
-        <td>straatnaam 2 <br>doetinchem</td>
-        <td>06 12345678</td>
-    </tr>
-    <tr>
-        <td>1234</td>
-        <td>voornaam</td>
-        <td>achternaam</td>
-        <td>voornaam.achternaam@gmail.com</td>
-        <td>straatnaam 2 <br>doetinchem</td>
-        <td>06 12345678</td>
-    </tr>
-    <tr>
-        <td>1234</td>
-        <td>voornaam</td>
-        <td>achternaam</td>
-        <td>voornaam.achternaam@gmail.com</td>
-        <td>straatnaam 2 <br>doetinchem</td>
-        <td>06 12345678</td>
-    </tr>
-    <tr>
-        <td>1234</td>
-        <td>voornaam</td>
-        <td>achternaam</td>
-        <td>voornaam.achternaam@gmail.com</td>
-        <td>straatnaam 2 <br>doetinchem</td>
-        <td>06 12345678</td>
-    </tr>
-    <tr>
-        <td>1234</td>
-        <td>voornaam</td>
-        <td>achternaam</td>
-        <td>voornaam.achternaam@gmail.com</td>
-        <td>straatnaam 2 <br>doetinchem</td>
-        <td>06 12345678</td>
-    </tr>
-    <tr>
-        <td>1234</td>
-        <td>voornaam</td>
-        <td>achternaam</td>
-        <td>voornaam.achternaam@gmail.com</td>
-        <td>straatnaam 2 <br>doetinchem</td>
-        <td>06 12345678</td>
-    </tr>
-    <tr>
-        <td>1234</td>
-        <td>voornaam</td>
-        <td>achternaam</td>
-        <td>voornaam.achternaam@gmail.com</td>
-        <td>straatnaam 2 <br>doetinchem</td>
-        <td>06 12345678</td>
-     </tr>
-    <tr>
-        <td>1234</td>
-        <td>voornaam</td>
-        <td>achternaam</td>
-        <td>voornaam.achternaam@gmail.com</td>
-        <td>straatnaam 2 <br>doetinchem</td>
-        <td>06 12345678</td>
-     </tr>
-    <tr>
-        <td>1234</td>
-        <td>voornaam</td>
-        <td>achternaam</td>
-        <td>voornaam.achternaam@gmail.com</td>
-        <td>straatnaam 2 <br>doetinchem</td>
-        <td>06 12345678</td>
-     </tr>
-    <tr>
-        <td>1234</td>
-        <td>voornaam</td>
-        <td>achternaam</td>
-        <td>voornaam.achternaam@gmail.com</td>
-        <td>straatnaam 2 <br>doetinchem</td>
-        <td>06 12345678</td>
-     </tr>
-    <tr>
-        <td>1234</td>
-        <td>voornaam</td>
-        <td>achternaam</td>
-        <td>voornaam.achternaam@gmail.com</td>
-        <td>straatnaam 2 <br>doetinchem</td>
-        <td>06 12345678</td>
-     </tr>
-    <tr>
-        <td>1234</td>
-        <td>voornaam</td>
-        <td>achternaam</td>
-        <td>voornaam.achternaam@gmail.com</td>
-        <td>straatnaam 2 <br>doetinchem</td>
-        <td>06 12345678</td>
-     </tr>
+   <?php
+
+foreach ($selecteerLeden as $row) {
+    echo "<tr>";
+    echo "<td>" . $row['Lidnr'] . "</td>";
+    echo "<td>" . $row['Naam_Voor'] . "</td>";
+    echo "<td>" . $row['Naam_Tussen'] . $row['Naam_Achter'] . "</td>";
+    echo "<td>" . $row['Email'] . "</td>";
+    echo "<td>" . $row['Adres_Straat_Naam'] . $row['Adres_Straat_Nummer'] . "<br>" . $row['Adres_Plaats_Naam'] .   "</td>";
+    echo "<td>" . $row['Telefoon'] . "</td>";
+
+    echo "</tr>";
+}
+   ?>
 </table>
 </section>
 <?php 
