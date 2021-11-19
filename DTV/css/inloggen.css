@@ -10,7 +10,7 @@ body{
 }
 .login{
     border: 1px solid white;
-    height: 600px;
+    min-height: 600px;
     width: 500px;
     justify-content: center;
     margin: 0px auto;
@@ -19,16 +19,15 @@ body{
     border: 0.5px solid gray;
 }
 button{
-    width: 149px;
-    float: left;
+    /* width: 149px; */
+    /* float: left; */
     height: 50px;
 }
 .btninloggen
 {
     background-color: white;
     border: 1px solid white;
-    width: 249px;
-
+    width: 49%;
 }
 .btninloggen:hover
 {
@@ -38,7 +37,7 @@ button{
 .btnregistreren{
     background-color: lightgray;
     border: 1px solid lightgray;
-    width: 249px;
+    width: 49%;
 
 }
 .btnregistreren:hover
