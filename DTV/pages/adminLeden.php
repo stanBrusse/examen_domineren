@@ -1,6 +1,5 @@
 <?php 
-//dit is om te testen. kan weg
-//geeft alles een naam
+//dit is om te testen. kan weg als er een nieuwe database is
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -14,15 +13,30 @@
 
     if(isset($_POST['zoek'])){
         $zoek = $_POST['zoek'];
+        $order = "Lidnr";
         $zoek = "%". $zoek . "%";
-        $selecteerLeden = $pdo->prepare("SELECT * FROM accounts WHERE Naam_Voor LIKE?");
+        $selecteerLeden = $pdo->prepare("SELECT * FROM accounts WHERE Naam_Voor LIKE? ORDER BY $order");
         $selecteerLeden->bindParam(1, $zoek);
-        
-        if(!empty($selecteerLeden->execute()))
-        {
-            echo "sucses";
-        }else{
-            echo"sfsdfadsffdasdfsfadsfasdadsf";
+        $selecteerLeden->execute();
+        if ($selecteerLeden->rowCount() == 0) {
+            $selecteerLeden = $pdo->prepare("SELECT * FROM accounts WHERE Naam_Achter LIKE?  ORDER BY $order");
+            $selecteerLeden->bindParam(1, $zoek);
+            $selecteerLeden->execute();
+            if ($selecteerLeden->rowCount() == 0) {
+                $selecteerLeden = $pdo->prepare("SELECT * FROM accounts WHERE Email LIKE?  ORDER BY $order");
+                $selecteerLeden->bindParam(1, $zoek);
+                $selecteerLeden->execute();
+                if ($selecteerLeden->rowCount() == 0) {
+                    $selecteerLeden = $pdo->prepare("SELECT * FROM accounts WHERE Adres_Plaats_naam LIKE?  ORDER BY $order");
+                    $selecteerLeden->bindParam(1, $zoek);
+                    $selecteerLeden->execute();
+                    if ($selecteerLeden->rowCount() == 0) {
+                        $selecteerLeden = $pdo->prepare("SELECT * FROM accounts WHERE Telefoon LIKE? ORDER BY $order");
+                        $selecteerLeden->bindParam(1, $zoek);
+                        $selecteerLeden->execute();
+                    }
+                }
+            }
         }
         
 
