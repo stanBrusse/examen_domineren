@@ -1,9 +1,11 @@
-<?php 
+<?php             session_start();
+
+
 //dit is om te testen. kan weg als er een nieuwe database is
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "examen";
+    $dbname = "dtv";
     $charset = "utf8mb4";
 
     //maakt de connectie aan 
@@ -15,25 +17,31 @@
         $zoek = $_POST['zoek'];
         $order = "Lidnr";
         $zoek = "%". $zoek . "%";
-        $selecteerLeden = $pdo->prepare("SELECT * FROM accounts WHERE Naam_Voor LIKE? ORDER BY $order");
+        $selecteerLeden = $pdo->prepare("SELECT * FROM accounts WHERE naam_voor LIKE? ORDER BY $order");
         $selecteerLeden->bindParam(1, $zoek);
         $selecteerLeden->execute();
         if ($selecteerLeden->rowCount() == 0) {
-            $selecteerLeden = $pdo->prepare("SELECT * FROM accounts WHERE Naam_Achter LIKE?  ORDER BY $order");
+            $selecteerLeden = $pdo->prepare("SELECT * FROM accounts WHERE naam_achter LIKE?  ORDER BY $order");
             $selecteerLeden->bindParam(1, $zoek);
             $selecteerLeden->execute();
             if ($selecteerLeden->rowCount() == 0) {
-                $selecteerLeden = $pdo->prepare("SELECT * FROM accounts WHERE Email LIKE?  ORDER BY $order");
+                $selecteerLeden = $pdo->prepare("SELECT * FROM accounts WHERE email LIKE?  ORDER BY $order");
                 $selecteerLeden->bindParam(1, $zoek);
                 $selecteerLeden->execute();
                 if ($selecteerLeden->rowCount() == 0) {
-                    $selecteerLeden = $pdo->prepare("SELECT * FROM accounts WHERE Adres_Plaats_naam LIKE?  ORDER BY $order");
+                    $selecteerLeden = $pdo->prepare("SELECT * FROM accounts WHERE  adres_plaats_naam LIKE?  ORDER BY $order");
                     $selecteerLeden->bindParam(1, $zoek);
                     $selecteerLeden->execute();
                     if ($selecteerLeden->rowCount() == 0) {
-                        $selecteerLeden = $pdo->prepare("SELECT * FROM accounts WHERE Telefoon LIKE? ORDER BY $order");
+                        $selecteerLeden = $pdo->prepare("SELECT * FROM accounts WHERE telefoon LIKE? ORDER BY $order");
                         $selecteerLeden->bindParam(1, $zoek);
                         $selecteerLeden->execute();
+                        if($selecteerLeden->rowCount() == 0)
+                        {
+                            $selecteerLeden = $pdo->prepare("SELECT * FROM accounts WHERE naam_tussen LIKE? ORDER BY $order");
+                            $selecteerLeden->bindParam(1, $zoek);
+                            $selecteerLeden->execute();
+                        }
                     }
                 }
             }
@@ -41,7 +49,7 @@
         
 
     }else{
-        $selecteerLeden = $pdo->prepare("SELECT * FROM accounts ORDER BY Lidnr"); 
+        $selecteerLeden = $pdo->prepare("SELECT * FROM accounts ORDER BY nummer"); 
         $selecteerLeden->execute();
     }
 ?>
@@ -101,7 +109,7 @@ include('header.php');
 
 <section class="hero d-flex flex-column justify-content-center align-items-center" id="home">
 <form action="adminLeden.php" method="POST">
-    <input type="text" name="zoek" placeholder="zoek op voornaam">
+    <input type="text" name="zoek" placeholder="zoeken">
     <input type="submit" placeholder="zoek">
 <a href="adminLeden.php">Reset</a>
 
@@ -119,12 +127,12 @@ include('header.php');
 
 foreach ($selecteerLeden as $row) {
     echo "<tr>";
-    echo "<td>" . $row['Lidnr'] . "</td>";
-    echo "<td>" . $row['Naam_Voor'] . "</td>";
-    echo "<td>" . $row['Naam_Tussen'] . $row['Naam_Achter'] . "</td>";
-    echo "<td>" . $row['Email'] . "</td>";
-    echo "<td>" . $row['Adres_Straat_Naam'] . $row['Adres_Straat_Nummer'] . "<br>" . $row['Adres_Plaats_Naam'] .   "</td>";
-    echo "<td>" . $row['Telefoon'] . "</td>";
+    echo "<td>" . $row['nummer'] . "</td>";
+    echo "<td>" . $row['naam_voor'] . "</td>";
+    echo "<td>" . $row['naam_tussen'] . " " . $row['naam_achter'] . "</td>";
+    echo "<td>" . $row['email'] . "</td>";
+    echo "<td>" . $row['adres_straat_naam'] . $row['adres_straat_nummer'] . "<br>" . $row['adres_plaats_naam'] .   "</td>";
+    echo "<td>" . $row['telefoon'] . "</td>";
 
     echo "</tr>";
 }

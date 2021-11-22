@@ -1,3 +1,44 @@
+<?php
+$info = "";
+// deze database is voor het maken en testen. kan weg
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "dtv";
+$charset = "utf8mb4";
+
+//maakt de connectie aan 
+$dsn = "mysql:host=" . $servername . "; dbname=" . $dbname . "; charset=" . $charset;
+$pdo = new PDO($dsn, $username, $password);
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
+
+if(isset($_POST['emailadres']) && isset($_POST['wachtwoord']))
+{
+        $sql = $pdo->prepare("SELECT * FROM accounts WHERE email=? AND wachtwoord=?");
+        $sql->bindParam(1, $_POST['emailadres']);
+        $sql->bindParam(2, $_POST['wachtwoord']);
+        $sql->execute();
+        if ($sql->rowCount() == 1) {
+            session_start();
+            foreach($sql as $row)
+            {
+                $_SESSION['lidnummer'] = $row['nummer'];
+                $_SESSION['loggedIn'] = true;
+                $_SESSION['rol'] = $row['account_rol'];
+                echo $_SESSION['loggedIn'];
+            }
+        }else{
+            $info = "incorrecte gegevens";
+        }
+}
+/*  -----als de persoon geen admin in of niet is ingelogd gaat hij naar de index------
+if($_SESSION['rol'] == "admin" && $_SESSION['loggedIn'] == true)
+{}else{
+    header("Location: index.php");
+}
+*/
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,10 +69,11 @@ include('header.php');
                 <a href="registreren.php"><button class="btnregistreren">registreren</button></a>
             <form action="inloggen.php" method="POST">
                 <h4>Gebruikersnaam</h4>
-                <input type="text" placeholder="gebruikersnaam">
+                <input name="emailadres" type="text" placeholder="email">
                 <h4 class="h4wachtwoord">Wachtwoord</h4>
-                <input type="password" placeholder="wachtwoord">
+                <input name="wachtwoord" type="password" placeholder="wachtwoord">
                 <h5><a href="wachtwoordvergeten.php">wachtwoord vergeten?</a></h5>
+            <div class="inloggen_Info"><h2><?php echo $info?></h2></div>
                 <input type="submit" value="inloggen"class="buttonInloggen">
             </form>
 
