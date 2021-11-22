@@ -44,7 +44,7 @@ CREATE TABLE `accounts` (
   `geslacht` varchar(6) NOT NULL,
   `email` varchar(55) NOT NULL,
   `telefoon` text NOT NULL,
-  `account_rol` varchar(11) NOT NULL DEFAULT 'Lid' COMMENT 'Lid of Werknemer'
+  `account_rol` varchar(11) NULL COMMENT 'Lid of Werknemer'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

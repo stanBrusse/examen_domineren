@@ -3,6 +3,8 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
+$usernameCP = "bveens_dtv";
+$passwordCP = "Tennis@DTV!";
 $dbname = "dtv";
 
 
