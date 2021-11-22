@@ -12,17 +12,15 @@ include('header.php');
 ?>
 <section class="hero d-flex flex-column justify-content-center align-items-center" id="home">
 
-    <div class="bg-overlay"></div>
-
     <div class="container">
         <div class="row">
 
             <div class="col-lg-8 col-md-10 mx-auto col-12">
                 <div class="hero-text mt-5 text-center">
 
-                    <h1 class="text-white">CONTACT | DTV</h1>
+                    <h1 class="text-dark">CONTACT | DTV</h1>
 
-                    <h6 =>CONTACT | KEI-FIT
+                    <h6 =>
                         Hier vind je de contactgegevens van onze Tennis Club waar jij terecht kunt voor advies, coaching, ondersteuning, inspanning, ontspanning, plezier, uitdaging en gezelligheid. Wij zien én helpen je graag. Heb je een vraag? Stuur ons gerust een bericht. Wij reageren doorgaans binnen 24 uur. Tot ziens bij DTV!</h6>
 
                     <a href="#feature" class="btn custom-btn mt-3" data-aos="fade-up" data-aos-delay="600">Get started</a>
