@@ -38,8 +38,7 @@
 
                 <ul class="social-icon ml-lg-3">
                     <li><a href="profiel.php" class="fa fa-facebook"></a></li>
-                    <li><a href="#" class="fa fa-twitter"></a></li>
-                    <li><a href="#" class="fa fa-instagram"></a></li>
+                    <li><a href="admin.php" class="fa fa-twitter"></a></li> 
                 </ul>
             </div>
 
