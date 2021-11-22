@@ -69,8 +69,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $categorie = strtoupper($result["categorie"]);
     ?>
     <div id="kantine-remove">
-        <form class="kantine-form" method="POST" onsubmit="return confirm('Are you sure you want to delete this case?');>
-                <input type=" hidden" name="_METHOD" value="DELETE">
+        <form class="kantine-form" method="POST" onsubmit="return confirm('Are you sure you want to delete this case?')">
+            <input type="hidden" name="_METHOD" value="DELETE">
             <input type="hidden" name="nummer" value="<?php echo $nummer; ?>">
             <span id="foto" name="foto"><img src="../<?php echo $foto; ?>"></span><br />
 

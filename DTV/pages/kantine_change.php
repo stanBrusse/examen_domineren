@@ -11,7 +11,14 @@ $dbname = "dtv";
 $naamErr = $prijsErr = $fotoErr = $categorieErr = $ddescriptieErr = "";
 $naam = $prijs = $foto = $categorie = $descriptie = "";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $nummer = $_GET['nummer'];
+    $stmt = $conn->query("SELECT * FROM `artikelen` WHERE `nummer`=" . $nummer . "");
+    $result = $stmt->fetch();
+    var_dump($result);
+} elseif ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["naam"])) {
         $naamErr = "Naam is required";
     } else {
@@ -88,10 +95,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
                 // set the PDO error mode to exception
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $sql = "INSERT INTO `artikelen` (naam, descriptie, foto, prijs, categorie) VALUES (?, ?, ?, ?, ?)";
-                // use exec() because no results are returned
-                $conn->prepare($sql)->execute([$naam, $descriptie, $foto, $prijs, $categorie]);
-                echo "New record created successfully";
+
+                $sql = "UPDATE `artikelen` SET naam=?, descriptie=?, foto=?, prijs=?, categorie=? WHERE nummer=?";
+                $stmt = $pdo->prepare($sql);
+                $nummer = (int) $_POST['nummer'];
+                $stmt->execute([$naam, $descriptie, $foto, $prijs, $categorie, $nummer]);
+
+                echo "Record updated successfully";
             } catch (PDOException $e) {
                 echo $sql . "<br>" . $e->getMessage();
             }
@@ -127,19 +137,24 @@ function test_input($data)
     <?php include('header.php'); ?>
     <div id="kantine-change">
         <form class="kantine-form" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+            <input type="hidden" name="_METHOD" value="DELETE">
+            <input type="hidden" name="nummer" value="<?php echo $nummer; ?>">
+
             <label for="naam"><strong>Item Naam:</strong></label>
-            <input type="text" id="naam" name="naam" required><br />
+            <input type="text" id="naam" name="naam" required value="<?php echo $naam; ?>"><br />
 
             <label for="descriptie"><strong>Item Descriptie</strong></label>
-            <textarea id="descriptie" name="descriptie" rows="5" cols="40" maxlength="55" required></textarea><br />
+            <textarea id="descriptie" name="descriptie" rows="5" cols="40" maxlength="55" required><?php echo $descriptie; ?></textarea><br />
 
             <label for="foto"><strong>Item Foto</strong></label>
             <input type="file" id="foto" name="foto" required><br />
+            <span id="foto" name="foto"><img src="../<?php echo $foto; ?>"></span><br />
 
             <label for="prijs"><strong>Item Prijs</strong></label>
-            <input type="doubleval" id="prijs" name="prijs" required><br />
+            <input type="doubleval" id="prijs" name="prijs" required value="<?php echo $prijs;?>"><br />
 
             <label for="categorie"><strong>Item categorie</strong></label>
+            <span id="categorie" name="categorie"><?php echo $categorie; ?></span><br />
             <select id="categorie" name="categorie" required>
                 <option value="SNACK">SNACK</option>
                 <option value="DRINK">DRINK</option>
