@@ -1,3 +1,15 @@
+<?php
+// $to = "stanbrusse@gmail.com";
+
+// $subject = "testtest";
+
+// $message = "uw nieuw wachtwoord is = asfd";
+
+// $headers = "From: DTV <stanbrusse@gmail.com>\r\n";
+// $headers .= "Reply-To: stanbrusse@gmail.com\r\n";
+// $headers .= "Content-type: text/html\r\n";
+// mail($to, $subject, $message, $headers);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

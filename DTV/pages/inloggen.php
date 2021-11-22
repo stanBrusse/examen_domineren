@@ -67,10 +67,8 @@ include('header.php');
             <br> <hr>
                 <a href="inloggen.php"><button class="btninloggen" >inloggen</button></a>
                 <a href="registreren.php"><button class="btnregistreren">registreren</button></a>
-            <form action="inloggen.php" method="POST">
-                <h4>Gebruikersnaam</h4>
-                <input name="emailadres" type="text" placeholder="email">
-                <h4 class="h4wachtwoord">Wachtwoord</h4>
+            <form action="inloggen.php" method="POST"><br>
+                <input name="emailadres" type="text" placeholder="emailadres"><br><br>
                 <input name="wachtwoord" type="password" placeholder="wachtwoord">
                 <h5><a href="wachtwoordvergeten.php">wachtwoord vergeten?</a></h5>
             <div class="inloggen_Info"><h2><?php echo $info?></h2></div>
