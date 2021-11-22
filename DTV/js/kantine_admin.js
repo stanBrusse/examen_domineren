@@ -2,12 +2,13 @@ $(document).ready(function () {
     let remove = document.getElementById("kantine-remove");
     let change = document.getElementById("kantine-change");
     let create = document.getElementById("kantine-create");
+
     remove.style.display = "none";
     change.style.display = "none";
     create.style.display = "none";
 });
 
-    function create(id) {
+    function create() {
         let main = document.getElementById("kantine-main");
         let remove = document.getElementById("kantine-remove");
         let change = document.getElementById("kantine-change");
@@ -24,7 +25,7 @@ $(document).ready(function () {
             create.style.display = "block";
         }
     }
-    function remove(id) {
+    function remove() {
         let main = document.getElementById("kantine-main");
         let remove = document.getElementById("kantine-remove");
         let change = document.getElementById("kantine-change");
@@ -41,7 +42,7 @@ $(document).ready(function () {
             remove.style.display = "block";
         }
     }
-    function change(id) {
+    function change() {
         let main = document.getElementById("kantine-main");
         let remove = document.getElementById("kantine-remove");
         let change = document.getElementById("kantine-change");
@@ -57,4 +58,7 @@ $(document).ready(function () {
             create.style.display = "none";
             change.style.display = "block";
         }
+    }
+    function kantine(){
+        window.close();
     }
