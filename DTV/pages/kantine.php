@@ -112,9 +112,9 @@ function test_input($data)
                     <p><strong>Naam:</strong> <span>' . $item["naam"] . '</span> <strong>Prijs:</strong> <span>€' . $item["prijs"] . '</span></p>
                 </div>
                 <div class="A-kantine-button">
-                    <img value="' . $item["nummer"] . '" class="change" type="button" id="change' . $item["nummer"] . '" src="../images/change.svg" onclick="change(change' . $item["nummer"] . ')">
-                    <img value="' . $item["nummer"] . '" class="remove" type="button" id="remove' . $item["nummer"] . '" src="../images/remove.svg" onclick="remove(remove' . $item["nummer"] . ')">
-                    <img value="' . $item["nummer"] . '" class="create" type="button" id="create' . $item["nummer"] . '" src="../images/create.svg" onclick="create(create' . $item["nummer"] . ')">
+                    <img value="' . $item["nummer"] . '" class="change" type="button" id="change' . $item["nummer"] . '" src="../images/icons/change.svg" onclick="change(change' . $item["nummer"] . ')">
+                    <img value="' . $item["nummer"] . '" class="remove" type="button" id="remove' . $item["nummer"] . '" src="../images/icons/remove.svg" onclick="remove(remove' . $item["nummer"] . ')">
+                    <img value="' . $item["nummer"] . '" class="create" type="button" id="create' . $item["nummer"] . '" src="../images/icons/create.svg" onclick="create(create' . $item["nummer"] . ')">
                 </div>
             </div>';
             }

@@ -32,6 +32,7 @@ USE `dtv`;
 DROP TABLE IF EXISTS `accounts`;
 CREATE TABLE `accounts` (
   `nummer` int(11) NOT NULL,
+  `wachtwoord` varchar(25) NOT NULL,
   `naam_voor` varchar(25) NOT NULL,
   `naam_tussen` varchar(5) NOT NULL,
   `naam_achter` varchar(25) NOT NULL,
