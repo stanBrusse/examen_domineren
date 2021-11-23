@@ -10,7 +10,7 @@ $dbname = "dtv";
 
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn = new PDO("mysql:host=$servername;dbname=$dbnameCPanel", $usernameCPanel, $passwordCPanel);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $stmt = $conn->prepare("SELECT * FROM `artikelen`");
     $stmt->execute();

@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
           echo 'Could not delete '.$filename.', file does not exist';
         }
     try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $conn = new PDO("mysql:host=$servername;dbname=$dbnameCPanel", $usernameCPanel, $passwordCPanel);
         // set the PDO error mode to exception
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
