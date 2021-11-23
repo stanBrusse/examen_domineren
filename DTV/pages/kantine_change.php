@@ -80,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             $naam = $prijs = $foto = $categorie = $descriptie = "";
             $conn = null;
             if (headers_sent()) {
-                die("Redirect failed. Please click on this link: <a href=../pages/kantine.php>");
+                die("Redirect failed. Please click on this link: <a href=../pages/kantine.php>Kantine Page</a>");
             }
             else{
                 exit(header("location:kantine.php"));
