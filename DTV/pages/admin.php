@@ -1,3 +1,14 @@
+<?php             session_start();
+if($_SESSION['rol'] == "admin" && $_SESSION['loggedIn'] == true)
+{}else{
+    if (headers_sent()) {
+        die("Redirect failed. Please click on this link: <a href=../pages/index.php");
+        }
+        else{
+        exit(header("location:index.php"));
+        } 
+}?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
