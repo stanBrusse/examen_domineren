@@ -17,9 +17,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $filename = $result["foto"];
 } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
-        
-        if (file_exists('../' .$filename)) {
-          unlink('../' .$filename);
+        $file = "../" . $filename;
+        if (file_exists($file)) {
+          unlink($file);
           echo 'File '.$filename.' has been deleted';
         } else {
           echo 'Could not delete '.$filename.', file does not exist';
