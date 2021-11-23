@@ -61,6 +61,9 @@ if($_SESSION['rol'] == "admin" && $_SESSION['loggedIn'] == true)
     border: 1px solid lightskyblue;
     margin-top: 140px;
 }
+table{
+    text-align: center;
+}
 
 </style>
 

@@ -29,9 +29,10 @@ if (isset($_POST['voornaam']) && isset($_POST['tussen']) && isset($_POST['achter
     $accountrol = "niets";
     $wachtwoord = md5($wachtwoord);
     $wachtwoordherhalen = md5($wachtwoordherhalen);
-    var_dump($wachtwoord);
-    var_dump($wachtwoordherhalen);
-    
+
+    /*
+**  regels met wachtwoorden nog toevoegen
+*/
     $geboortedatum = date("Y-m-d", strtotime($geboortedatum));
 
     $zoekNaarDubbel = $pdo->prepare("SELECT * FROM accounts WHERE email=?");
