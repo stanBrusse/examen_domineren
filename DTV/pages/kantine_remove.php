@@ -9,7 +9,7 @@ $dbname = "dtv";
 
 $filename = "";
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn = new PDO("mysql:host=$servername;dbname=$dbnameCPanel", $usernameCPanel, $passwordCPanel);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $nummer = $_GET['nummer'];
     $stmt = $conn->query("SELECT * FROM `artikelen` WHERE `nummer`=" . $nummer . "");
@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $naam = $prijs = $foto = $categorie = $descriptie = "";
     $conn = null;
     if (headers_sent()) {
-        die("Redirect failed. Please click on this link: <a href=../pages/kantine.php>");
+        die("Redirect failed. Please click on this link: <a href=../pages/kantine.php>Kantine Page</a>");
     }
     else{
         exit(header("location:kantine.php"));
