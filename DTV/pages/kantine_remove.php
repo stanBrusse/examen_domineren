@@ -1,31 +1,37 @@
 <?php
+
+$username = "bveens_dtv";
+$password = "Tennis@DTV!";
+$dbname = "bveens_dtv";
+
+
 $servername = "localhost";
+
 $username = "root";
 $password = "";
-$usernameCPanel = "bveens_dtv";
-$passwordCPanel = "Tennis@DTV!";
-$dbnameCPanel = "bveens_dtv";
 $dbname = "dtv";
+
 
 $filename = "";
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbnameCPanel", $usernameCPanel, $passwordCPanel);
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $nummer = $_GET['nummer'];
     $stmt = $conn->query("SELECT * FROM `artikelen` WHERE `nummer`=" . $nummer . "");
     $result = $stmt->fetch();
     $filename = $result["foto"];
 } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    
+
+
+    try {
         $file = "../" . $filename;
         if (file_exists($file)) {
-          unlink($file);
-          echo 'File '.$filename.' has been deleted';
+            unlink($file);
+            echo 'File ' . $filename . ' has been deleted';
         } else {
-          echo 'Could not delete '.$filename.', file does not exist';
+            echo 'Could not delete ' . $filename . ', file does not exist';
         }
-    try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbnameCPanel", $usernameCPanel, $passwordCPanel);
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         // set the PDO error mode to exception
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -43,8 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $conn = null;
     if (headers_sent()) {
         die("Redirect failed. Please click on this link: <a href=../pages/kantine.php>Kantine Page</a>");
-    }
-    else{
+    } else {
         exit(header("location:kantine.php"));
     }
 }

@@ -1,16 +1,27 @@
 <?php
+if($_SESSION['rol'] == "admin" && $_SESSION['loggedIn'] == true)
+{
+    
+}
+else{
+    
+}
+
+$username = "bveens_dtv";
+$password = "Tennis@DTV!";
+$dbname = "bveens_dtv";
+
 
 $servername = "localhost";
+
 $username = "root";
 $password = "";
-$usernameCPanel = "bveens_dtv";
-$passwordCPanel = "Tennis@DTV!";
-$dbnameCPanel = "bveens_dtv";
 $dbname = "dtv";
 
 
+
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbnameCPanel", $usernameCPanel, $passwordCPanel);
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $stmt = $conn->prepare("SELECT * FROM `artikelen`");
     $stmt->execute();

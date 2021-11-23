@@ -1,11 +1,16 @@
 <?php
+
+$username = "bveens_dtv";
+$password = "Tennis@DTV!";
+$dbname = "bveens_dtv";
+
+
 $servername = "localhost";
+
 $username = "root";
 $password = "";
-$usernameCPanel = "bveens_dtv";
-$passwordCPanel = "Tennis@DTV!";
-$dbnameCPanel = "bveens_dtv";
 $dbname = "dtv";
+
 
 // define variables and set to empty values
 $naamErr = $prijsErr = $fotoErr = $categorieErr = $ddescriptieErr = "";
@@ -85,7 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file)) {
             echo "The file " . htmlspecialchars(basename($_FILES["foto"]["name"])) . " has been uploaded.";
             try {
-                $conn = new PDO("mysql:host=$servername;dbname=$dbnameCPanel", $usernameCPanel, $passwordCPanel);
+                $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
                 // set the PDO error mode to exception
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $sql = "INSERT INTO `artikelen` (naam, descriptie, foto, prijs, categorie) VALUES (?, ?, ?, ?, ?)";

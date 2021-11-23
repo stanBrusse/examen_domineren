@@ -1,18 +1,23 @@
 <?php
+
+$username = "bveens_dtv";
+$password = "Tennis@DTV!";
+$dbname = "bveens_dtv";
+
+
 $servername = "localhost";
+
 $username = "root";
 $password = "";
-$usernameCPanel = "bveens_dtv";
-$passwordCPanel = "Tennis@DTV!";
-$dbnameCPanel = "bveens_dtv";
 $dbname = "dtv";
+
 
 // define variables and set to empty values
 $naamErr = $prijsErr = $fotoErr = $categorieErr = $ddescriptieErr = "";
 $naam = $prijs = $foto = $categorie = $descriptie = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbnameCPanel", $usernameCPanel, $passwordCPanel);
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $nummer = $_GET['nummer'];
     $stmt = $conn->query("SELECT * FROM `artikelen` WHERE `nummer`=" . $nummer . "");
@@ -65,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         // if everything is ok, try to upload file
     } else {
         try {
-            $conn = new PDO("mysql:host=$servername;dbname=$dbnameCPanel", $usernameCPanel, $passwordCPanel);
+            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
             // set the PDO error mode to exception
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
