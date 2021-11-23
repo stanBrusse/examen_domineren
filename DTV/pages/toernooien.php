@@ -36,86 +36,131 @@ include('header.php');
                     <tbody>
                     <tr>
                         <td><small class="">7:00 am</small></td>
-                        <td>
-                            <strong class="text-dark"><a href="toernooiDetail.php">Toernooi</a></strong>
-                            <span>7:00 am - 9:00 am</span>
-                        </td>
-                        <td>
-                            <strong class="text-dark"><a href="toernooiDetail.php">Toernooi</a></strong>
-                            <span>7:00 am - 9:00 am</span>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <strong class="text-dark"><a href="toernooiDetail.php">Toernooi</a></strong>
-                            <span>7:00 am - 9:00 am</span>
-                        </td>
-                        <td>
+                        <?php
+                        /* prepare statement
+                        if ($stmt = $mysqli->prepare($query)) {
+                            $stmt->execute();
+
+                            /* bind variables to prepared statement
+                            $stmt->bind_result($col1, $col2);
+
+                            /* fetch values
+                            while ($stmt->fetch()) {
+                                $myarray[$col1]=$col2;
+                            }*/
+
+                        $myarray = array("foo", "bar", "world");
+
+                        for ($i=0; $i < 6; $i++) {
+                            if(array_key_exists($i, $myarray)){
+                                echo '<td><strong class="text-dark"><a href="toernooiDetail.php">'. $myarray[$i] .'</a></strong>
+                            <span>'. $myarray[$i] .'</span></td>';
+                            }else{
+                                echo '<td></td>';
+                            }
+                            /*}
+                             close statement
+                            $stmt->close();*/
+                        }
+                        ?>
                     </tr>
 
                     <tr>
                         <td><small>9:00 am</small></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <strong class="text-dark"><a href="toernooiDetail.php">Toernooi</a></strong>
-                            <span>8:00 am - 9:00 am</span>
-                        </td>
-                        <td>
-                            <strong class="text-dark"><a href="toernooiDetail.php">Toernooi</a></strong>
-                            <span>8:00 am - 9:00 am</span>
-                        </td>
-                        <td></td>
-                        <td>
-                            <strong class="text-dark"><a href="toernooiDetail.php">Toernooi</a></strong>
-                            <span>8:00 am - 9:00 am</span>
+                        <?php
+                        /* prepare statement
+                        if ($stmt = $mysqli->prepare($query)) {
+                            $stmt->execute();
+
+                            /* bind variables to prepared statement
+                            $stmt->bind_result($col1, $col2);
+
+                            /* fetch values
+                            while ($stmt->fetch()) {
+                                $myarray[$col1]=$col2;
+                            }*/
+
+                        $myarray = array("foo", "bar", "world");
+
+                        for ($i=0; $i < 6; $i++) {
+                            if(array_key_exists($i, $myarray)){
+                                echo '<td><strong class="text-dark"><a href="toernooiDetail.php">'. $myarray[$i] .'</a></strong>
+                            <span>'. $myarray[$i] .'</span></td>';
+                            }else{
+                                echo '<td></td>';
+                            }
+                            /*}
+                             close statement
+                            $stmt->close();*/
+                        }
+                        ?>
                         </td>
                     </tr>
 
                     <tr>
                         <td><small>11:00 am</small></td>
-                        <td></td>
-                        <td>
-                            <strong class="text-dark"><a href="toernooiDetail.php">Toernooi</a></strong>
-                            <span>11:00 am - 2:00 pm</span>
-                        </td>
-                        <td>
-                            <strong class="text-dark"><a href="toernooiDetail.php">Toernooi</a></strong>
-                            <span>11:30 am - 3:30 pm</span>
-                        </td>
-                        <td></td>
-                        <td>
-                            <strong class="text-dark"><a href="toernooiDetail.php">Toernooi</a></strong>
-                            <span>11:50 am - 5:20 pm</span>
-                        </td>
-                        <td></td>
+                        <?php
+                        /* prepare statement
+                        if ($stmt = $mysqli->prepare($query)) {
+                            $stmt->execute();
+
+                            /* bind variables to prepared statement
+                            $stmt->bind_result($col1, $col2);
+
+                            /* fetch values
+                            while ($stmt->fetch()) {
+                                $myarray[$col1]=$col2;
+                            }*/
+
+                        $myarray = array("foo", "bar", "world");
+
+                        for ($i=0; $i < 6; $i++) {
+                            if(array_key_exists($i, $myarray)){
+                                echo '<td><strong class="text-dark"><a href="toernooiDetail.php">'. $myarray[$i] .'</a></strong>
+                            <span>'. $myarray[$i] .'</span></td>';
+                            }else{
+                                echo '<td></td>';
+                            }
+                            /*}
+                             close statement
+                            $stmt->close();*/
+                        }
+                        ?>
                     </tr>
 
                     <tr>
                         <td><small>2:00 pm</small></td>
-                        <td>
-                            <strong class="text-dark"><a href="toernooiDetail.php">Toernooi</a></strong>
-                            <span>2:00 pm - 4:00 pm</span>
-                        </td>
-                        <td>
-                            <strong class="text-dark"><a href="toernooiDetail.php">Toernooi</a></strong>
-                            <span>3:00 pm - 6:00 pm</span>
-                        </td>
-                        <td></td>
-                        <td>
-                            <strong class="text-dark"><a href="toernooiDetail.php">Toernooi</a></strong>
-                            <span>6:00 pm - 9:00 pm</span>
-                        </td>
-                        <td></td>
-                        <td>
-                            <strong class="text-dark"><a href="toernooiDetail.php">Toernooi</a></strong>
-                            <span>5:00 pm - 7:00 pm</span>
-                        </td>
+                        <?php
+                        /* prepare statement
+                        if ($stmt = $mysqli->prepare($query)) {
+                            $stmt->execute();
+
+                            /* bind variables to prepared statement
+                            $stmt->bind_result($col1, $col2);
+
+                            /* fetch values
+                            while ($stmt->fetch()) {
+                                $myarray[$col1]=$col2;
+                            }*/
+
+                        $myarray = array("foo", "bar", "world");
+
+                        for ($i=0; $i < 6; $i++) {
+                            if(array_key_exists($i, $myarray)){
+                                echo '<td><strong class="text-dark"><a href="toernooiDetail.php">'. $myarray[$i] .'</a></strong>
+                            <span>'. $myarray[$i] .'</span></td>';
+                            }else{
+                                echo '<td></td>';
+                            }
+                            /*}
+                             close statement
+                            $stmt->close();*/
+                        }
+                        ?>
                     </tr>
                     </tbody>
                 </table>
             </div>
-
         </div>
     </div>
 </section>
