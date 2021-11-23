@@ -57,6 +57,12 @@ if(isset($_POST['btnUitloggen']))
     $sql->bindParam(1, $_GET['baanID']);
     $sql->execute();
     header("Location: profiel.php");
+}elseif(isset($_GET['activiteit']) && isset($_GET['lidnummer']))
+{
+    $sql = $pdo->prepare("DELETE FROM registratie_activiteit WHERE activiteit_nummer=? AND lid_nummer=?");
+    $sql->bindParam(1, $_GET['activiteit']);
+    $sql->bindParam(2, $_GET['lidnummer']);
+    $sql->execute();
 }
 
 

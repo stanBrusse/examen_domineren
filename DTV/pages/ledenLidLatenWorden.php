@@ -75,7 +75,7 @@ include('header.php');
 
             <div class="col-lg-8 col-md-10 mx-auto col-12">
                 <div class="hero-text mt-5 text-center">
-                <form action="ledenLidLatenWorden.php">
+                <form action="adminLeden.php">
                     <input class="terug" type="submit" value="terug">
                 </form>
                 <table  class="table  table-striped table-hover">
