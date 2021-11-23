@@ -30,6 +30,7 @@ width: 100%;
 }
 
 .kantine-item-card .card-info{
+    min-width: 186;
     max-width: 300px;
     max-height: 150px;
 }

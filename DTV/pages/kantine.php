@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 ?>
 <!DOCTYPE html>
 <html>
-
+</div>
 <head>
     <meta charset="utf-8">
     <title>Kantine</title>
@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
 <body>
 
-    <div class="container kantine-container">
+    <div class="kantine-container">
         <div id="kantine-main">
             <div class="kantine-filter">
                 <select id="kantineSelect">
@@ -79,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                         </div>
                     </div>
                     <div class="card-info">
-                        <p><strong>Naam:</strong> <span>' . $item["naam"] . '</span> <strong>Prijs:</strong> <span>€' . $item["prijs"] . '</span></p>
+                        <p><strong>Naam:</strong> <span>' . $item["naam"] . '</span><br><strong>Prijs:</strong> <span>€' . $item["prijs"] . '</span></p>
                     </div>
                     <div class="A-kantine-button">
                     <a href="kantine_change.php?nummer=' . $item["nummer"] . '"><img class="change" type="button" src="../images/icons/change.svg"></a>
@@ -110,6 +110,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         </div>
 
     </div>
+    <div>
         <?php include('footer.php'); ?>
 
 </body>
