@@ -12,7 +12,7 @@ $naamErr = $prijsErr = $fotoErr = $categorieErr = $ddescriptieErr = "";
 $naam = $prijs = $foto = $categorie = $descriptie = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn = new PDO("mysql:host=$servername;dbname=$dbnameCPanel", $usernameCPanel, $passwordCPanel);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $nummer = $_GET['nummer'];
     $stmt = $conn->query("SELECT * FROM `artikelen` WHERE `nummer`=" . $nummer . "");
@@ -65,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         // if everything is ok, try to upload file
     } else {
         try {
-            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+            $conn = new PDO("mysql:host=$servername;dbname=$dbnameCPanel", $usernameCPanel, $passwordCPanel);
             // set the PDO error mode to exception
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -79,8 +79,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
             $naam = $prijs = $foto = $categorie = $descriptie = "";
             $conn = null;
-            header("location:kantine.php");
-            exit;
+            if (headers_sent()) {
+                die("Redirect failed. Please click on this link: <a href=../pages/kantine.php>");
+            }
+            else{
+                exit(header("location:kantine.php"));
+            }
         } catch (PDOException $e) {
             echo $sql . "<br>" . $e->getMessage();
         }

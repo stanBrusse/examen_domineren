@@ -85,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file)) {
             echo "The file " . htmlspecialchars(basename($_FILES["foto"]["name"])) . " has been uploaded.";
             try {
-                $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+                $conn = new PDO("mysql:host=$servername;dbname=$dbnameCPanel", $usernameCPanel, $passwordCPanel);
                 // set the PDO error mode to exception
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $sql = "INSERT INTO `artikelen` (naam, descriptie, foto, prijs, categorie) VALUES (?, ?, ?, ?, ?)";
