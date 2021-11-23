@@ -7,15 +7,23 @@ $passwordCPanel = "Tennis@DTV!";
 $dbnameCPanel = "bveens_dtv";
 $dbname = "dtv";
 
-
+$filename = "";
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $nummer = $_GET['nummer'];
     $stmt = $conn->query("SELECT * FROM `artikelen` WHERE `nummer`=" . $nummer . "");
     $result = $stmt->fetch();
-    var_dump($result);
+    $filename = $result["foto"];
 } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    
+        
+        if (file_exists('../' .$filename)) {
+          unlink('../' .$filename);
+          echo 'File '.$filename.' has been deleted';
+        } else {
+          echo 'Could not delete '.$filename.', file does not exist';
+        }
     try {
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         // set the PDO error mode to exception
