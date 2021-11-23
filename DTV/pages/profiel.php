@@ -1,5 +1,14 @@
 <?php
 session_start();
+if( $_SESSION['loggedIn'] == true)
+{}else{
+    if (headers_sent()) {
+        die("Redirect failed. Please click on this link: <a href=../pages/index.php");
+        }
+        else{
+        exit(header("location:index.php"));
+        } 
+}
 $info = "";
 // deze database is voor het maken en testen. kan weg
 $servername = "localhost";
@@ -17,8 +26,12 @@ if(isset($_POST['btnUitloggen']))
 {
     session_unset();
     session_destroy();
-    header("location: index.php");
-    echo "fsdsdffasd";
+    if (headers_sent()) {
+        die("Redirect failed. Please click on this link: <a href=../pages/index.php");
+        }
+        else{
+        exit(header("location:index.php"));
+    } 
 
 }elseif(isset($_POST['huidigwachtwoord']) && isset($_POST['wachtwoord']) && isset($_POST['herhaalwachtwoord']))
 {
@@ -108,7 +121,7 @@ if(isset($_POST['btnUitloggen']))
     }
     ?>
         
-        <br>
+        <hr style="background-color: darkgray">
             gereservereerde banen
             <table border="1">
                 <tr>

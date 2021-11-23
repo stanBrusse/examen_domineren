@@ -1,4 +1,16 @@
 <?php
+/*  -----als de persoon geen admin in of niet is ingelogd gaat hij naar de index------
+if($_SESSION['rol'] == "admin" && $_SESSION['loggedIn'] == true)
+{}else{
+    if (headers_sent()) {
+        die("Redirect failed. Please click on this link: <a href=../pages/index.php");
+        }
+        else{
+        exit(header("location:index.php"));
+        } 
+}
+*/
+
 $info = "";
 // deze database is voor het maken en testen. kan weg
 $servername = "localhost";
@@ -28,17 +40,27 @@ if(isset($_POST['emailadres']) && isset($_POST['wachtwoord']))
                 $_SESSION['loggedIn'] = true;
                 $_SESSION['rol'] = $row['account_rol'];
                 echo $_SESSION['loggedIn'];
+                if($_SESSION['rol'] == "admin"){
+                    if (headers_sent()) {
+                        die("Redirect failed. Please click on this link: <a href=../pages/admin.php");
+                    }
+                    else{
+                        exit(header("location:admin.php"));
+                    }
+                }else{
+                    if (headers_sent()) {
+                        die("Redirect failed. Please click on this link: <a href=../pages/index.php");
+                    }
+                    else{
+                        exit(header("location:index.php"));
+                    }
+                }
             }
         }else{
             $info = "incorrecte gegevens";
         }
 }
-/*  -----als de persoon geen admin in of niet is ingelogd gaat hij naar de index------
-if($_SESSION['rol'] == "admin" && $_SESSION['loggedIn'] == true)
-{}else{
-    header("Location: index.php");
-}
-*/
+
 
 ?>
 <!DOCTYPE html>

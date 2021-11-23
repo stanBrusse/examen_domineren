@@ -1,5 +1,13 @@
-<?php
-
+<?php             session_start();
+if($_SESSION['rol'] == "admin" && $_SESSION['loggedIn'] == true)
+{}else{
+    if (headers_sent()) {
+        die("Redirect failed. Please click on this link: <a href=../pages/index.php");
+        }
+        else{
+        exit(header("location:index.php"));
+        } 
+}
 // deze database is voor het maken en testen. kan weg
   $servername = "localhost";
   $username = "root";
@@ -44,6 +52,13 @@
 .thead-rood{
     background-color: #f13a11;
 }
+.terug {
+    width: 200px;
+    height: 50px;
+    background-color: lightskyblue;
+    border: 1px solid lightskyblue;
+    margin-top: 140px;
+}
 
 </style>
 
@@ -60,7 +75,9 @@ include('header.php');
 
             <div class="col-lg-8 col-md-10 mx-auto col-12">
                 <div class="hero-text mt-5 text-center">
-
+                <form action="ledenLidLatenWorden.php">
+                    <input class="terug" type="submit" value="terug">
+                </form>
                 <table  class="table  table-striped table-hover">
                     <thead class=" thead-rood">
                         <th>voornaam achternaam</th>

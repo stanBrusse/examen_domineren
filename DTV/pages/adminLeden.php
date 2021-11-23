@@ -1,5 +1,14 @@
 <?php             session_start();
-
+if($_SESSION['rol'] == "admin" && $_SESSION['loggedIn'] == true)
+{}else{
+    if (headers_sent()) {
+        die("Redirect failed. Please click on this link: <a href=../pages/index.php");
+        }
+        else{
+        exit(header("location:index.php"));
+        } 
+}
+     
 
 //dit is om te testen. kan weg als er een nieuwe database is
     $servername = "localhost";
@@ -15,7 +24,7 @@
 
     if(isset($_POST['zoek'])){
         $zoek = $_POST['zoek'];
-        $order = "Lidnr";
+        $order = "nummer";
         $zoek = "%". $zoek . "%";
         $selecteerLeden = $pdo->prepare("SELECT * FROM accounts WHERE naam_voor LIKE? ORDER BY $order");
         $selecteerLeden->bindParam(1, $zoek);
@@ -108,9 +117,13 @@ include('header.php');
 <div class="container">
 
 <section class="hero d-flex flex-column justify-content-center align-items-center" id="home">
+<form action="ledenLidLatenWorden.php">
+    <input type="submit" style="width: 250px;" value="Leden toevoegen of afwijzen">
+</form>  
+<br>
 <form action="adminLeden.php" method="POST">
     <input type="text" name="zoek" placeholder="zoeken">
-    <input type="submit" placeholder="zoek">
+    <input type="submit" value="zoek" >
 <a href="adminLeden.php">Reset</a>
 
 </form>
