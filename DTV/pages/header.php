@@ -19,9 +19,7 @@
                         <a href="kantine.php" class="nav-link smoothScroll">Kantine</a>
                     </li>
 
-                    <li class="nav-item">
-                        <a href="inloggen.php" class="nav-link smoothScroll">Inloggen</a>
-                    </li>
+                    
 
                     <li class="nav-item">
                         <a href="toernooien.php" class="nav-link smoothScroll">Toernooien</a>
@@ -34,12 +32,37 @@
                     <li class="nav-item">
                         <a href="contact.php" class="nav-link smoothScroll">Contact</a>
                     </li>
+                    <?php 
+                    session_start();
+                    if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true)
+                   {
+                    echo '
+                        <li class="nav-item">
+                        <a href="profiel.php" class="nav-link smoothScroll">Profiel</a>
+                    </li>
+                    ';
+                    if(isset($_SESSION['rol']) && $_SESSION['rol'] == "admin")
+                    {
+                    echo '
+                    <li class="nav-item">
+                        <a href="admin.php" class="nav-link smoothScroll">Admin</a>
+                    </li>
+                    ';
+                    }
+                    }else{
+                    echo '
+                        <li class="nav-item">
+                            <a href="inloggen.php" class="nav-link smoothScroll">Inloggen</a>
+                        </li>
+                    ';
+                    }
+                    ?>
                 </ul>
 
-                <ul class="social-icon ml-lg-3">
+                <!-- <ul class="social-icon ml-lg-3">
                     <li><a href="profiel.php" class="fa fa-facebook"></a></li>
                     <li><a href="admin.php" class="fa fa-twitter"></a></li> 
-                </ul>
+                </ul> -->
             </div>
 
         </div>
@@ -47,3 +70,6 @@
  <section class="hero d-flex flex-column justify-content-center align-items-center" id="home">
 
      <div class="container">
+
+                    
+                    

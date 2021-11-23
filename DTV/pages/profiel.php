@@ -1,5 +1,6 @@
 <?php
-session_start();
+include('header.php');
+
 if( $_SESSION['loggedIn'] == true)
 {}else{
     if (headers_sent()) {
@@ -110,9 +111,7 @@ if(isset($_POST['btnUitloggen']))
 </head>
 
 <body>
-    <?php
-    include('header.php');
-    ?>
+   
 
 
     <div class="cont">

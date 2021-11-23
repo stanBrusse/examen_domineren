@@ -1,4 +1,6 @@
 <?php
+include('header.php');
+
 /*  -----als de persoon geen admin in of niet is ingelogd gaat hij naar de index------
 if($_SESSION['rol'] == "admin" && $_SESSION['loggedIn'] == true)
 {}else{
@@ -33,7 +35,6 @@ if(isset($_POST['emailadres']) && isset($_POST['wachtwoord']))
         $sql->bindParam(2, $wachtwoord);
         $sql->execute();
         if ($sql->rowCount() == 1) {
-            session_start();
             foreach($sql as $row)
             {
                 $_SESSION['lidnummer'] = $row['nummer'];
@@ -74,9 +75,7 @@ if(isset($_POST['emailadres']) && isset($_POST['wachtwoord']))
 
 </head>
 <body>
-<?php 
-include('header.php');
-?>
+
 <section class="hero d-flex flex-column justify-content-center align-items-center" id="home">
 
 

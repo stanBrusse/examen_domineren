@@ -1,4 +1,5 @@
-<?php             session_start();
+<?php            
+include('header.php');
 if($_SESSION['rol'] == "admin" && $_SESSION['loggedIn'] == true)
 {}else{
     if (headers_sent()) {
@@ -111,9 +112,7 @@ input[type=submit] {
     </style>
 </head>
 <body>
-<?php 
-include('header.php');
-?>
+
 <div class="container">
 
 <section class="hero d-flex flex-column justify-content-center align-items-center" id="home">

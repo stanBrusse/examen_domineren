@@ -1,4 +1,6 @@
-<?php             session_start();
+<?php      
+include('header.php');
+
 if($_SESSION['rol'] == "admin" && $_SESSION['loggedIn'] == true)
 {}else{
     if (headers_sent()) {
@@ -62,9 +64,7 @@ if($_SESSION['rol'] == "admin" && $_SESSION['loggedIn'] == true)
 </style>
 </head>
 <body>
-<?php 
-include('header.php');
-?>
+
 <section class="hero d-flex flex-column justify-content-center align-items-center" id="home">
 
 
