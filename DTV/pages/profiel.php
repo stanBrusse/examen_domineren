@@ -22,9 +22,10 @@ if(isset($_POST['btnUitloggen']))
 
 }elseif(isset($_POST['huidigwachtwoord']) && isset($_POST['wachtwoord']) && isset($_POST['herhaalwachtwoord']))
 {
+    
     $sql = $pdo->prepare("SELECT * FROM accounts WHERE nummer=? AND wachtwoord=?");
         $sql->bindParam(1, $_SESSION['lidnummer']);
-        $sql->bindParam(2, $_POST['huidigwachtwoord']);
+        $sql->bindParam(2, md5($_POST['huidigwachtwoord']));
         $sql->execute();
 
     if($sql->rowCount() == 1)
@@ -32,15 +33,19 @@ if(isset($_POST['btnUitloggen']))
         if($_POST['wachtwoord'] === $_POST['herhaalwachtwoord'])
         {
             $sql = $pdo->prepare("UPDATE accounts SET wachtwoord=? WHERE nummer=?");
-            $sql->bindParam(1, $_POST['wachtwoord']);
+            $sql->bindParam(1, md5($_POST['wachtwoord']));
             $sql->bindParam(2, $_SESSION['lidnummer']);
             $sql->execute();
         }
     }
+}elseif(isset($_GET['baanID']))
+{
+    $sql = $pdo->prepare("DELETE FROM reservatie_baan WHERE nummer=?");
+    $sql->bindParam(1, $_GET['baanID']);
+    $sql->execute();
+    header("Location: profiel.php");
 }
-$sql = $pdo->prepare("SELECT * FROM reservatie_baan WHERE lid_nummer=?");
-$sql->bindParam(1, $_SESSION['lidnummer']);
-$sql->execute();
+
 
 
 ?>
@@ -93,7 +98,17 @@ $sql->execute();
 
     <div class="cont">
         <div class="containerlinks">
-            
+    <?php 
+    $sql = $pdo->prepare("SELECT * FROM accounts WHERE nummer=?");
+    $sql->bindParam(1, $_SESSION['lidnummer']);
+    $sql->execute();
+    foreach($sql as $row)
+    {
+        echo $row['naam_voor'] . " " . $row['naam_tussen'] . " " .$row['naam_achter'];
+    }
+    ?>
+        
+        <br>
             gereservereerde banen
             <table border="1">
                 <tr>
@@ -101,12 +116,18 @@ $sql->execute();
                     <th> tijd</th>
                     <th> afmelden</th>
                 </tr>
-    <?php    foreach($sql as $row)
+    <?php    
+            $sql = $pdo->prepare("SELECT * FROM reservatie_baan WHERE lid_nummer=?");
+            $sql->bindParam(1, $_SESSION['lidnummer']);
+            $sql->execute();
+            foreach($sql as $row)
             {
                 $nummer = $row['nummer'];
+                $datum = date("d-m-Y", strtotime($row['datum']));
+
                 echo "<tr>";
                 echo "<td> binnenbaan"  . "</td>";            
-                echo "<td>". $row['datum'] . "<br>" . $row['tijd_Begin'] . "-" . $row['tijd_Eind']  . "</td>";            
+                echo "<td>". $datum . "<br>" . $row['tijd_Begin'] . " - " . $row['tijd_Eind']  . "</td>";            
                 echo "<td><a href='profiel.php?baanID=$nummer' class='A_afmelden'>afmelden</a></td>";            
                 echo "</tr>";          
             }
@@ -120,18 +141,29 @@ $sql->execute();
                     <th> datum </th>
                     <td>afmelden</td>
                 </tr>
-
-                <tr>
-                    <td class="td1"> toernooi </td>
-                    <td class="td1"> 18-11-2021 <br> 12:00 - 14:00 </td>
-                    <td class="td1"><a href="profiel.php" class="A_afmelden">afmelden</a></td>
-                </tr>
-
-                <tr>
-                    <td class="td2"> toernooi </td>
-                    <td class="td2"> 18-11-2021 <br> 12:00 - 14:00 </td>
-                    <td class="td2"><a href="profiel.php" class="A_afmelden">afmelden</a></td>
-                </tr>
+            <?php
+                $sql = $pdo->prepare("SELECT * FROM registratie_activiteit WHERE lid_nummer=?");
+                $sql->bindParam(1, $_SESSION['lidnummer']);
+                $sql->execute();
+                foreach($sql as $row)
+                {
+                    $activiteit = $pdo->prepare("SELECT * FROM activiteiten WHERE nummer=?");
+                    $activiteit->bindParam(1, $row['activiteit_nummer']);
+                    $activiteit->execute();
+                    foreach($activiteit as $result)
+                    {
+                        $nummer = $result['nummer'];
+                        $lidnummer = $row['lid_nummer'];
+                        echo "<tr>";
+                        echo "<td>". $result['title'] ."</td>";
+                        echo "<td>" . $result['datum_activiteit'] . "<br>" . $result['tijd_start'] . " - " . $result['tijd_eind']. "</td>";
+                        echo "<td> <a href='profiel.php?activiteit=$nummer&lidnummer=$lidnummer' class='A_afmelden'>afmelden</a></td>";
+                        echo "</tr>";
+                    }
+                }
+            ?>
+            
+                
             </table>
         </div>
         <div class="containerrechts">
@@ -141,7 +173,7 @@ $sql->execute();
             <h4>wachtwoord veranderen</h4>
             <form action="profiel.php" method="POST">
                 <input type="text"     name="huidigwachtwoord"  placeholder="huidig wachtwoord"><br><br>
-                <input type="text"     name="wachtwoord"  placeholder="wachtwoord"><br><br>
+                <input type="password"     name="wachtwoord"  placeholder="wachtwoord"><br><br>
                 <input type="password" name="herhaalwachtwoord"  placeholder="wachtwoord herhalen"><br><br>
                  <input type="submit" value="verander wachtwoord" class="buttonInloggen">
             </form> 
