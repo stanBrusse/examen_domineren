@@ -80,7 +80,7 @@ if(isset($_POST['btnUitloggen']))
     <link rel="stylesheet" href="../css/inloggen.css">
     <style>
         body {
-            color: white;
+            color: black;
         }
 
         button {
