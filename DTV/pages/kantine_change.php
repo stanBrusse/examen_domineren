@@ -79,8 +79,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
             $naam = $prijs = $foto = $categorie = $descriptie = "";
             $conn = null;
-            header("location:kantine.php");
-            exit;
+            if (headers_sent()) {
+                die("Redirect failed. Please click on this link: <a href=../pages/kantine.php>");
+            }
+            else{
+                exit(header("location:kantine.php"));
+            }
         } catch (PDOException $e) {
             echo $sql . "<br>" . $e->getMessage();
         }
