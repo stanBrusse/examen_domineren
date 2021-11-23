@@ -1,4 +1,18 @@
 <?php
+include('header.php');
+$admin = 0;
+if ($_SESSION['rol'] == "admin" && $_SESSION['loggedIn'] == true) {
+    $admin = 1;
+} else {
+    $admin = 0;
+}
+if (!$admin = 1) {
+    if (headers_sent()) {
+        die("You are not a Admin. Redirect failed. Please click on this link: <a href=../pages/kantine.php>Kantine Page</a>");
+    } else {
+        exit(header("location:kantine.php"));
+    }
+}
 
 $username = "bveens_dtv";
 $password = "Tennis@DTV!";
@@ -96,7 +110,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $sql = "INSERT INTO `artikelen` (naam, descriptie, foto, prijs, categorie) VALUES (?, ?, ?, ?, ?)";
                 // use exec() because no results are returned
                 $conn->prepare($sql)->execute([$naam, $descriptie, $foto, $prijs, $categorie]);
-                echo "New record created successfully";
             } catch (PDOException $e) {
                 echo $sql . "<br>" . $e->getMessage();
             }
@@ -122,37 +135,46 @@ function test_input($data)
     <meta charset="utf-8">
     <title>Kantine Create</title>
     <link rel="stylesheet" href="../css/kantine.css">
+    <link rel="stylesheet" href="../css/kantine_admin.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="../js/kantine.js"></script>
-    <!--IF USER IS ADMIN THIS SHOWS-->
-    <?php include('kantine_admin.php') ?>
 </head>
 
 <body>
-    <?php include('header.php'); ?>
-    <div id="kantine-create">
-        <form class="kantine-form" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-            <label for="naam"><strong>Item Naam:</strong></label>
-            <input type="text" id="naam" name="naam" required><br />
+    <div class="kantine-container">
+        <div id="kantine-create">
+            <form class="kantine-form" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+                <section class="section-naam">
+                    <label for="naam"><strong>Item Naam:</strong></label>
+                    <input type="text" id="naam" name="naam" required><br />
+                </section>
 
-            <label for="descriptie"><strong>Item Descriptie</strong></label>
-            <textarea id="descriptie" name="descriptie" rows="3" cols="30" maxlength="55" required></textarea><br />
+                <section class="section-descriptie">
+                    <label for="descriptie"><strong>Item Descriptie</strong></label>
+                    <textarea id="descriptie" name="descriptie" rows="3" cols="20" maxlength="55" required></textarea><br />
+                </section>
 
-            <label for="foto"><strong>Item Foto</strong></label>
-            <input type="file" id="foto" name="foto" required><br />
+                <section class="section-foto">
+                    <label for="foto"><strong>Item Foto</strong></label>
+                    <input type="file" id="foto" name="foto" required><br />
+                </section>
 
-            <label for="prijs"><strong>Item Prijs</strong></label>
-            <input type="doubleval" id="prijs" name="prijs" required><br />
+                <section class="section-prijs">
+                    <label for="prijs"><strong>Item Prijs</strong></label>
+                    <input type="doubleval" id="prijs" name="prijs" required><br />
+                </section>
 
-            <label for="categorie"><strong>Item categorie</strong></label>
-            <select id="categorie" name="categorie" required>
-                <option value="snack">SNACK</option>
-                <option value="drink">DRINK</option>
-            </select><br />
+                <section class="section-categorie">
+                    <label for="categorie"><strong>Item categorie</strong></label>
+                    <select id="categorie" name="categorie" required>
+                        <option value="snack">SNACK</option>
+                        <option value="drink">DRINK</option>
+                    </select><br />
+                </section>
 
-            <input type="submit" value="Submit" name="submit">
-            <a type="button" class="button" name="return" href="kantine.php">Ik heb genoeg toegevoegd</a>
-        </form>
+                <input type="submit" value="Submit" name="submit">
+                <a type="button" class="button" name="return" href="kantine.php">Ik heb genoeg toegevoegd</a>
+            </form>
+        </div>
     </div>
     <?php include('footer.php'); ?>
 </body>

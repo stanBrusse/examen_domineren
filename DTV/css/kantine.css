@@ -3,12 +3,17 @@
     padding: 0px;
  }
 .kantine-container{
-    margin-top: 150px;
-    margin-bottom: 163px;
-    padding: 70px 50px;
+    padding: 135px 50px;
     text-align: center;
     margin-left: 7%;
     margin-right: 7%;
+}
+.container{
+    width: 100%;
+}
+
+#kantine-container{
+width: 100%;
 }
 
 .kantine-item-card{

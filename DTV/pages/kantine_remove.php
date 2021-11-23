@@ -1,5 +1,18 @@
 <?php
-
+include('header.php');
+$admin = 0;
+if ($_SESSION['rol'] == "admin" && $_SESSION['loggedIn'] == true) {
+    $admin = 1;
+} else {
+    $admin = 0;
+}
+if (!$admin = 1) {
+    if (headers_sent()) {
+        die("You are not a Admin. Redirect failed. Please click on this link: <a href=../pages/kantine.php>Kantine Page</a>");
+    } else {
+        exit(header("location:kantine.php"));
+    }
+}
 $username = "bveens_dtv";
 $password = "Tennis@DTV!";
 $dbname = "bveens_dtv";
@@ -12,24 +25,22 @@ $password = "";
 $dbname = "dtv";
 
 
-$filename = "";
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $nummer = $_GET['nummer'];
     $stmt = $conn->query("SELECT * FROM `artikelen` WHERE `nummer`=" . $nummer . "");
     $result = $stmt->fetch();
-    $filename = $result["foto"];
 } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     try {
-        $file = "../" . $filename;
-        if (file_exists($file)) {
-            unlink($file);
-            echo 'File ' . $filename . ' has been deleted';
+        $target_dir = "../";
+        $target_file = $target_dir . $_POST["foto"];
+        if (file_exists($target_file)) {
+            unlink($target_file);
         } else {
-            echo 'Could not delete ' . $filename . ', file does not exist';
+            echo 'Could not delete ' . $target_file . ', file does not exist';
         }
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         // set the PDO error mode to exception
@@ -40,8 +51,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $sql = "DELETE FROM `artikelen` WHERE `nummer`=?";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$nummer]);
-
-        echo "Record deleted successfully";
     } catch (PDOException $e) {
         echo $sql . "<br>" . $e->getMessage();
     }
@@ -60,16 +69,13 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
 <head>
     <meta charset="utf-8">
-    <title>Kantine Create</title>
+    <title>Kantine Remove</title>
     <link rel="stylesheet" href="../css/kantine.css">
+    <link rel="stylesheet" href="../css/kantine_admin.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-    <!--IF USER IS ADMIN THIS SHOWS-->
-    <?php include('kantine_admin.php') ?>
 </head>
 
 <body>
-    <?php include('header.php'); ?>
     <?php
     $action = htmlspecialchars($_SERVER["PHP_SELF"]);
     $areyousure = `Weet je het zeker?`;
@@ -85,27 +91,40 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $prijs = $result["prijs"];
     $categorie = strtoupper($result["categorie"]);
     ?>
-    <div id="kantine-remove">
-        <form class="kantine-form" method="POST" onsubmit="return confirm('Are you sure you want to delete this case?')">
-            <input type="hidden" name="_METHOD" value="DELETE">
-            <input type="hidden" name="nummer" value="<?php echo $nummer; ?>">
-            <span id="foto" name="foto"><img src="../<?php echo $foto; ?>"></span><br />
+    <div class="kantine-container">
+        <div id="kantine-remove">
+            <form class="kantine-form" method="POST" onsubmit="return confirm('Are you sure you want to delete this case?')">
+                <input type="hidden" name="_METHOD" value="DELETE">
+                <input type="hidden" name="nummer" value="<?php echo $nummer; ?>">
+                <section class="section-foto">
+                    <input type="hidden" id="foto" name="foto" value="<?php echo $foto; ?>">
+                    <span id="foto" name="foto"><img src="../<?php echo $foto; ?>"></span><br />
+                </section>
 
-            <label for="naam"><strong>Item Naam:</strong></label>
-            <span id="naam" name="naam"><?php echo $naam; ?></span><br />
+                <section class="section-naam">
+                    <label for="naam"><strong>Item Naam:</strong></label>
+                    <span id="naam" name="naam"><?php echo $naam; ?></span><br />
+                </section>
 
-            <label for="descriptie"><strong>Item Descriptie</strong></label>
-            <span id="descriptie" name="descriptie"><?php echo $descriptie; ?></span><br />
+                <section class="section-descriptie">
+                    <label for="descriptie"><strong>Item Descriptie</strong></label>
+                    <span id="descriptie" name="descriptie"><?php echo $descriptie; ?></span><br />
+                </section>
 
-            <label for="prijs"><strong>Item Prijs</strong></label>
-            <span id="prijs" name="prijs">€<?php echo $prijs; ?></span><br />
+                <section class="section-prijs">
+                    <label for="prijs"><strong>Item Prijs</strong></label>
+                    <span id="prijs" name="prijs">€<?php echo $prijs; ?></span><br />
+                </section>
 
-            <label for="categorie"><strong>Item categorie</strong></label>
-            <span id="categorie" name="categorie"><?php echo $categorie; ?></span><br />
+                <section class="section-categorie">
+                    <label for="categorie"><strong>Item categorie</strong></label>
+                    <span id="categorie" name="categorie"><?php echo $categorie; ?></span><br />
+                </section>
 
-            <button type="submit">Remove</button>
-            <a type="button" class="button" name="return" href="kantine.php">Terug</a>
-        </form>
+                <button type="submit">Remove</button>
+                <a type="button" class="button" name="return" href="kantine.php">Terug</a>
+            </form>
+        </div>
     </div>
 
 

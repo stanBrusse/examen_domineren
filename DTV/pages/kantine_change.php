@@ -1,5 +1,18 @@
 <?php
-
+include('header.php');
+$admin = 0;
+if ($_SESSION['rol'] == "admin" && $_SESSION['loggedIn'] == true) {
+    $admin = 1;
+} else {
+    $admin = 0;
+}
+if (!$admin = 1) {
+    if (headers_sent()) {
+        die("You are not a Admin. Redirect failed. Please click on this link: <a href=../pages/kantine.php>Kantine Page</a>");
+    } else {
+        exit(header("location:kantine.php"));
+    }
+}
 $username = "bveens_dtv";
 $password = "Tennis@DTV!";
 $dbname = "bveens_dtv";
@@ -22,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $nummer = $_GET['nummer'];
     $stmt = $conn->query("SELECT * FROM `artikelen` WHERE `nummer`=" . $nummer . "");
     $result = $stmt->fetch();
-    var_dump($result);
+
     $naam = $result["naam"];
     $prijs = $result["prijs"];
     $foto = $result["foto"];
@@ -60,6 +73,47 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $target_dir = "../images/";
     $target_file = $target_dir . basename($_FILES["foto"]["name"]);
 
+    $target_dir = "../";
+    $target_file = $target_dir . $_POST["foto"];
+    if (file_exists($target_file)) {
+        unlink($target_file);
+    } else {
+        echo 'Could not delete ' . $target_file . ', file does not exist';
+    }
+
+    // Check if image file is a actual image or fake image
+    if (isset($_POST["submit"])) {
+        $check = getimagesize($_FILES["foto"]["tmp_name"]);
+        if ($check !== false) {
+            echo "File is an image - " . $check["mime"] . ".";
+            $uploadOk = 1;
+        } else {
+            echo "File is not an image.";
+            $uploadOk = 0;
+        }
+    }
+
+    // Check if file already exists
+    if (file_exists($target_file)) {
+        echo "Sorry, file already exists.";
+        $uploadOk = 0;
+    }
+
+    // Check file size
+    if ($_FILES["foto"]["size"] > 500000) {
+        echo "Sorry, your file is too large.";
+        $uploadOk = 0;
+    }
+
+    // Allow certain file formats
+    if (
+        $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+        && $imageFileType != "gif"
+    ) {
+        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+        $uploadOk = 0;
+    }
+
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
 
@@ -80,14 +134,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             $foto = "images/" . basename($_FILES["foto"]["name"]);
             $stmt->execute([$naam, $descriptie, $foto, $prijs, $categorie, $nummer]);
 
-            echo "Record updated successfully";
-
             $naam = $prijs = $foto = $categorie = $descriptie = "";
             $conn = null;
             if (headers_sent()) {
                 die("Redirect failed. Please click on this link: <a href=../pages/kantine.php>Kantine Page</a>");
-            }
-            else{
+            } else {
                 exit(header("location:kantine.php"));
             }
         } catch (PDOException $e) {
@@ -110,43 +161,53 @@ function test_input($data)
 
 <head>
     <meta charset="utf-8">
-    <title>Kantine Create</title>
+    <title>Kantine Change</title>
     <link rel="stylesheet" href="../css/kantine.css">
+    <link rel="stylesheet" href="../css/kantine_admin.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <!--IF USER IS ADMIN THIS SHOWS-->
-    <?php include('kantine_admin.php') ?>
 </head>
 
 <body>
-    <?php include('header.php'); ?>
-    <div id="kantine-change">
-        <form class="kantine-form" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-            <input type="hidden" name="_METHOD" value="DELETE">
-            <input type="hidden" name="nummer" value="<?php echo $nummer; ?>">
+    <div class="kantine-container">
+        <div id="kantine-change">
+            <form class="kantine-form" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+                <input type="hidden" name="_METHOD" value="DELETE">
+                <input type="hidden" name="nummer" value="<?php echo $nummer; ?>">
 
-            <label for="naam"><strong>Item Naam:</strong></label>
-            <input type="text" id="naam" name="naam" required value="<?php echo $naam; ?>"><br />
+                <section class="section-naam">
+                    <label for="naam"><strong>Item Naam: </strong></label>
+                    <input type="text" id="naam" name="naam" required value="<?php echo $naam; ?>"><br />
+                </section>
 
-            <label for="descriptie"><strong>Item Descriptie</strong></label>
-            <textarea id="descriptie" name="descriptie" rows="5" cols="40" maxlength="55" required><?php echo $descriptie; ?></textarea><br />
+                <section class="section-descriptie">
+                    <label for="descriptie"><strong>Item Descriptie: </strong></label>
+                    <textarea id="descriptie" name="descriptie" rows="3" cols="20" maxlength="55" required><?php echo $descriptie; ?></textarea><br />
+                </section>
 
-            <label for="foto"><strong>Item Foto</strong></label>
-            <input type="file" id="foto" name="foto"><br />
-            <span id="foto" name="foto"><img src="../<?php echo $foto; ?>"></span><br />
+                <section class="section-foto">
+                    <label for="foto"><strong>Item Foto: </strong></label>
+                    <input type="file" id="foto" name="foto"><br />
+                    <span id="foto" name="foto"><img src="../<?php echo $foto; ?>"></span><br />
+                </section>
 
-            <label for="prijs"><strong>Item Prijs</strong></label>
-            <input type="doubleval" id="prijs" name="prijs" required value="<?php echo $prijs; ?>"><br />
+                <section class="section-prijs">
+                    <label for="prijs"><strong>Item Prijs: </strong></label>
+                    <input type="doubleval" id="prijs" name="prijs" required value="<?php echo $prijs; ?>"><br />
+                </section>
 
-            <label for="categorie"><strong>Item categorie</strong></label>
-            <span id="categorie" name="categorie"><?php echo $categorie; ?></span><br />
-            <select id="categorie" name="categorie" required>
-                <option value="SNACK">SNACK</option>
-                <option value="DRINK">DRINK</option>
-            </select><br />
+                <section class="section-categorie">
+                    <label for="categorie"><strong>Item categorie: </strong></label>
+                    <span id="categorie" name="categorie"><?php echo $categorie; ?> </span>
+                    <select id="categorie" name="categorie" required>
+                        <option value="SNACK">SNACK</option>
+                        <option value="DRINK">DRINK</option>
+                    </select><br />
+                </section>
 
-            <input type="submit" value="Submit" name="submit">
-            <a type="button" class="button" name="return" href="kantine.php">Terug</a>
-        </form>
+                <input type="submit" value="Submit" name="submit">
+                <a type="button" class="button" name="return" href="kantine.php">Terug</a>
+            </form>
+        </div>
     </div>
     <?php include('footer.php'); ?>
 </body>

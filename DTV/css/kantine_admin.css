@@ -57,3 +57,28 @@ a.button {
     text-decoration: none;
     color: initial;
 }
+
+.kantine-create{
+    text-align: center;
+    width: 50%;
+    
+}
+
+.kantine-form{
+    margin: 0% 25%;
+    border: double;
+    width: 400px;
+}
+
+.kantine-form section > *{
+    margin: 3px 0px;
+    width: 100%;
+}
+
+.kantine-form section label{
+    border-top: double;
+}
+
+.section-descriptie label{
+    vertical-align: top;
+}
