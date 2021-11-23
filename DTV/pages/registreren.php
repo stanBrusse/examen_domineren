@@ -27,7 +27,11 @@ if (isset($_POST['voornaam']) && isset($_POST['tussen']) && isset($_POST['achter
     $geboortedatum = $_POST['geboortedatum'];
     $telefoonnummer = $_POST['telefoon'];
     $accountrol = "niets";
-
+    $wachtwoord = md5($wachtwoord);
+    $wachtwoordherhalen = md5($wachtwoordherhalen);
+    var_dump($wachtwoord);
+    var_dump($wachtwoordherhalen);
+    
     $geboortedatum = date("Y-m-d", strtotime($geboortedatum));
 
     $zoekNaarDubbel = $pdo->prepare("SELECT * FROM accounts WHERE email=?");
@@ -50,7 +54,7 @@ if (isset($_POST['voornaam']) && isset($_POST['tussen']) && isset($_POST['achter
             $insert->bindParam(12, $telefoonnummer);
             $insert->bindParam(13, $accountrol);
             $insert->execute();
-            $info = "U bent nu geregistreerd.";
+            $info = "Gelukt. U moet nog wel toegevoegd worden door de club";
         } else {
             $info = "uw wachtwoorden komen niet overeen ";
         }
@@ -102,19 +106,12 @@ if (isset($_POST['voornaam']) && isset($_POST['tussen']) && isset($_POST['achter
             text-align: center;
         }
 
-        #voornaam,
-        #tussen,
-        #achternaam,
-        #plaatsnaam,
-        #postcode,
-        #geboortedatum,
-        #geslacht,
-        #email,
-        #telefoonummer,
-        #wachtwoord,
-        #wachtwoordherhalen {
+        #voornaam,#tussen,#achternaam,#plaatsnaam,#postcode,#geboortedatum,#geslacht,#email,#telefoonummer,#wachtwoord,#wachtwoordherhalen {
             text-align: center;
             width: 60%;
+        }
+        .site-footer{
+            position: fixed;
         }
     </style>
 </head>

@@ -14,9 +14,11 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 if(isset($_POST['emailadres']) && isset($_POST['wachtwoord']))
 {
+        $wachtwoord =md5($_POST['wachtwoord']);
+        
         $sql = $pdo->prepare("SELECT * FROM accounts WHERE email=? AND wachtwoord=?");
         $sql->bindParam(1, $_POST['emailadres']);
-        $sql->bindParam(2, $_POST['wachtwoord']);
+        $sql->bindParam(2, $wachtwoord);
         $sql->execute();
         if ($sql->rowCount() == 1) {
             session_start();
