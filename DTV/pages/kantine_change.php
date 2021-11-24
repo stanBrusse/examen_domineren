@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $fotoErr = "Foto is required";
     } else {
         $foto = test_input(htmlspecialchars(basename($_FILES["foto"]["name"])));
-        $foto = "images/" . $foto;
+        $foto = "images/kantine_items/" . $foto;
     }
     if (empty($_POST["categorie"])) {
         $categorieErr = "categorie is required";
@@ -70,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     } else {
         $descriptie = test_input($_POST["descriptie"]);
     }
-    $target_dir = "../images/";
+    $target_dir = "../";
     $target_file = $target_dir . basename($_FILES["foto"]["name"]);
 
     $target_dir = "../";
@@ -131,7 +131,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             $sql = "UPDATE artikelen SET naam=?, descriptie=?, foto=?, prijs=?, categorie=? WHERE nummer=?";
             $stmt = $conn->prepare($sql);
             $nummer = (int) $_POST['nummer'];
-            $foto = "images/" . basename($_FILES["foto"]["name"]);
+            $foto = "images/kantine_items/" . basename($_FILES["foto"]["name"]);
             $stmt->execute([$naam, $descriptie, $foto, $prijs, $categorie, $nummer]);
 
             $naam = $prijs = $foto = $categorie = $descriptie = "";

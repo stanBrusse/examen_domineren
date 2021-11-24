@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $fotoErr = "Foto is required";
     } else {
         $foto = test_input(htmlspecialchars(basename($_FILES["foto"]["name"])));
-        $foto = "images/" . $foto;
+        $foto = "images/kantine_items/" . $foto;
     }
     if (empty($_POST["categorie"])) {
         $categorieErr = "categorie is required";
@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $descriptie = test_input($_POST["descriptie"]);
     }
-    $target_dir = "../images/";
+    $target_dir = "../images/kantine_items/";
     $target_file = $target_dir . basename($_FILES["foto"]["name"]);
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
