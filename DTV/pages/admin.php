@@ -25,6 +25,7 @@ if($_SESSION['rol'] == "admin" && $_SESSION['loggedIn'] == true)
         width: 250px;
         float: left;
         margin-left: 10px;
+        margin-top: 15px;
     }
     .toernooien{
         border: 1px solid black;
