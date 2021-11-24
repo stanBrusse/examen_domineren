@@ -10,7 +10,13 @@
 </head>
 <style>
 .divFoto{
-    background-image: url("../images/1507858.jpg");
+    background: url("../images/1507858.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+    
+    
 }
 .h6wit{
     color: white;
@@ -51,3 +57,5 @@
 </body>
 
 </html>
+
+<?php
