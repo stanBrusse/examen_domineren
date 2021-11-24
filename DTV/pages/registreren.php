@@ -40,22 +40,33 @@ if (isset($_POST['voornaam']) && isset($_POST['tussen']) && isset($_POST['achter
     $zoekNaarDubbel->execute();
     if ($zoekNaarDubbel->rowCount() == 0) {
         if ($wachtwoord == $wachtwoordherhalen) {
-            $insert = $pdo->prepare("INSERT INTO accounts (wachtwoord, naam_voor, naam_tussen, naam_achter, adres_straat_naam, adres_straat_nummer, adres_plaats_postcode, adres_plaats_naam, geboorte_datum, geslacht, email, telefoon, account_rol) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
-            $insert->bindParam(1, $wachtwoord);
-            $insert->bindParam(2, $voornaam);
-            $insert->bindParam(3, $tussen);
-            $insert->bindParam(4, $achternaam);
-            $insert->bindParam(5, $straatnaam);
-            $insert->bindParam(6, $huisnummer);
-            $insert->bindParam(7, $postcode);
-            $insert->bindParam(8, $plaatsnaam);
-            $insert->bindParam(9, $geboortedatum);
-            $insert->bindParam(10, $geslacht);
-            $insert->bindParam(11, $email);
-            $insert->bindParam(12, $telefoonnummer);
-            $insert->bindParam(13, $accountrol);
-            $insert->execute();
-            $info = "Gelukt. U moet nog wel toegevoegd worden door de club";
+            if (strlen($wachtwoord) <= 8) {
+                $info = "uw wachtwoord moet minstens 8 tekens zijn";
+            }else {
+                $insert = $pdo->prepare("INSERT INTO accounts (wachtwoord, naam_voor, naam_tussen, naam_achter, adres_straat_naam, adres_straat_nummer, adres_plaats_postcode, adres_plaats_naam, geboorte_datum, geslacht, email, telefoon, account_rol) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                $insert->bindParam(1, $wachtwoord);
+                $insert->bindParam(2, $voornaam);
+                $insert->bindParam(3, $tussen);
+                $insert->bindParam(4, $achternaam);
+                $insert->bindParam(5, $straatnaam);
+                $insert->bindParam(6, $huisnummer);
+                $insert->bindParam(7, $postcode);
+                $insert->bindParam(8, $plaatsnaam);
+                $insert->bindParam(9, $geboortedatum);
+                $insert->bindParam(10, $geslacht);
+                $insert->bindParam(11, $email);
+                $insert->bindParam(12, $telefoonnummer);
+                $insert->bindParam(13, $accountrol);
+                $insert->execute();
+                if (headers_sent()) {
+                    die("Redirect failed. Please click on this link: <a href=../pages/inloggen.php");
+                }
+                else{
+                    exit(header("location:inloggen.php"));
+                }
+                $info = "Gelukt. U moet nog wel toegevoegd worden door de club";
+            }
+            
         } else {
             $info = "uw wachtwoorden komen niet overeen ";
         }
@@ -131,19 +142,19 @@ if (isset($_POST['voornaam']) && isset($_POST['tussen']) && isset($_POST['achter
                 <form action="registreren.php" method="POST">
 
 
-                    <input type="text" id="voornaam" name="voornaam" placeholder="voornaam"><br>
-                    <input type="text" id="tussen" name="tussen" placeholder="tussenvoegsel"><br>
-                    <input type="text" id="achternaam" name="achternaam" placeholder="achternaam"><br>
-                    <input type="text" id="straatnaam" name="straatnaam" style="text-align: center" placeholder="straatnaam">
-                    <input type="text" id="huisnummer" name="huisnummer" placeholder="2A"><br>
-                    <input type="text" id="plaatsnaam" name="plaatsnaam" placeholder="plaatsnaam"><br>
-                    <input type="text" id="postcode" name="postcode" placeholder="1234AB"> <br>
-                    <input type="date" id="geboortedatum" name="geboortedatum"> <br>
-                    <input type="text" id="geslacht" name="geslacht" placeholder="geslacht"><br>
-                    <input type="email" id="email" name="email" placeholder="email@email.com"><br>
-                    <input type="text" id="telefoonummer" name="telefoon" placeholder="06 12345678"><br>
-                    <input type="password" id="wachtwoord" name="wachtwoord" placeholder="wachtwoord"><br>
-                    <input type="password" id="wachtwoordherhalen" name="wachtwoordherhalen" placeholder="herhaal wachtwoord"><br>
+                <input value="<?php if(isset($_POST["voornaam"])) echo $_POST["voornaam"]; ?>" type="text" id="voornaam" name="voornaam" placeholder="voornaam"><br>
+                <input value="<?php if(isset($_POST["tussen"])) echo $_POST["tussen"]; ?>" type="text" id="tussen" name="tussen" placeholder="tussenvoegsel"><br>
+                <input value="<?php if(isset($_POST["achternaam"])) echo $_POST["achternaam"]; ?>" type="text" id="achternaam" name="achternaam" placeholder="achternaam"><br>
+                <input value="<?php if(isset($_POST["straatnaam"])) echo $_POST["straatnaam"]; ?>" type="text" id="straatnaam" name="straatnaam" style="text-align: center" placeholder="straatnaam">
+                <input value="<?php if(isset($_POST["huisnummer"])) echo $_POST["huisnummer"]; ?>" type="text" id="huisnummer" name="huisnummer" placeholder="2A"><br>
+                <input value="<?php if(isset($_POST["plaatsnaam"])) echo $_POST["plaatsnaam"]; ?>" type="text" id="plaatsnaam" name="plaatsnaam" placeholder="plaatsnaam"><br>
+                <input value="<?php if(isset($_POST["postcode"])) echo $_POST["postcode"]; ?>" type="text" id="postcode" name="postcode" placeholder="1234AB"> <br>
+                <input value="<?php if(isset($_POST["geboortedatum"])) echo $_POST["geboortedatum"]; ?>" type="date" id="geboortedatum" name="geboortedatum"> <br>
+                <input value="<?php if(isset($_POST["geslacht"])) echo $_POST["geslacht"]; ?>" type="text" id="geslacht" name="geslacht" placeholder="geslacht"><br>
+                <input value="<?php if(isset($_POST["email"])) echo $_POST["email"]; ?>" type="email" id="email" name="email" placeholder="email@email.com"><br>
+                <input value="<?php if(isset($_POST["telefoon"])) echo $_POST["telefoon"]; ?>" type="text" id="telefoonummer" name="telefoon" placeholder="06 12345678"><br>
+                <input value="<?php if(isset($_POST["wachtwoord"])) echo $_POST["wachtwoord"]; ?>" type="password" id="wachtwoord" name="wachtwoord" placeholder="wachtwoord" minlength="8"><br>
+                <input value="<?php if(isset($_POST["wachtwoordherhalen"])) echo $_POST["wachtwoordherhalen"]; ?>" type="password" id="wachtwoordherhalen" name="wachtwoordherhalen" placeholder="herhaal wachtwoord" minlength="8"><br>
 
                     <div class="inloggen_Info">
                         <h2><?php echo $info ?></h2>
