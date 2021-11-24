@@ -37,23 +37,26 @@ if(isset($_POST['emailadres']) && isset($_POST['wachtwoord']))
         if ($sql->rowCount() == 1) {
             foreach($sql as $row)
             {
-                $_SESSION['lidnummer'] = $row['nummer'];
-                $_SESSION['loggedIn'] = true;
-                $_SESSION['rol'] = $row['account_rol'];
-                echo $_SESSION['loggedIn'];
-                if($_SESSION['rol'] == "admin"){
-                    if (headers_sent()) {
-                        die("Redirect failed. Please click on this link: <a href=../pages/admin.php");
-                    }
-                    else{
-                        exit(header("location:admin.php"));
-                    }
+                if($row['account_rol'] == "niets")
+                {
+                    $info = "de club moet u eerst nog als lid toevoegen";
                 }else{
-                    if (headers_sent()) {
-                        die("Redirect failed. Please click on this link: <a href=../pages/index.php");
-                    }
-                    else{
-                        exit(header("location:index.php"));
+                    $_SESSION['lidnummer'] = $row['nummer'];
+                    $_SESSION['loggedIn'] = true;
+                    $_SESSION['rol'] = $row['account_rol'];
+                    echo $_SESSION['loggedIn'];
+                    if ($_SESSION['rol'] == "admin") {
+                        if (headers_sent()) {
+                            die("Redirect failed. Please click on this link: <a href=../pages/admin.php");
+                        } else {
+                            exit(header("location:admin.php"));
+                        }
+                    } else {
+                        if (headers_sent()) {
+                            die("Redirect failed. Please click on this link: <a href=../pages/index.php");
+                        } else {
+                            exit(header("location:index.php"));
+                        }
                     }
                 }
             }
