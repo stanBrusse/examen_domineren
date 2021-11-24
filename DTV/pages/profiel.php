@@ -94,15 +94,18 @@ if(isset($_POST['btnUitloggen']))
             border: 0px;
         }
         th{
+           text-align: center;
             border: 0px;
         }
 
         .A_afmelden {
             padding: 2px;
-            background-color: white;
-            border: 1px solid black;
+            background-color: #c82333;
+            border: 1px solid #c82333;
             text-decoration: none;
-            color: black;
+            color: white;
+            border-radius: 4px;
+            height: 50px;
         }
         tr:nth-child(even) {background-color: lightgray; border: 0px;}
 
@@ -140,14 +143,21 @@ if(isset($_POST['btnUitloggen']))
             $sql->execute();
             foreach($sql as $row)
             {
-                $nummer = $row['nummer'];
-                $datum = date("d-m-Y", strtotime($row['datum']));
-
-                echo "<tr>";
-                echo "<td> binnenbaan"  . "</td>";            
-                echo "<td>". $datum . "<br>" . $row['tijd_Begin'] . " - " . $row['tijd_Eind']  . "</td>";            
-                echo "<td><a href='profiel.php?baanID=$nummer' class='A_afmelden'>afmelden</a></td>";            
-                echo "</tr>";          
+                $sql = $pdo->prepare("SELECT * FROM banen WHERE nummer=?");
+                $sql->bindParam(1, $row['baan_nummer']);
+                $sql->execute();
+                foreach($sql as $result)
+                {
+                    $nummer = $row['nummer'];
+                    $datum = date("d-m-Y", strtotime($row['datum']));
+    
+                    echo "<tr>";
+                    echo "<td>".$result['code'] . " " . $result['ligging']  . "</td>";            
+                    echo "<td>". $datum . "<br>" . $row['tijd_Begin'] . " - " . $row['tijd_Eind']  . "</td>";            
+                    echo "<td><a href='profiel.php?baanID=$nummer' class='A_afmelden'>afmelden</a></td>";            
+                    echo "</tr>";
+                }
+                          
             }
             ?>
 
@@ -157,7 +167,7 @@ if(isset($_POST['btnUitloggen']))
                 <tr>
                     <th> toernooi naam </th>
                     <th> datum </th>
-                    <td>afmelden</td>
+                    <th> afmelden </td>
                 </tr>
             <?php
                 $sql = $pdo->prepare("SELECT * FROM registratie_activiteit WHERE lid_nummer=?");
