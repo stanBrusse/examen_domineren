@@ -1,13 +1,5 @@
 <?php
 include('header.php');
-$admin = 0;
-if($_SESSION['rol'] == "admin" && $_SESSION['loggedIn'] == true)
-{
-    $admin = 1;
-}
-else{
-    $admin = 0;
-}
 
 $username = "bveens_dtv";
 $password = "Tennis@DTV!";
@@ -53,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                     <option value="drink">DRINKS</option>
                 </select>
                 <?php
-                if ($admin = 1) {
+                if (isset($_SESSION['rol']) && $_SESSION['rol'] == "admin" && isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
                     echo '<div class="A-kantine-button">
                     <a href="kantine_create.php"><img class="create" type="button" src="../images/icons/create.svg"></a>
                 </div>';
@@ -69,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                 } else {
                     $foto = "images/NoImage.png";
                 }
-                if ($admin = 1) {
+                if (isset($_SESSION['rol']) && $_SESSION['rol'] == "admin" && isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
                     echo '<div class="kantine-item-card ' . strtolower($item["categorie"]) . '-card" id="' . strtolower($item["categorie"]) . '">
                     <div class="item_Card-Top">
                         <div class="img-container" style="background-image: url(../' . $foto . '");;">

@@ -1,12 +1,7 @@
 <?php
 include('header.php');
-$admin = 0;
-if ($_SESSION['rol'] == "admin" && $_SESSION['loggedIn'] == true) {
-    $admin = 1;
-} else {
-    $admin = 0;
-}
-if (!$admin = 1) {
+
+if (isset($_SESSION['rol']) && $_SESSION['rol'] != "admin" && isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] != true) {
     if (headers_sent()) {
         die("You are not a Admin. Redirect failed. Please click on this link: <a href=../pages/kantine.php>Kantine Page</a>");
     } else {

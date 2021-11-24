@@ -1,12 +1,7 @@
 <?php
 include('header.php');
-$admin = 0;
-if ($_SESSION['rol'] == "admin" && $_SESSION['loggedIn'] == true) {
-    $admin = 1;
-} else {
-    $admin = 0;
-}
-if (!$admin = 1) {
+
+if (isset($_SESSION['rol']) && $_SESSION['rol'] != "admin" && isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] != true) {
     if (headers_sent()) {
         die("You are not a Admin. Redirect failed. Please click on this link: <a href=../pages/kantine.php>Kantine Page</a>");
     } else {
@@ -16,7 +11,6 @@ if (!$admin = 1) {
 $username = "bveens_dtv";
 $password = "Tennis@DTV!";
 $dbname = "bveens_dtv";
-
 
 $servername = "localhost";
 
@@ -42,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $categorie = $result["categorie"];
     $descriptie = $result["descriptie"];
 } elseif ($_SERVER["REQUEST_METHOD"] == "POST") {
-
+    $nummer = (int) $_POST['nummer'];
     if (empty($_POST["naam"])) {
         $naamErr = "Naam is required";
     } else {
@@ -56,8 +50,53 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if (!isset($_FILES["foto"])) {
         $fotoErr = "Foto is required";
     } else {
-        $foto = test_input(htmlspecialchars(basename($_FILES["foto"]["name"])));
-        $foto = "images/kantine_items/" . $foto;
+        $uploadOk = 1;
+        if (!empty($_FILES["foto"]["tmp_name"])) {
+            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $stmt = $conn->query("SELECT * FROM `artikelen` WHERE `nummer`=" . $nummer . "");
+            $result = $stmt->fetch();
+
+            $foto = test_input(htmlspecialchars(basename($_FILES["foto"]["name"])));
+            $foto = "images/kantine_items/" . $foto;
+
+            $target_dir = "../";
+            $target_file = $target_dir . basename($_FILES["foto"]["name"]);
+
+            $target_dir = "../";
+            $target_file = $target_dir . $result["foto"];
+            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+            if (file_exists($target_file)) {
+                unlink($target_file);
+            } else {
+                echo 'Could not delete ' . $target_file . ', file does not exist';
+            }
+
+            $check = getimagesize($_FILES["foto"]["tmp_name"]);
+            if ($check !== false) {
+                echo "File is an image - " . $check["mime"] . ".";
+                $uploadOk = 1;
+            } else {
+                echo "File is not an image.";
+                $uploadOk = 0;
+            }
+
+            // Check file size
+            if ($_FILES["foto"]["size"] > 500000) {
+                echo "Sorry, your file is too large.";
+                $uploadOk = 0;
+            }
+
+            // Allow certain file formats
+            if (
+                $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                && $imageFileType != "gif"
+            ) {
+                echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                $uploadOk = 0;
+            }
+        }
     }
     if (empty($_POST["categorie"])) {
         $categorieErr = "categorie is required";
@@ -70,54 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     } else {
         $descriptie = test_input($_POST["descriptie"]);
     }
-    $target_dir = "../";
-    $target_file = $target_dir . basename($_FILES["foto"]["name"]);
 
-    $target_dir = "../";
-    $target_file = $target_dir . $_POST["foto"];
-    if (file_exists($target_file)) {
-        unlink($target_file);
-    } else {
-        echo 'Could not delete ' . $target_file . ', file does not exist';
-    }
-
-    // Check if image file is a actual image or fake image
-    if (isset($_POST["submit"])) {
-        $check = getimagesize($_FILES["foto"]["tmp_name"]);
-        if ($check !== false) {
-            echo "File is an image - " . $check["mime"] . ".";
-            $uploadOk = 1;
-        } else {
-            echo "File is not an image.";
-            $uploadOk = 0;
-        }
-    }
-
-    // Check if file already exists
-    if (file_exists($target_file)) {
-        echo "Sorry, file already exists.";
-        $uploadOk = 0;
-    }
-
-    // Check file size
-    if ($_FILES["foto"]["size"] > 500000) {
-        echo "Sorry, your file is too large.";
-        $uploadOk = 0;
-    }
-
-    // Allow certain file formats
-    if (
-        $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-        && $imageFileType != "gif"
-    ) {
-        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-        $uploadOk = 0;
-    }
-
-    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-
-
-    $uploadOk = 1;
     // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 0) {
         echo "Sorry, your file was not uploaded.";
@@ -165,6 +157,7 @@ function test_input($data)
     <link rel="stylesheet" href="../css/kantine.css">
     <link rel="stylesheet" href="../css/kantine_admin.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -198,10 +191,17 @@ function test_input($data)
                 <section class="section-categorie">
                     <label for="categorie"><strong>Item categorie: </strong></label>
                     <span id="categorie" name="categorie"><?php echo $categorie; ?> </span>
-                    <select id="categorie" name="categorie" required>
-                        <option value="SNACK">SNACK</option>
-                        <option value="DRINK">DRINK</option>
-                    </select><br />
+                    <?php if ($categorie == "drink") { ?>
+                        <select id="categorieSel" name="categorie" required>
+                            <option value="SNACK">SNACK</option>
+                            <option value="DRINK" selected="selected">DRINK</option>
+                        </select><br />
+                    <?php } elseif ($categorie == "snack") { ?>
+                        <select id="categorieSel" name="categorie" required>
+                            <option value="SNACK" selected="selected">SNACK</option>
+                            <option value="DRINK">DRINK</option>
+                        </select><br />
+                    <?php } ?>
                 </section>
 
                 <input type="submit" value="Submit" name="submit">
