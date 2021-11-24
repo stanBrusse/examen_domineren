@@ -38,9 +38,9 @@
                             <div class="hero-text mt-5 text-center">
 
 
-                                <h1 class=" h6wit">DTV</h1>
+                                <h1 data-aos="fade-up" class=" h6wit">DTV</h1>
 
-                                <h6 class="h6wit">Sport- & Familieclub DTV wil iedereen enthousiast maken voor onze mooie tennissport, wil elke tennisser, zowel recreatief als prestatief, een stapje verder brengen in zijn of haar ontwikkeling en voorzien van een volledig wedstrijdaanbod. DTV wil in de regio Oost-Nederland toonaangevend zijn in de tennisbeleving door middel van uiterst bekwame, betrokken en leergierige tennisleraren, een transparante en warme samenwerking met de KNLTB, tennisverenigingen en andere tennisorganisaties. DTV wil de continuïteit van kwaliteit waarborgen door optimaal te faciliteren en zich altijd te blijven doorontwikkelen.</h6>
+                                <h6 data-aos="fade-up" class="h6wit">Sport- & Familieclub DTV wil iedereen enthousiast maken voor onze mooie tennissport, wil elke tennisser, zowel recreatief als prestatief, een stapje verder brengen in zijn of haar ontwikkeling en voorzien van een volledig wedstrijdaanbod. DTV wil in de regio Oost-Nederland toonaangevend zijn in de tennisbeleving door middel van uiterst bekwame, betrokken en leergierige tennisleraren, een transparante en warme samenwerking met de KNLTB, tennisverenigingen en andere tennisorganisaties. DTV wil de continuïteit van kwaliteit waarborgen door optimaal te faciliteren en zich altijd te blijven doorontwikkelen.</h6>
 
                             </div>
                         </div>
@@ -57,5 +57,3 @@
 </body>
 
 </html>
-
-<?php
