@@ -3,6 +3,7 @@
  <link rel="stylesheet" href="../css/aos.css">
  <link rel="stylesheet" href="../css/main.css">
 
+
 <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
 
@@ -12,8 +13,7 @@
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse hamburger" id="navbarNav">
                 <ul class="navbar-nav ml-lg-auto">
                     <li class="nav-item">
                         <a href="kantine.php" class="nav-link smoothScroll">Kantine</a>
@@ -67,6 +67,8 @@
 
         </div>
     </nav>
+ <script src="js/main.js"></script>
+
  <section class="hero d-flex flex-column justify-content-center align-items-center" id="home">
 
      <div class="container">
