@@ -44,6 +44,7 @@ include('header.php');
                     $startdateDonderdag = strtotime("Thursday");
                     $startdateVrijdag = strtotime("Friday");
                     $startdateZaterdag = strtotime("Saturday");
+                    $startdateZondag = strtotime("Sunday");
                     $enddate = strtotime("+1000 weeks", $startdateMaandag);
 
                     $maandag = date("Y-m-d", $startdateMaandag);
@@ -52,6 +53,7 @@ include('header.php');
                     $donderdag = date("Y-m-d", $startdateDonderdag);
                     $vrijdag = date("Y-m-d", $startdateVrijdag);
                     $zaterdag = date("Y-m-d", $startdateZaterdag);
+                    $zondag = date("Y-m-d", $startdateZondag);
 
 
                     ?>
@@ -81,6 +83,10 @@ include('header.php');
                         if ($startdateZaterdag < $enddate) {
                             echo $zaterdag;
                             $startdateZaterdag = strtotime("+1 week", $startdateZaterdag);}?></th>
+                    <th><?php // Zondag
+                        if ($startdateZondag < $enddate) {
+                            echo $zondag;
+                            $startdateZondag = strtotime("+1 week", $startdateZondag);}?></th>
                     </thead>
 
                     <tbody>
@@ -92,9 +98,62 @@ include('header.php');
                         $query = $pdo->prepare("SELECT * FROM activiteiten");
                         $query->execute();
                         $toernooi = $query->fetch();
-                        
 
-                        if ($toernooi["datum_activiteit"] == $maandag ) {
+                            if ($toernooi["datum_activiteit"] == $maandag) {
+                                echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
+                        <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
+                            } else {
+                                echo '<td></td>';
+                            }
+
+                        if ($toernooi["datum_activiteit"] == $dinsdag) {
+                            echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
+                        <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
+                        } else {
+                            echo '<td></td>';
+                        }
+
+                        if ($toernooi["datum_activiteit"] == $woensdag) {
+                            echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
+                        <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
+                        } else {
+                            echo '<td></td>';
+                        }
+
+                        if ($toernooi["datum_activiteit"] == $donderdag) {
+                            echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
+                        <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
+                        } else {
+                            echo '<td></td>';
+                        }
+
+                        if ($toernooi["datum_activiteit"] == $vrijdag) {
+                            echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
+                        <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
+                        } else {
+                            echo '<td></td>';
+                        }
+
+                        if ($toernooi["datum_activiteit"] == $zaterdag) {
+                            echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
+                        <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
+                        } else {
+                            echo '<td></td>';
+                        }
+
+                        if ($toernooi["datum_activiteit"] == $zondag) {
+                            echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
+                        <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
+                        } else {
+                            echo '<td></td>';
+                        }
+                        ?>
+                    </tr>
+
+                    <tr>
+                        <td><small>9:00 am</small></td>
+                        <?php
+                        if ($toernooi["datum_activiteit"] == $maandag) {
                             echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
                         <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
                         } else {
@@ -135,21 +194,12 @@ include('header.php');
                         } else {
                             echo '<td></td>';
                         }
-                        ?>
-                    </tr>
 
-                    <tr>
-                        <td><small>9:00 am</small></td>
-                        <?php
-                        $myarray = array("foo", "bar", "world");
-
-                        for ($i=0; $i < 6; $i++) {
-                            if(array_key_exists($i, $myarray)){
-                                echo '<td><strong class="text-dark"><a href="toernooiDetail.php">'. $myarray[$i] .'</a></strong>
-                            <span>'. $myarray[$i] .'</span></td>';
-                            }else{
-                                echo '<td></td>';
-                            }
+                        if ($toernooi["datum_activiteit"] == $zondag) {
+                            echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
+                        <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
+                        } else {
+                            echo '<td></td>';
                         }
                         ?>
                         </td>
@@ -158,16 +208,53 @@ include('header.php');
                     <tr>
                         <td><small>11:00 am</small></td>
                         <?php
+                        if ($toernooi["datum_activiteit"] == $maandag) {
+                            echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
+                        <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
+                        } else {
+                            echo '<td></td>';
+                        }
 
-                        $myarray = array("foo", "bar", "world");
+                        if ($toernooi["datum_activiteit"] == $dinsdag) {
+                            echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
+                        <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
+                        } else {
+                            echo '<td></td>';
+                        }
 
-                        for ($i=0; $i < 6; $i++) {
-                            if(array_key_exists($i, $myarray)){
-                                echo '<td><strong class="text-dark"><a href="toernooiDetail.php">'. $myarray[$i] .'</a></strong>
-                            <span>'. $myarray[$i] .'</span></td>';
-                            }else{
-                                echo '<td></td>';
-                            }
+                        if ($toernooi["datum_activiteit"] == $woensdag) {
+                            echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
+                        <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
+                        } else {
+                            echo '<td></td>';
+                        }
+
+                        if ($toernooi["datum_activiteit"] == $donderdag) {
+                            echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
+                        <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
+                        } else {
+                            echo '<td></td>';
+                        }
+
+                        if ($toernooi["datum_activiteit"] == $vrijdag) {
+                            echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
+                        <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
+                        } else {
+                            echo '<td></td>';
+                        }
+
+                        if ($toernooi["datum_activiteit"] == $zaterdag) {
+                            echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
+                        <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
+                        } else {
+                            echo '<td></td>';
+                        }
+
+                        if ($toernooi["datum_activiteit"] == $zondag) {
+                            echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
+                        <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
+                        } else {
+                            echo '<td></td>';
                         }
                         ?>
                     </tr>
@@ -175,15 +262,53 @@ include('header.php');
                     <tr>
                         <td><small>2:00 pm</small></td>
                         <?php
-                        $myarray = array("foo", "bar", "world");
+                        if ($toernooi["datum_activiteit"] == $maandag) {
+                            echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
+                        <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
+                        } else {
+                            echo '<td></td>';
+                        }
 
-                        for ($i=0; $i < 6; $i++) {
-                            if(array_key_exists($i, $myarray)){
-                                echo '<td><strong class="text-dark"><a href="toernooiDetail.php">'. $myarray[$i] .'</a></strong>
-                            <span>'. $myarray[$i] .'</span></td>';
-                            }else{
-                                echo '<td></td>';
-                            }
+                        if ($toernooi["datum_activiteit"] == $dinsdag) {
+                            echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
+                        <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
+                        } else {
+                            echo '<td></td>';
+                        }
+
+                        if ($toernooi["datum_activiteit"] == $woensdag) {
+                            echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
+                        <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
+                        } else {
+                            echo '<td></td>';
+                        }
+
+                        if ($toernooi["datum_activiteit"] == $donderdag) {
+                            echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
+                        <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
+                        } else {
+                            echo '<td></td>';
+                        }
+
+                        if ($toernooi["datum_activiteit"] == $vrijdag) {
+                            echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
+                        <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
+                        } else {
+                            echo '<td></td>';
+                        }
+
+                        if ($toernooi["datum_activiteit"] == $zaterdag) {
+                            echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
+                        <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
+                        } else {
+                            echo '<td></td>';
+                        }
+
+                        if ($toernooi["datum_activiteit"] == $zondag) {
+                            echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
+                        <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
+                        } else {
+                            echo '<td></td>';
                         }
                         ?>
                     </tr>
