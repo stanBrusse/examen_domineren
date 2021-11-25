@@ -80,7 +80,7 @@
                 <tr>
                     <td><?php echo $dag ?></td>
                     <td><?php echo $date; ?></td>
-                    <td><a href="test.php?dag=<?php echo $dag; ?>&date=<?php echo $date; ?>">Klik</a></td>
+                    <td><a href="banenreserveren.php?dag=<?php echo $dag; ?>&date=<?php echo $date; ?>">Klik</a></td>
                 </tr>
             <?php } ?>
 
