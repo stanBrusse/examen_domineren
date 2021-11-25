@@ -1,5 +1,18 @@
 <?php
-session_start();
+    include('header.php');
+
+
+if(!isset($_SESSION['lidnummer']))
+{
+    if (headers_sent()) {
+        die("Redirect failed. Please click on this link: <a href=../pages/inloggen.php");
+    }
+    else{
+        exit(header("location:inloggen.php"));
+    }
+
+}else{
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -93,9 +106,7 @@ if (isset($_GET['nummer'])) {
 </head>
 
 <body>
-    <?php
-    include('header.php');
-    ?>
+    
     <section class="hero d-flex flex-column justify-content-center align-items-center" id="home">
 
 
@@ -140,7 +151,10 @@ if (isset($_GET['nummer'])) {
 
 
     <?php
+}
+
     include('footer.php');
+    
     ?>
 </body>
 
