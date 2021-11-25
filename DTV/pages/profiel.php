@@ -78,6 +78,7 @@ if(isset($_POST['btnUitloggen']))
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>profiel</title>
     <link rel="stylesheet" href="../css/inloggen.css">
+    <link rel="stylesheet" href="../css/select.css">
     <style>
         body {
             color: black;
@@ -108,7 +109,6 @@ if(isset($_POST['btnUitloggen']))
             height: 50px;
         }
         tr:nth-child(even) {background-color: lightgray; border: 0px;}
-
 
     </style>
 </head>
@@ -196,15 +196,20 @@ if(isset($_POST['btnUitloggen']))
         </div>
         <div class="containerrechts">
             <form action="profiel.php" method="POST">
-                <input type="submit" name="btnUitloggen" value="uitloggen"><br><br>
+                <input type="submit" name="btnUitloggen" class="btn btn-danger" value="uitloggen"><br><br>
             </form>
-            <h4>wachtwoord veranderen</h4>
-            <form action="profiel.php" method="POST">
-                <input type="text"     name="huidigwachtwoord"  placeholder="huidig wachtwoord"><br><br>
-                <input type="password"     name="wachtwoord"  placeholder="wachtwoord"><br><br>
-                <input type="password" name="herhaalwachtwoord"  placeholder="wachtwoord herhalen"><br><br>
-                 <input type="submit" value="verander wachtwoord" class="buttonInloggen">
-            </form> 
+            
+            <h4>wilt u iets veranderen van uw profiel?<br>kies hier wat u wilt veranderen</h4>
+            <form action="profielVeranderen.php" method="POST">
+            <div class="select">
+                    <select name="veranderen">
+                        <option value="wachtwoord">wachtwoord</option>
+                        <option value="email">emailadres</option>
+                        <option value="adres">adres</option>
+                    </select>
+                    </div>
+                <input type="submit" value="veranderen" class="buttonInloggen">
+            </form>
         </div>
 
     </div>
@@ -215,3 +220,9 @@ if(isset($_POST['btnUitloggen']))
 </body>
 
 </html>
+
+<div id="info">Observe the platform icon's motion direction when there is up and down hover on options.</div>
+
+<form id="app-cover">
+            
+    </form>
