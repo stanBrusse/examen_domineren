@@ -88,7 +88,7 @@ if($_SESSION['rol'] == "admin" && $_SESSION['loggedIn'] == true)
     <input type="submit" value="Banen reserveren" class="banenButton">
 </div>
 </form>
-<form action="adminKantine.php" method="POST">
+<form action="kantine.php" method="POST">
 <div class="kantine">
     <h3 class="tekst">Kantine beheren</h3>
     <input type="submit" value="Kantine beheren" class="banenButton">

@@ -39,46 +39,101 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $nummer = (int) $_POST['nummer'];
     if (empty($_POST["naam"])) {
         $naamErr = "Naam is required";
+        $uploadOk = 0;
     } else {
         $naam = test_input($_POST["naam"]);
+        $uploadOk = 1;
     }
     if (empty($_POST["prijs"])) {
         $prijsErr = "Prijs is required";
+        $uploadOk = 0;
     } else {
         $prijs = test_input($_POST["prijs"]);
-    }
-    if (!isset($_FILES["foto"])) {
-        $fotoErr = "Foto is required";
-    } else {
         $uploadOk = 1;
+    }
+
+    if (empty($_POST["categorie"])) {
+        $categorieErr = "categorie is required";
+        $uploadOk = 0;
+    } else {
+        $categorie = test_input($_POST["categorie"]);
+        $categorie = strtolower($categorie);
+        $uploadOk = 1;
+    }
+    if (empty($_POST["descriptie"])) {
+        $descriptieErr = "Description is required";
+        $uploadOk = 0;
+    } else {
+        $descriptie = test_input($_POST["descriptie"]);
+        $uploadOk = 1;
+    }
+
+    $fotoUp = basename($_FILES["foto"]["name"]);
+
+    if ($fotoUp == "") {
+        // Check if $uploadOk is set to 0 by an error
+        if ($uploadOk == 0) {
+            echo "Sorry, your file was not uploaded.";
+            // if everything is ok, try to upload file
+        } else {
+            echo "NO IMAGE";
+            try {
+                $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+                // set the PDO error mode to exception
+                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                $sql = "UPDATE artikelen SET naam=?, descriptie=?, foto=?, prijs=?, categorie=? WHERE nummer=?";
+                $stmt = $conn->prepare($sql);
+                $nummer = (int) $_POST['nummer'];
+                $fotoUp = basename($_FILES["foto"]["name"]);
+                if ($fotoUp == "") {
+                    $fotoUp = "NoImageWasUploaded";
+                }
+                $foto = "images/kantine_items/" . $fotoUp;
+                $stmt->execute([$naam, $descriptie, $foto, $prijs, $categorie, $nummer]);
+
+                $naam = $prijs = $foto = $categorie = $descriptie = "";
+                $conn = null;
+                if (headers_sent()) {
+                    die("Redirect failed. Please click on this link: <a href=../pages/kantine.php>Kantine Page</a>");
+                } else {
+                    exit(header("location:kantine.php"));
+                }
+            } catch (PDOException $e) {
+                echo $sql . "<br>" . $e->getMessage();
+            }
+        }
+    } else {
+        echo "IMAGE";
+        $uploadOk = 1;
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $stmt = $conn->query("SELECT * FROM `artikelen` WHERE `nummer`=" . $nummer . "");
+        $result = $stmt->fetch();
+
         if (!empty($_FILES["foto"]["tmp_name"])) {
-            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $stmt = $conn->query("SELECT * FROM `artikelen` WHERE `nummer`=" . $nummer . "");
-            $result = $stmt->fetch();
-
-            $foto = test_input(htmlspecialchars(basename($_FILES["foto"]["name"])));
-            $foto = "images/kantine_items/" . $foto;
-
-            $target_dir = "../";
+            $target_dir = "../images/kantine_items/";
             $target_file = $target_dir . basename($_FILES["foto"]["name"]);
-
-            $target_dir = "../";
-            $target_file = $target_dir . $result["foto"];
+            $uploadOk = 1;
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-            if (file_exists($target_file)) {
-                unlink($target_file);
-            } else {
-                echo 'Could not delete ' . $target_file . ', file does not exist';
+
+            // Check if image file is a actual image or fake image
+            if (isset($_POST["submit"])) {
+                $check = getimagesize($_FILES["foto"]["tmp_name"]);
+                if ($check !== false) {
+                    echo "File is an image - " . $check["mime"] . ".";
+                    $uploadOk = 1;
+                } else {
+                    echo "File is not an image.";
+                    $uploadOk = 0;
+                }
             }
 
-            $check = getimagesize($_FILES["foto"]["tmp_name"]);
-            if ($check !== false) {
-                echo "File is an image - " . $check["mime"] . ".";
-                $uploadOk = 1;
-            } else {
-                echo "File is not an image.";
+            // Check if file already exists
+            if (file_exists($target_file)) {
+                echo "Sorry, file already exists.";
                 $uploadOk = 0;
             }
 
@@ -89,52 +144,48 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             }
 
             // Allow certain file formats
-            if (
-                $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-                && $imageFileType != "gif"
-            ) {
+            if ( $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
                 echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
                 $uploadOk = 0;
             }
-        }
-    }
-    if (empty($_POST["categorie"])) {
-        $categorieErr = "categorie is required";
-    } else {
-        $categorie = test_input($_POST["categorie"]);
-        $categorie = strtolower($categorie);
-    }
-    if (empty($_POST["descriptie"])) {
-        $descriptieErr = "Description is required";
-    } else {
-        $descriptie = test_input($_POST["descriptie"]);
-    }
 
-    // Check if $uploadOk is set to 0 by an error
-    if ($uploadOk == 0) {
-        echo "Sorry, your file was not uploaded.";
-        // if everything is ok, try to upload file
-    } else {
-        try {
-            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-            // set the PDO error mode to exception
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $sql = "UPDATE artikelen SET naam=?, descriptie=?, foto=?, prijs=?, categorie=? WHERE nummer=?";
-            $stmt = $conn->prepare($sql);
-            $nummer = (int) $_POST['nummer'];
-            $foto = "images/kantine_items/" . basename($_FILES["foto"]["name"]);
-            $stmt->execute([$naam, $descriptie, $foto, $prijs, $categorie, $nummer]);
 
-            $naam = $prijs = $foto = $categorie = $descriptie = "";
-            $conn = null;
-            if (headers_sent()) {
-                die("Redirect failed. Please click on this link: <a href=../pages/kantine.php>Kantine Page</a>");
-            } else {
-                exit(header("location:kantine.php"));
+            $target_file_old = '../' . $_POST['foto_old'];
+            $imageFileType = strtolower(pathinfo($target_file_old, PATHINFO_EXTENSION));
+            if (file_exists($target_file_old)) {
+                unlink($target_file_old);
             }
-        } catch (PDOException $e) {
-            echo $sql . "<br>" . $e->getMessage();
+
+            if (move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file)) {
+                try {
+                    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+                    // set the PDO error mode to exception
+                    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                    $sql = "UPDATE artikelen SET naam=?, descriptie=?, foto=?, prijs=?, categorie=? WHERE nummer=?";
+                    $stmt = $conn->prepare($sql);
+                    $nummer = (int) $_POST['nummer'];
+                    $fotoUp = basename($_FILES["foto"]["name"]);
+                    if ($fotoUp == "") {
+                        $fotoUp = "NoImageWasUploaded";
+                    }
+                    $foto = "images/kantine_items/" . $fotoUp;
+                    $stmt->execute([$naam, $descriptie, $foto, $prijs, $categorie, $nummer]);
+
+                    $naam = $prijs = $foto = $categorie = $descriptie = "";
+                    $conn = null;
+                    if (headers_sent()) {
+                        die("Redirect failed. Please click on this link: <a href=../pages/kantine.php>Kantine Page</a>");
+                    } else {
+                        exit(header("location:kantine.php"));
+                    }
+                } catch (PDOException $e) {
+                    echo $sql . "<br>" . $e->getMessage();
+                }
+            } else {
+                echo "Sorry, there was an error uploading your file.";
+            }
         }
     }
 }
@@ -166,6 +217,7 @@ function test_input($data)
             <form class="kantine-form" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
                 <input type="hidden" name="_METHOD" value="DELETE">
                 <input type="hidden" name="nummer" value="<?php echo $nummer; ?>">
+                <input type="hidden" name="foto_old" value="<?php echo $foto; ?>">
 
                 <section class="section-naam">
                     <label for="naam"><strong>Item Naam: </strong></label>
