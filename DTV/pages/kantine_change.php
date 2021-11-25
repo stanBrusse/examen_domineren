@@ -8,19 +8,6 @@ if (isset($_SESSION['rol']) && $_SESSION['rol'] != "admin" && isset($_SESSION['l
         exit(header("location:kantine.php"));
     }
 }
-$username = "bveens_dtv";
-$password = "Tennis@DTV!";
-$dbname = "bveens_dtv";
-
-$servername = "localhost";
-
-$username = "root";
-$password = "";
-$dbname = "dtv";
-
-
-
-
 
 // define variables and set to empty values
 $naamErr = $prijsErr = $fotoErr = $categorieErr = $ddescriptieErr = "";

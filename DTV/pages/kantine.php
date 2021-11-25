@@ -1,19 +1,6 @@
 <?php
 include('header.php');
 
-$username = "bveens_dtv";
-$password = "Tennis@DTV!";
-$dbname = "bveens_dtv";
-
-
-$servername = "localhost";
-
-$username = "root";
-$password = "";
-$dbname = "dtv";
-
-
-
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $db = new db;
     $stmt = $db->query("SELECT * FROM `artikelen`");
