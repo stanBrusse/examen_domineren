@@ -70,25 +70,25 @@ if($_SESSION['rol'] == "admin" && $_SESSION['loggedIn'] == true)
 
 
 <div class="container">
-<form action="adminLeden.php" method="POST">
+<form action="adminLeden.php" method="GET">
 <div class="leden">
     <h3 class="tekst">Leden beheren</h3>
     <input type="submit" value="Leden beheren" class="banenButton">
 </div>
 </form>
-<form action="adminToernooien.php" method="POST">
+<form action="adminToernooien.php" method="GET">
 <div class="toernooien">
     <h3 class="tekst">Toernooien inplannen</h3>
     <input type="submit" value="Toernooien inplannen" class="banenButton">
 </div>
 </form>
-<form action="adminBanen.php" method="POST">
+<form action="adminBanen.php" method="GET">
 <div class="banen">
     <h3 class="tekst">Banen reserveren</h3>
     <input type="submit" value="Banen reserveren" class="banenButton">
 </div>
 </form>
-<form action="kantine.php" method="POST">
+<form action="kantine.php" method="GET">
 <div class="kantine">
     <h3 class="tekst">Kantine beheren</h3>
     <input type="submit" value="Kantine beheren" class="banenButton">
