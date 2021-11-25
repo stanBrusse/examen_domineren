@@ -118,6 +118,7 @@ function test_input($data)
     <meta charset="utf-8">
     <title>banen Create</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/banen_admin.css">
 </head>
 
 <body>
@@ -157,10 +158,16 @@ function test_input($data)
                     <label for="service"><strong>Baan service:</strong></label>
                     <input type="date" id="service" name="service" required><br />
                 </section>
-
-                <input type="submit" value="Submit" name="submit">
-                <a type="button" class="button" name="return" href="banen_onderhoud.php">Ik heb genoeg toegevoegd</a>
+                <section class="section-submit">
+                    <input type="submit" value="Submit" name="submit">
+                </section>
             </form>
+
+            <form class="banen-form" action="banen_onderhoud.php" method="GET">
+                <section class="section-return"><input type="submit" value="Ik heb genoeg toegevoegd." name="submit"></section>
+            </form>
+
+
         </div>
     </div>
     <?php include('footer.php'); ?>

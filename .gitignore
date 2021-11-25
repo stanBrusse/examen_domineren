@@ -1,2 +1,3 @@
 .vscode/*
 DTV/images/kantine_items/*
+!DTV/images/kantine_items/.gitkeep

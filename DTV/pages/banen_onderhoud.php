@@ -14,7 +14,7 @@ $result = $stmt;
 <head>
     <meta charset="utf-8">
     <title>Banen Onderhoud</title>
-    <link rel="stylesheet" href="../css/banen_onderhoud.css">
+    <link rel="stylesheet" href="../css/banen_admin.css">
 </head>
 
 <body>
@@ -49,17 +49,15 @@ $result = $stmt;
             <tbody>
                 <?php while ($baan = $result->fetch()) { ?>
                     <tr>
-                        <form action="banen_edit.php" method="POST">
-                            <td><?php echo $baan['code']; ?></td>
-                            <td><?php echo $baan['soort']; ?></td>
-                            <td><?php echo $baan['ligging']; ?></td>
-                            <td><?php echo $baan['afmeting_lengte']; ?></td>
-                            <td><?php echo $baan['afmeting_breedte']; ?></td>
-                            <td><?php echo $baan['vloer']; ?></td>
-                            <td><?php echo $baan['check_datum']; ?></td>
-                            <td><?php echo $baan['service_datum']; ?></td>
-                            <td><input type="submit" value="EDIT" name="edit"></td>
-                        </form>
+                        <td><?php echo $baan['code']; ?></td>
+                        <td><?php echo $baan['soort']; ?></td>
+                        <td><?php echo $baan['ligging']; ?></td>
+                        <td><?php echo $baan['afmeting_lengte']; ?></td>
+                        <td><?php echo $baan['afmeting_breedte']; ?></td>
+                        <td><?php echo $baan['vloer']; ?></td>
+                        <td><?php echo $baan['check_datum']; ?></td>
+                        <td><?php echo $baan['service_datum']; ?></td>
+                        <td><a href="banen_edit.php?nummer=<?php echo $baan['nummer']; ?>"><img class="change" type="button" src="../images/icons/change.svg"></a></td>
                     </tr>
                 <?php } ?>
             </tbody>
