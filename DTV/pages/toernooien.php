@@ -1,3 +1,18 @@
+<?php
+
+// deze database is voor het maken en testen. kan weg
+$servername = "localhost";
+$username = "DTVUSER";
+$password = "1234";
+$dbname = "dtv";
+$charset = "utf8mb4";
+
+//maakt de connectie aan
+$dsn = "mysql:host=" . $servername . "; dbname=" . $dbname . "; charset=" . $charset;
+$pdo = new PDO($dsn, $username, $password);
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,45 +37,103 @@ include('header.php');
 
             <div class="col-lg-12 py-5 col-md-12 col-12">
                 <table class="table table-bordered table-responsive schedule-table">
+                    <?php
+                    $startdateMaandag = strtotime("Monday");
+                    $startdateDinsdag = strtotime("Tuesday");
+                    $startdateWoensdag = strtotime("Wednesday");
+                    $startdateDonderdag = strtotime("Thursday");
+                    $startdateVrijdag = strtotime("Friday");
+                    $startdateZaterdag = strtotime("Saturday");
+                    $enddate = strtotime("+1000 weeks", $startdateMaandag);
 
+                    $maandag = date("Y-m-d", $startdateMaandag);
+                    $dinsdag = date("Y-m-d", $startdateDinsdag);
+                    $woensdag = date("Y-m-d", $startdateWoensdag);
+                    $donderdag = date("Y-m-d", $startdateDonderdag);
+                    $vrijdag = date("Y-m-d", $startdateVrijdag);
+                    $zaterdag = date("Y-m-d", $startdateZaterdag);
+
+
+                    ?>
                     <thead class="thead-light">
                     <th><i class="fa fa-calendar"></i></th>
-                    <th>Mon</th>
-                    <th>Tue</th>
-                    <th>Wed</th>
-                    <th>Thu</th>
-                    <th>Fri</th>
-                    <th>Sat</th>
+                    <th><?php // Maandag
+                        if ($startdateMaandag < $enddate) {
+                            echo $maandag;
+                            $startdateMaandag = strtotime("+1 week", $startdateMaandag);}?></th>
+                    <th><?php // Dinsdag
+                        if ($startdateDinsdag < $enddate) {
+                            echo $dinsdag;
+                            $startdateDinsdag = strtotime("+1 week", $startdateDinsdag);}?></th>
+                    <th><?php // Woensdag
+                        if ($startdateWoensdag < $enddate) {
+                            echo $woensdag;
+                            $startdateWoensdag = strtotime("+1 week", $startdateWoensdag);}?></th>
+                    <th><?php // Donderdag
+                        if ($startdateDonderdag < $enddate) {
+                            echo $donderdag;
+                            $startdateDonderdag = strtotime("+1 week", $startdateDonderdag);}?></th>
+                    <th><?php // Vrijdag
+                        if ($startdateVrijdag < $enddate) {
+                            echo $vrijdag;
+                            $startdateVrijdag = strtotime("+1 week", $startdateVrijdag);}?></th>
+                    <th><?php // Zaterdag
+                        if ($startdateZaterdag < $enddate) {
+                            echo $zaterdag;
+                            $startdateZaterdag = strtotime("+1 week", $startdateZaterdag);}?></th>
                     </thead>
 
                     <tbody>
                     <tr>
                         <td><small class="">7:00 am</small></td>
                         <?php
-                        /* prepare statement
-                        if ($stmt = $mysqli->prepare($query)) {
-                            $stmt->execute();
 
-                            /* bind variables to prepared statement
-                            $stmt->bind_result($col1, $col2);
 
-                            /* fetch values
-                            while ($stmt->fetch()) {
-                                $myarray[$col1]=$col2;
-                            }*/
+                        $query = $pdo->prepare("SELECT * FROM activiteiten");
+                        $query->execute();
+                        $toernooi = $query->fetch();
+                        
 
-                        $myarray = array("foo", "bar", "world");
+                        if ($toernooi["datum_activiteit"] == $maandag ) {
+                            echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
+                        <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
+                        } else {
+                            echo '<td></td>';
+                        }
 
-                        for ($i=0; $i < 6; $i++) {
-                            if(array_key_exists($i, $myarray)){
-                                echo '<td><strong class="text-dark"><a href="toernooiDetail.php">'. $myarray[$i] .'</a></strong>
-                            <span>'. $myarray[$i] .'</span></td>';
-                            }else{
-                                echo '<td></td>';
-                            }
-                            /*}
-                             close statement
-                            $stmt->close();*/
+                        if ($toernooi["datum_activiteit"] == $dinsdag) {
+                            echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
+                        <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
+                        } else {
+                            echo '<td></td>';
+                        }
+
+                        if ($toernooi["datum_activiteit"] == $woensdag) {
+                            echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
+                        <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
+                        } else {
+                            echo '<td></td>';
+                        }
+
+                        if ($toernooi["datum_activiteit"] == $donderdag) {
+                            echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
+                        <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
+                        } else {
+                            echo '<td></td>';
+                        }
+
+                        if ($toernooi["datum_activiteit"] == $vrijdag) {
+                            echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
+                        <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
+                        } else {
+                            echo '<td></td>';
+                        }
+
+                        if ($toernooi["datum_activiteit"] == $zaterdag) {
+                            echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
+                        <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
+                        } else {
+                            echo '<td></td>';
                         }
                         ?>
                     </tr>
@@ -68,18 +141,6 @@ include('header.php');
                     <tr>
                         <td><small>9:00 am</small></td>
                         <?php
-                        /* prepare statement
-                        if ($stmt = $mysqli->prepare($query)) {
-                            $stmt->execute();
-
-                            /* bind variables to prepared statement
-                            $stmt->bind_result($col1, $col2);
-
-                            /* fetch values
-                            while ($stmt->fetch()) {
-                                $myarray[$col1]=$col2;
-                            }*/
-
                         $myarray = array("foo", "bar", "world");
 
                         for ($i=0; $i < 6; $i++) {
@@ -89,9 +150,6 @@ include('header.php');
                             }else{
                                 echo '<td></td>';
                             }
-                            /*}
-                             close statement
-                            $stmt->close();*/
                         }
                         ?>
                         </td>
@@ -100,17 +158,6 @@ include('header.php');
                     <tr>
                         <td><small>11:00 am</small></td>
                         <?php
-                        /* prepare statement
-                        if ($stmt = $mysqli->prepare($query)) {
-                            $stmt->execute();
-
-                            /* bind variables to prepared statement
-                            $stmt->bind_result($col1, $col2);
-
-                            /* fetch values
-                            while ($stmt->fetch()) {
-                                $myarray[$col1]=$col2;
-                            }*/
 
                         $myarray = array("foo", "bar", "world");
 
@@ -121,9 +168,6 @@ include('header.php');
                             }else{
                                 echo '<td></td>';
                             }
-                            /*}
-                             close statement
-                            $stmt->close();*/
                         }
                         ?>
                     </tr>
@@ -131,18 +175,6 @@ include('header.php');
                     <tr>
                         <td><small>2:00 pm</small></td>
                         <?php
-                        /* prepare statement
-                        if ($stmt = $mysqli->prepare($query)) {
-                            $stmt->execute();
-
-                            /* bind variables to prepared statement
-                            $stmt->bind_result($col1, $col2);
-
-                            /* fetch values
-                            while ($stmt->fetch()) {
-                                $myarray[$col1]=$col2;
-                            }*/
-
                         $myarray = array("foo", "bar", "world");
 
                         for ($i=0; $i < 6; $i++) {
@@ -152,9 +184,6 @@ include('header.php');
                             }else{
                                 echo '<td></td>';
                             }
-                            /*}
-                             close statement
-                            $stmt->close();*/
                         }
                         ?>
                     </tr>
