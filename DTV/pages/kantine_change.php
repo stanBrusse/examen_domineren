@@ -144,18 +144,21 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             }
 
             // Allow certain file formats
-            if ( $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
+            if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
                 echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
                 $uploadOk = 0;
             }
 
 
-
-            $target_file_old = '../' . $_POST['foto_old'];
-            $imageFileType = strtolower(pathinfo($target_file_old, PATHINFO_EXTENSION));
-            if (file_exists($target_file_old)) {
-                unlink($target_file_old);
+            if ($_POST['foto_old'] == "images/NoImage.png") {
+            } else {
+                $target_file_old = '../' . $_POST['foto_old'];
+                $imageFileType = strtolower(pathinfo($target_file_old, PATHINFO_EXTENSION));
+                if (file_exists($target_file_old)) {
+                    unlink($target_file_old);
+                }
             }
+
 
             if (move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file)) {
                 try {
