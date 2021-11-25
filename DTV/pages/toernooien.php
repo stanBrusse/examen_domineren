@@ -2,8 +2,10 @@
 
 // deze database is voor het maken en testen. kan weg
 $servername = "localhost";
-$username = "DTVUSER";
-$password = "1234";
+// $username = "DTVUSER";
+$username = "root";
+// $password = "1234";
+$password = "";
 $dbname = "dtv";
 $charset = "utf8mb4";
 
