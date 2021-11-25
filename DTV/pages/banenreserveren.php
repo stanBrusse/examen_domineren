@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 include('header.php');
 ?>
 <section class="content">
-<h1>Maandag 15-11-2021</h1>
+<h1><?php echo $_GET['dag'] . " " . $_GET['date']; ?></h1>
 <head>
 <link rel="stylesheet" href="../css/test.css">
 </head>
@@ -76,7 +76,7 @@ $t = 1300; $tijd = 1200; while($tijd != 2300) { ?>
         $resultBan = $stmtB;
         while ($baan = $resultBan->fetch()) {
 
-          $stmtA = $pdo->query("SELECT * FROM `reservatie_baan` WHERE `baan_nummer`=" . $baan["nummer"] . " AND `tijd_Begin`='". $tijd ."' AND `datum`='" . $datum . "'");
+          $stmtA = $pdo->query("SELECT * FROM `reservatie_baan` WHERE `baan_nummer`=" . $baan["nummer"] . " AND `tijd_Begin`='". $tijd ."' AND `datum`='" . $_GET['date'] . "'");
           $resultRes = $stmtA->fetch();
           if ($resultRes) {
             $r_datum = $resultRes["datum"];
