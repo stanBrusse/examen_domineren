@@ -19,7 +19,8 @@ $result = $stmt;
 
 <body>
     <?php include('header.php'); ?>
-    <section class="section_table">
+    <section>
+        <a type="button" href="banen_create.php">Create</a>
         <table>
             <colgroup>
                 <col class="a" />
@@ -62,8 +63,6 @@ $result = $stmt;
                     </tr>
                 <?php } ?>
             </tbody>
-
-
         </table>
     </section>
 

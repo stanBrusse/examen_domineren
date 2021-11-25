@@ -1,5 +1,6 @@
 <?php
 include('header.php');
+include('../php/db.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $db = new db;

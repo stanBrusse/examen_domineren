@@ -1,5 +1,6 @@
 <?php
 include('header.php');
+include('../php/db.php');
 
 if (isset($_SESSION['rol']) && $_SESSION['rol'] != "admin" && isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] != true) {
     if (headers_sent()) {
