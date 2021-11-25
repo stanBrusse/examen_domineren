@@ -41,11 +41,13 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 <?php 
 include('header.php');
 ?>
-<section class="content">
+<a href="banen.php">Terug</a>
+<section class="content" style="text-align: center;">
 <h1><?php echo $_GET['dag'] . " " . $_GET['date']; ?></h1>
 <head>
 <link rel="stylesheet" href="../css/test.css">
 </head>
+
 <table border="black 1px" align="center" cellpadding="5px">
 
   <thead>
