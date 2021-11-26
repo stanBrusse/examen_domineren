@@ -1,74 +1,3 @@
-<?php
-include('header.php');
-
-if( $_SESSION['loggedIn'] == true)
-{}else{
-    if (headers_sent()) {
-        die("Redirect failed. Please click on this link: <a href=../pages/index.php");
-        }
-        else{
-        exit(header("location:index.php"));
-        } 
-}
-$info = "";
-// deze database is voor het maken en testen. kan weg
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "dtv";
-$charset = "utf8mb4";
-
-//maakt de connectie aan 
-$dsn = "mysql:host=" . $servername . "; dbname=" . $dbname . "; charset=" . $charset;
-$pdo = new PDO($dsn, $username, $password);
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
-
-if(isset($_POST['btnUitloggen']))
-{
-    session_unset();
-    session_destroy();
-    if (headers_sent()) {
-        die("Redirect failed. Please click on this link: <a href=../pages/index.php");
-        }
-        else{
-        exit(header("location:index.php"));
-    } 
-
-}elseif(isset($_POST['huidigwachtwoord']) && isset($_POST['wachtwoord']) && isset($_POST['herhaalwachtwoord']))
-{
-    
-    $sql = $pdo->prepare("SELECT * FROM accounts WHERE nummer=? AND wachtwoord=?");
-        $sql->bindParam(1, $_SESSION['lidnummer']);
-        $sql->bindParam(2, md5($_POST['huidigwachtwoord']));
-        $sql->execute();
-
-    if($sql->rowCount() == 1)
-    {
-        if($_POST['wachtwoord'] === $_POST['herhaalwachtwoord'])
-        {
-            $sql = $pdo->prepare("UPDATE accounts SET wachtwoord=? WHERE nummer=?");
-            $sql->bindParam(1, md5($_POST['wachtwoord']));
-            $sql->bindParam(2, $_SESSION['lidnummer']);
-            $sql->execute();
-        }
-    }
-}elseif(isset($_GET['baanID']))
-{
-    $sql = $pdo->prepare("DELETE FROM reservatie_baan WHERE nummer=?");
-    $sql->bindParam(1, $_GET['baanID']);
-    $sql->execute();
-    header("Location: profiel.php");
-}elseif(isset($_GET['activiteit']) && isset($_GET['lidnummer']))
-{
-    $sql = $pdo->prepare("DELETE FROM registratie_activiteit WHERE activiteit_nummer=? AND lid_nummer=?");
-    $sql->bindParam(1, $_GET['activiteit']);
-    $sql->bindParam(2, $_GET['lidnummer']);
-    $sql->execute();
-}
-
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -109,9 +38,85 @@ if(isset($_POST['btnUitloggen']))
             height: 50px;
         }
         tr:nth-child(even) {background-color: lightgray; border: 0px;}
+        .buttonInloggen
+    {
+        margin-top: 20px;
+    }
 
     </style>
 </head>
+<?php
+include('header.php');
+
+if( $_SESSION['loggedIn'] == true)
+{}else{
+    if (headers_sent()) {
+        die("Redirect failed. Please click on this link: <a href=../pages/index.php");
+        }
+        else{
+        exit(header("location:index.php"));
+        } 
+}
+$info = "";
+// deze database is voor het maken en testen. kan weg
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "dtv";
+$charset = "utf8mb4";
+
+//maakt de connectie aan 
+$dsn = "mysql:host=" . $servername . "; dbname=" . $dbname . "; charset=" . $charset;
+$pdo = new PDO($dsn, $username, $password);
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
+
+if(isset($_POST['btnUitloggen']))
+{
+    session_unset();
+    session_destroy();
+    if (headers_sent()) {
+        die("Redirect failed. Please click on this link: <a href=../pages/index.php>terug</a>");
+        }
+        else{
+        exit(header("location:index.php"));
+    } 
+
+}elseif(isset($_POST['huidigwachtwoord']) && isset($_POST['wachtwoord']) && isset($_POST['herhaalwachtwoord']))
+{
+    
+    $sql = $pdo->prepare("SELECT * FROM accounts WHERE nummer=? AND wachtwoord=?");
+        $sql->bindParam(1, $_SESSION['lidnummer']);
+        $sql->bindParam(2, md5($_POST['huidigwachtwoord']));
+        $sql->execute();
+
+    if($sql->rowCount() == 1)
+    {
+        if($_POST['wachtwoord'] === $_POST['herhaalwachtwoord'])
+        {
+            $sql = $pdo->prepare("UPDATE accounts SET wachtwoord=? WHERE nummer=?");
+            $sql->bindParam(1, md5($_POST['wachtwoord']));
+            $sql->bindParam(2, $_SESSION['lidnummer']);
+            $sql->execute();
+        }
+    }
+}elseif(isset($_GET['baanID']))
+{
+    $sql = $pdo->prepare("DELETE FROM reservatie_baan WHERE nummer=?");
+    $sql->bindParam(1, $_GET['baanID']);
+    $sql->execute();
+    header("Location: profiel.php");
+}elseif(isset($_GET['activiteit']) && isset($_GET['lidnummer']))
+{
+    $sql = $pdo->prepare("DELETE FROM registratie_activiteit WHERE activiteit_nummer=? AND lid_nummer=?");
+    $sql->bindParam(1, $_GET['activiteit']);
+    $sql->bindParam(2, $_GET['lidnummer']);
+    $sql->execute();
+}
+
+
+
+?>
+
 
 <body>
    
@@ -201,14 +206,10 @@ if(isset($_POST['btnUitloggen']))
             
             <h4>wilt u iets veranderen van uw profiel?<br>kies hier wat u wilt veranderen</h4>
             <form action="profielVeranderen.php" method="POST">
-            <div class="select">
-                    <select name="veranderen">
-                        <option value="wachtwoord">wachtwoord</option>
-                        <option value="email">emailadres</option>
-                        <option value="adres">adres</option>
-                    </select>
-                    </div>
-                <input type="submit" value="veranderen" class="buttonInloggen">
+        
+                <input type="submit" name="wachtwoord" value="wachtwoord" class="buttonInloggen"><br>
+                <input type="submit" name="email" value="email" class="buttonInloggen"><br>
+                <input type="submit" name="adres" value="adres" class="buttonInloggen"><br>
             </form>
         </div>
 
