@@ -101,6 +101,9 @@ include('header.php');
                         // foreach ($tijdData as $tijd) {
                             for($tijd = 1300; $tijd <=2200; $tijd = $tijd+200){
                                 $tijd2 = $tijd-100;
+                                $tijd3 = $tijd-150;
+                                $tijd4 = $tijd-50;
+                                
                                 
                             echo '<tr>';
                             echo '<td><small class="">'. getTijd($tijd-100) . "PM<br>" . getTijd($tijd)  . ' PM</small></td>';
@@ -112,7 +115,7 @@ include('header.php');
                                     // if ($tijd2 < $tijdData) {
                                         foreach ($query as $toernooi) {
                                             if ($toernooi["datum_activiteit"] == $date) {
-                                                if ($toernooi['tijd_start'] == $tijd ||$toernooi['tijd_start'] == $tijd2  ) {
+                                                if ($toernooi['tijd_start'] == $tijd ||$toernooi['tijd_start'] == $tijd2 ||$toernooi['tijd_start'] == $tijd3 ||$toernooi['tijd_start'] == $tijd4 ) {
                                                     echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
                                     <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
                                                 } else {
