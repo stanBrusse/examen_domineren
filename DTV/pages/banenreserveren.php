@@ -1,18 +1,16 @@
 <?php
-// deze database is voor het maken en testen. kan weg
+
 $host = "localhost";
 $dbuser = "root";
 $dbpass = "";
 $dbname = "dtv";
 
-if ($_SERVER["REQUEST_METHOD"] == "GET") {
   $pdo = new PDO("mysql:host=$host;dbname=$dbname", $dbuser, $dbpass);
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
   $stmtB = $pdo->prepare("SELECT * FROM `banen`");
   $stmtB->execute();
   $resultBan = $stmtB;
-}
 
 ?>
 <!DOCTYPE html>
@@ -35,25 +33,29 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             margin-top: 100px;
             line-height: 1;       
         }
+        input{
+          border: none; 
+          background-color: transparent;
+        }
+        input:hover{
+          background-color: cornflowerblue;
+        }
     </style>
 </head>
 <body>
 <?php 
 include('header.php');
 ?>
-<a href="banen.php">Terug</a>
-<section class="content" style="text-align: center;">
+<section class="content">
 <h1><?php echo $_GET['dag'] . " " . $_GET['date']; ?></h1>
 <head>
 <link rel="stylesheet" href="../css/test.css">
 </head>
-
 <table border="black 1px" align="center" cellpadding="5px">
 
   <thead>
     <tr>
       <?php
-      $datum = "2021-11-15";
       echo "<th colspan='2'>Tijd</th>";
       while ($baan = $resultBan->fetch()) {  ?>
         <th colspan="2">Baan <?php echo $baan["nummer"]; ?> (<?php echo $baan["soort"]; ?>)</th>
@@ -62,24 +64,28 @@ include('header.php');
   </thead>
   <tbody>
     <?php
-$t = 1300; $tijd = 1200; while($tijd != 2300) { ?>
+$t = 1200; 
+$tijd = 1200; 
+$datum = $_GET["date"];
+while($tijd != 2300) {
+  ?>
       <tr>
 
         <td colspan="2"><?php 
+        $t += 100;
         $stringTijd = strval($tijd);
         $stringTijd2 = strval($t);
-        $t += 100;
         echo $stringTijd[0] . $stringTijd[1] . ":00 - ". $stringTijd2[0] . $stringTijd2[1] . ":00"; ?></td>
         <?php
 
-
         $stmtB = $pdo->prepare("SELECT * FROM `banen`");
         $stmtB->execute();
-        $resultBan = $stmtB;
+        $resultBan = $stmtB; 
         while ($baan = $resultBan->fetch()) {
 
           $stmtA = $pdo->query("SELECT * FROM `reservatie_baan` WHERE `baan_nummer`=" . $baan["nummer"] . " AND `tijd_Begin`='". $tijd ."' AND `datum`='" . $_GET['date'] . "'");
           $resultRes = $stmtA->fetch();
+
           if ($resultRes) {
             $r_datum = $resultRes["datum"];
             $r_baan_nummer = $resultRes["baan_nummer"];
@@ -94,13 +100,12 @@ $t = 1300; $tijd = 1200; while($tijd != 2300) { ?>
             $r_lid_nummer = null;
           }
 
-
-
           if ($r_baan_nummer == $baan["nummer"]) { ?>
             <td colspan='2' style="background-color: red;">Gereserveerd</td>
           <?php } else { ?>
-            <td colspan='2' style="background-color: greenyellow;"><a href="">Beschikbaar</a></td>
-        <?php }
+            <td colspan='2' style="background-color: greenyellow;"><a href="baan.php?baan=<?php echo $baan["nummer"]; ?>&date=<?php echo $datum; ?>&begintijd=<?php echo $tijd; ?>&eindtijd=<?php echo $t; ?>">Beschikbaar</a></td>
+        <?php 
+      }
         } ?>
       </tr>
     <?php $tijd = $tijd + 100; } ?>
