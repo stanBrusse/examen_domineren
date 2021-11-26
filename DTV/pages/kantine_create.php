@@ -4,7 +4,7 @@ include('../php/db.php');
 
 if (isset($_SESSION['rol']) && $_SESSION['rol'] != "admin" && isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] != true) {
     if (headers_sent()) {
-        die("You are not a Admin. Redirect failed. Please click on this link: <a href=../pages/kantine.php>Kantine Page</a>");
+        die("You are not an Admin. Redirect failed. Please click on this link: <a href=../pages/kantine.php>Kantine Page</a>");
     } else {
         exit(header("location:kantine.php"));
     }
