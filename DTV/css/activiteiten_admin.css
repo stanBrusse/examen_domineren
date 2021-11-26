@@ -12,3 +12,40 @@ th,td{
 .b{
     background-color: rgb(238, 238, 238);
 }
+
+.activiteiten-container{
+    padding: 135px 3%;
+    text-align: center;
+    margin-left: 10%;
+    margin-right: 7%;
+}
+
+.activiteiten-create{
+    text-align: center;
+    width: 50%;
+    
+}
+
+.activiteiten-form{
+    margin: 0% 25%;
+    border: double;
+    width: 400px;
+}
+
+.activiteiten-form section > *{
+    margin: 3px 0px;
+    width: 100%;
+}
+
+.activiteiten-form .section-activiteit > *{
+    margin: 0px 0px;
+    width: 13%;
+}
+
+.activiteiten-form section label{
+    border-top: double;
+}
+
+.activiteiten-form .section-activiteit label{
+    border-top: none;
+}
