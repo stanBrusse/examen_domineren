@@ -45,7 +45,6 @@
     array_push($data, $zondag = date("Y-m-d", $startdateZondag));
 
     asort($data);
-
     function getWeekday($date)
     {
         return date('l', strtotime($date));
@@ -60,11 +59,28 @@
                 <th>Datum</th>
                 <th>Reserveren</th>
             </tr>
-            <?php foreach ($data as $date) { ?>
+            <?php foreach ($data as $date) { 
+                $dag = getWeekday($date); 
+                if($dag == "Monday"){
+                    $dag = "Maandag";
+                }elseif($dag == "Tuesday"){
+                    $dag = "Dinsdag";
+                }elseif($dag == "Wednesday"){
+                    $dag = "Woensdag";
+                }elseif($dag == "Thursday"){
+                    $dag = "Donderdag";
+                }elseif($dag == "Friday"){
+                    $dag = "Vrijdag";
+                }elseif($dag == "Saturday"){
+                    $dag = "Zaterdag";
+                }elseif($dag == "Sunday"){
+                    $dag = "Zondag";
+                }
+                ?>
                 <tr>
-                    <td><?php echo getWeekday($date) ?></td>
+                    <td><?php echo $dag ?></td>
                     <td><?php echo $date; ?></td>
-                    <td><a href="banenreserveren.php?dag=<?php echo getWeekday($date); ?>&date=<?php echo $date; ?>">Klik</a></td>
+                    <td><a href="banenreserveren.php?dag=<?php echo $dag; ?>&date=<?php echo $date; ?>">Klik</a></td>
                 </tr>
             <?php } ?>
 

@@ -1,5 +1,6 @@
 <?php
 include('header.php');
+include('../php/db.php');
 
 if (isset($_SESSION['rol']) && $_SESSION['rol'] != "admin" && isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] != true) {
     if (headers_sent()) {
@@ -8,26 +9,15 @@ if (isset($_SESSION['rol']) && $_SESSION['rol'] != "admin" && isset($_SESSION['l
         exit(header("location:kantine.php"));
     }
 }
-$username = "bveens_dtv";
-$password = "Tennis@DTV!";
-$dbname = "bveens_dtv";
-
-$servername = "localhost";
-
-$username = "root";
-$password = "";
-$dbname = "dtv";
-
 
 // define variables and set to empty values
 $naamErr = $prijsErr = $fotoErr = $categorieErr = $ddescriptieErr = "";
 $naam = $prijs = $foto = $categorie = $descriptie = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $db = new db;
     $nummer = $_GET['nummer'];
-    $stmt = $conn->query("SELECT * FROM `artikelen` WHERE `nummer`=" . $nummer . "");
+    $stmt = $db->query("SELECT * FROM `artikelen` WHERE `nummer`=" . $nummer . "");
     $result = $stmt->fetch();
 
     $naam = $result["naam"];
@@ -78,12 +68,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         } else {
             echo "NO IMAGE";
             try {
-                $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-                // set the PDO error mode to exception
-                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $db = new db;
 
-                $sql = "UPDATE artikelen SET naam=?, descriptie=?, foto=?, prijs=?, categorie=? WHERE nummer=?";
-                $stmt = $conn->prepare($sql);
+                $stmt = $db->query("UPDATE artikelen SET naam=?, descriptie=?, foto=?, prijs=?, categorie=? WHERE nummer=?");
                 $nummer = (int) $_POST['nummer'];
                 $fotoUp = basename($_FILES["foto"]["name"]);
                 if ($fotoUp == "") {
@@ -106,10 +93,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     } else {
         echo "IMAGE";
         $uploadOk = 1;
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $db = new db;
 
-        $stmt = $conn->query("SELECT * FROM `artikelen` WHERE `nummer`=" . $nummer . "");
+        $stmt = $db->query("SELECT * FROM `artikelen` WHERE `nummer`=" . $nummer . "");
         $result = $stmt->fetch();
 
         if (!empty($_FILES["foto"]["tmp_name"])) {
@@ -144,27 +130,27 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             }
 
             // Allow certain file formats
-            if ( $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
+            if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
                 echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
                 $uploadOk = 0;
             }
 
 
-
-            $target_file_old = '../' . $_POST['foto_old'];
-            $imageFileType = strtolower(pathinfo($target_file_old, PATHINFO_EXTENSION));
-            if (file_exists($target_file_old)) {
-                unlink($target_file_old);
+            if ($_POST['foto_old'] == "images/NoImage.png") {
+            } else {
+                $target_file_old = '../' . $_POST['foto_old'];
+                $imageFileType = strtolower(pathinfo($target_file_old, PATHINFO_EXTENSION));
+                if (file_exists($target_file_old)) {
+                    unlink($target_file_old);
+                }
             }
+
 
             if (move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file)) {
                 try {
-                    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-                    // set the PDO error mode to exception
-                    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    $db = new db;
 
-                    $sql = "UPDATE artikelen SET naam=?, descriptie=?, foto=?, prijs=?, categorie=? WHERE nummer=?";
-                    $stmt = $conn->prepare($sql);
+                    $stmt = $db->query("UPDATE artikelen SET naam=?, descriptie=?, foto=?, prijs=?, categorie=? WHERE nummer=?");
                     $nummer = (int) $_POST['nummer'];
                     $fotoUp = basename($_FILES["foto"]["name"]);
                     if ($fotoUp == "") {

@@ -1,0 +1,42 @@
+table{
+    margin: auto;
+    
+}
+th,td{
+    text-align: center !important;
+    padding: 5px 10px;
+}
+.a{
+    background-color: rgb(211, 210, 210);
+}
+.b{
+    background-color: rgb(238, 238, 238);
+}
+
+.banan-container{
+    padding: 135px 3%;
+    text-align: center;
+    margin-left: 10%;
+    margin-right: 7%;
+}
+
+.banen-create{
+    text-align: center;
+    width: 50%;
+    
+}
+
+.banen-form{
+    margin: 0% 25%;
+    border: double;
+    width: 400px;
+}
+
+.banen-form section > *{
+    margin: 3px 0px;
+    width: 100%;
+}
+
+.banen-form section label{
+    border-top: double;
+}

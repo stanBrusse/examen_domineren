@@ -1,5 +1,6 @@
 <?php
 include('header.php');
+include('../php/db.php');
 
 if (isset($_SESSION['rol']) && $_SESSION['rol'] != "admin" && isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] != true) {
     if (headers_sent()) {
@@ -8,18 +9,6 @@ if (isset($_SESSION['rol']) && $_SESSION['rol'] != "admin" && isset($_SESSION['l
         exit(header("location:kantine.php"));
     }
 }
-
-$username = "bveens_dtv";
-$password = "Tennis@DTV!";
-$dbname = "bveens_dtv";
-
-
-$servername = "localhost";
-
-$username = "root";
-$password = "";
-$dbname = "dtv";
-
 
 // define variables and set to empty values
 $naamErr = $prijsErr = $fotoErr = $categorieErr = $ddescriptieErr = "";
@@ -99,12 +88,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file)) {
             echo "The file " . htmlspecialchars(basename($_FILES["foto"]["name"])) . " has been uploaded.";
             try {
-                $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-                // set the PDO error mode to exception
-                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $sql = "INSERT INTO `artikelen` (naam, descriptie, foto, prijs, categorie) VALUES (?, ?, ?, ?, ?)";
+                $db = new db;
+                $stmt = $db->query("INSERT INTO `artikelen` (naam, descriptie, foto, prijs, categorie) VALUES (?, ?, ?, ?, ?)");
                 // use exec() because no results are returned
-                $conn->prepare($sql)->execute([$naam, $descriptie, $foto, $prijs, $categorie]);
+                $stmt->execute([$naam, $descriptie, $foto, $prijs, $categorie]);
             } catch (PDOException $e) {
                 echo $sql . "<br>" . $e->getMessage();
             }

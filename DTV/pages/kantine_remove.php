@@ -1,5 +1,6 @@
 <?php
 include('header.php');
+include('../php/db.php');
 
 if (isset($_SESSION['rol']) && $_SESSION['rol'] != "admin" && isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] != true) {
     if (headers_sent()) {
@@ -8,23 +9,11 @@ if (isset($_SESSION['rol']) && $_SESSION['rol'] != "admin" && isset($_SESSION['l
         exit(header("location:kantine.php"));
     }
 }
-$username = "bveens_dtv";
-$password = "Tennis@DTV!";
-$dbname = "bveens_dtv";
-
-
-$servername = "localhost";
-
-$username = "root";
-$password = "";
-$dbname = "dtv";
-
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $db = new db;
     $nummer = $_GET['nummer'];
-    $stmt = $conn->query("SELECT * FROM `artikelen` WHERE `nummer`=" . $nummer . "");
+    $stmt = $db->query("SELECT * FROM `artikelen` WHERE `nummer`=" . $nummer . "");
     $result = $stmt->fetch();
 } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -37,14 +26,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         } else {
             echo 'Could not delete ' . $target_file . ', file does not exist';
         }
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        // set the PDO error mode to exception
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $db = new db;
 
         $nummer = (int) $_POST['nummer'];
         // sql to delete a record
-        $sql = "DELETE FROM `artikelen` WHERE `nummer`=?";
-        $stmt = $conn->prepare($sql);
+        $stmt = $db->query("DELETE FROM `artikelen` WHERE `nummer`=?");
         $stmt->execute([$nummer]);
     } catch (PDOException $e) {
         echo $sql . "<br>" . $e->getMessage();

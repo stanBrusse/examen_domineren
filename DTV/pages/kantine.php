@@ -1,23 +1,10 @@
 <?php
 include('header.php');
-
-$username = "bveens_dtv";
-$password = "Tennis@DTV!";
-$dbname = "bveens_dtv";
-
-
-$servername = "localhost";
-
-$username = "root";
-$password = "";
-$dbname = "dtv";
-
-
+include('../php/db.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $conn->prepare("SELECT * FROM `artikelen`");
+    $db = new db;
+    $stmt = $db->query("SELECT * FROM `artikelen`");
     $stmt->execute();
     $result = $stmt;
 }

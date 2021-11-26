@@ -162,8 +162,8 @@ CREATE TABLE `banen` (
   `code` varchar(3) NOT NULL COMMENT 'Letter + Code',
   `soort` varchar(25) NOT NULL,
   `ligging` text NOT NULL,
-  `afmeting_lengte` decimal(2,2) NOT NULL,
-  `afmeting_breedte` decimal(2,2) NOT NULL,
+  `afmeting_lengte` decimal(4,2) NOT NULL,
+  `afmeting_breedte` decimal(4,2) NOT NULL,
   `vloer` text NOT NULL,
   `check_datum` date NOT NULL,
   `service_datum` date NOT NULL
