@@ -13,30 +13,39 @@ th,td{
     background-color: rgb(238, 238, 238);
 }
 
-.banen-container{
+.activiteiten-container{
     padding: 135px 3%;
     text-align: center;
     margin-left: 10%;
     margin-right: 7%;
 }
 
-.banen-create{
+.activiteiten-create{
     text-align: center;
     width: 50%;
     
 }
 
-.banen-form{
+.activiteiten-form{
     margin: 0% 25%;
     border: double;
     width: 400px;
 }
 
-.banen-form section > *{
+.activiteiten-form section > *{
     margin: 3px 0px;
     width: 100%;
 }
 
-.banen-form section label{
+.activiteiten-form .section-activiteit > *{
+    margin: 0px 0px;
+    width: 13%;
+}
+
+.activiteiten-form section label{
     border-top: double;
+}
+
+.activiteiten-form .section-activiteit label{
+    border-top: none;
 }

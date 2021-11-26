@@ -163,7 +163,7 @@ function test_input($data)
                 </section>
             </form>
 
-            <form class="banen-form" action="banen_onderhoud.php" method="GET">
+            <form class="banen-form" action="banen_beheer.php" method="GET">
                 <section class="section-return"><input type="submit" value="Ik heb genoeg toegevoegd." name="submit"></section>
             </form>
 

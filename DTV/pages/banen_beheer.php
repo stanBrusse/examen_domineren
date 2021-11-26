@@ -1,4 +1,13 @@
 <?php
+
+if (isset($_SESSION['rol']) && $_SESSION['rol'] != "admin" && isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] != true) {
+    if (headers_sent()) {
+        die("You are not a Admin. Redirect failed. Please click on this link: <a href=../pages/index.php>home Page</a>");
+    } else {
+        exit(header("location:index.php"));
+    }
+}
+
 include('../php/db.php');
 
 $db = new db;
@@ -13,7 +22,7 @@ $result = $stmt;
 
 <head>
     <meta charset="utf-8">
-    <title>Banen Onderhoud</title>
+    <title>Banen Beheer</title>
     <link rel="stylesheet" href="../css/banen_admin.css">
 </head>
 

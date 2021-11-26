@@ -130,9 +130,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $code = $soort = $ligging = $lengte = $breedte = $vloer = $check = $service = $nummer = "";
         $pdo = null;
         if (headers_sent()) {
-            die("Redirect failed. Please click on this link: <a href=../pages/banen_onderhoud.php>Onderhoud banen Page</a>");
+            die("Redirect failed. Please click on this link: <a href=../pages/banen_beheer.php>Beheer banen Page</a>");
         } else {
-            exit(header("location:banen_onderhoud.php"));
+            exit(header("location:banen_beheer.php"));
         }
     }
 } elseif ($_SERVER["REQUEST_METHOD"] == "POST" && !isset($_POST['submit']) && isset($_POST['delete'])) {
@@ -150,9 +150,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $code = $soort = $ligging = $lengte = $breedte = $vloer = $check = $service = $nummer = "";
     $pdo = null;
     if (headers_sent()) {
-        die("Redirect failed. Please click on this link: <a href=../pages/banen_onderhoud.php>Onderhoud banen Page</a>");
+        die("Redirect failed. Please click on this link: <a href=../pages/banen_beheer.php>Beheer banen Page</a>");
     } else {
-        exit(header("location:banen_onderhoud.php"));
+        exit(header("location:banen_beheer.php"));
     }
 }
 function test_input($data)
@@ -176,7 +176,7 @@ function test_input($data)
 <body>
     <div class="banen-container">
         <div id="banen-create">
-            <a type="button" href="banen_onderhoud.php">Terug</a>
+            <a type="button" href="banen_beheer.php">Terug</a>
             <form class="banen-form" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
                 <input type="hidden" name="nummer" value="<?php echo $nummer; ?>">
                 <section class="section-code">

@@ -64,19 +64,19 @@ if ($_SESSION['rol'] == "admin" && $_SESSION['loggedIn'] == true) {
                 <form action="adminToernooien.php" method="GET"><input type="submit" value="Toernooien inplannen" class="banenButton"></form>
             </div>
 
-            <div class="box banen">
-                <h3 class="tekst">Banen reserveren</h3>
-                <form action="adminBanen.php" method="GET"><input type="submit" value="Banen reserveren" class="banenButton"></form>
+            <div class="box activiteit_beheer">
+                <h3 class="tekst">Activiteit beheer</h3>
+                <form action="activiteiten_beheer.php" method="GET"><input type="submit" value="Activiteit beheer" class="banenButton"></form>
             </div>
 
             <div class="box banen_beheer">
-                <h3 class="tekst">Banen beheren</h3>
-                <form action="banen_onderhoud.php" method="GET"><input type="submit" value="Banen beheren" class="banenButton"></form>
+                <h3 class="tekst">Baan beheer</h3>
+                <form action="banen_beheer.php" method="GET"><input type="submit" value="Baan beheer" class="banenButton"></form>
             </div>
 
             <div class="box kantine">
-                <h3 class="tekst">Kantine beheren</h3>
-                <form action="kantine.php" method="GET"><input type="submit" value="Kantine beheren" class="banenButton"></form>
+                <h3 class="tekst">Kantine beheer</h3>
+                <form action="kantine.php" method="GET"><input type="submit" value="Kantine beheer" class="banenButton"></form>
             </div>
 
         </div>
