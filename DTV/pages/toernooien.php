@@ -49,106 +49,56 @@ include('header.php');
                     $startdateZondag = strtotime("Sunday");
                     $enddate = strtotime("+1000 weeks", $startdateMaandag);
 
-                    $maandag = date("Y-m-d", $startdateMaandag);
-                    $dinsdag = date("Y-m-d", $startdateDinsdag);
-                    $woensdag = date("Y-m-d", $startdateWoensdag);
-                    $donderdag = date("Y-m-d", $startdateDonderdag);
-                    $vrijdag = date("Y-m-d", $startdateVrijdag);
-                    $zaterdag = date("Y-m-d", $startdateZaterdag);
-                    $zondag = date("Y-m-d", $startdateZondag);
+                    $data = array();
 
+                    array_push($data, $maandag = date("Y-m-d", $startdateMaandag));
+                    array_push($data, $dinsdag = date("Y-m-d", $startdateDinsdag));
+                    array_push($data, $woensdag = date("Y-m-d", $startdateWoensdag));
+                    array_push($data, $donderdag = date("Y-m-d", $startdateDonderdag));
+                    array_push($data, $vrijdag = date("Y-m-d", $startdateVrijdag));
+                    array_push($data, $zaterdag = date("Y-m-d", $startdateZaterdag));
+                    array_push($data, $zondag = date("Y-m-d", $startdateZondag));
+
+                    asort($data);
+
+                    function getWeekday($date)
+                    {
+                        return date('l', strtotime($date));
+                    }
 
                     ?>
+
                     <thead class="thead-light">
                     <th><i class="fa fa-calendar"></i></th>
-                    <th><?php // Maandag
-                        if ($startdateMaandag < $enddate) {
-                            echo $maandag;
-                            $startdateMaandag = strtotime("+1 week", $startdateMaandag);}?></th>
-                    <th><?php // Dinsdag
-                        if ($startdateDinsdag < $enddate) {
-                            echo $dinsdag;
-                            $startdateDinsdag = strtotime("+1 week", $startdateDinsdag);}?></th>
-                    <th><?php // Woensdag
-                        if ($startdateWoensdag < $enddate) {
-                            echo $woensdag;
-                            $startdateWoensdag = strtotime("+1 week", $startdateWoensdag);}?></th>
-                    <th><?php // Donderdag
-                        if ($startdateDonderdag < $enddate) {
-                            echo $donderdag;
-                            $startdateDonderdag = strtotime("+1 week", $startdateDonderdag);}?></th>
-                    <th><?php // Vrijdag
-                        if ($startdateVrijdag < $enddate) {
-                            echo $vrijdag;
-                            $startdateVrijdag = strtotime("+1 week", $startdateVrijdag);}?></th>
-                    <th><?php // Zaterdag
-                        if ($startdateZaterdag < $enddate) {
-                            echo $zaterdag;
-                            $startdateZaterdag = strtotime("+1 week", $startdateZaterdag);}?></th>
-                    <th><?php // Zondag
-                        if ($startdateZondag < $enddate) {
-                            echo $zondag;
-                            $startdateZondag = strtotime("+1 week", $startdateZondag);}?></th>
+                    <?php // Maandag
+                        foreach ($data as $date) {
+                                echo '<th><strong class="text-white">' . getWeekday($date) . '</strong>
+                        <span class="text-white">' . $date . '</span></th>';
+                                $startdateMaandag = strtotime("+1 week", $startdateMaandag);
+
+                        }?>
                     </thead>
 
                     <tbody>
                     <tr>
                         <td><small class="">7:00 am</small></td>
                         <?php
-
-
                         $query = $pdo->prepare("SELECT * FROM activiteiten");
                         $query->execute();
+                        $num_rows = $query->fetchColumn();
                         $toernooi = $query->fetch();
 
-                            if ($toernooi["datum_activiteit"] == $maandag) {
-                                echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
+                            foreach ($data as $date) {
+                                if ($toernooi["datum_activiteit"] == $date) {
+                                    echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
                         <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
-                            } else {
-                                echo '<td></td>';
+                                } else {
+                                    echo '<td></td>';
+                                }
                             }
 
-                        if ($toernooi["datum_activiteit"] == $dinsdag) {
-                            echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
-                        <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
-                        } else {
-                            echo '<td></td>';
-                        }
 
-                        if ($toernooi["datum_activiteit"] == $woensdag) {
-                            echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
-                        <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
-                        } else {
-                            echo '<td></td>';
-                        }
 
-                        if ($toernooi["datum_activiteit"] == $donderdag) {
-                            echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
-                        <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
-                        } else {
-                            echo '<td></td>';
-                        }
-
-                        if ($toernooi["datum_activiteit"] == $vrijdag) {
-                            echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
-                        <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
-                        } else {
-                            echo '<td></td>';
-                        }
-
-                        if ($toernooi["datum_activiteit"] == $zaterdag) {
-                            echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
-                        <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
-                        } else {
-                            echo '<td></td>';
-                        }
-
-                        if ($toernooi["datum_activiteit"] == $zondag) {
-                            echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
-                        <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
-                        } else {
-                            echo '<td></td>';
-                        }
                         ?>
                     </tr>
 
