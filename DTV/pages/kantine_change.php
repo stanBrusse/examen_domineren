@@ -18,13 +18,14 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $db = new db;
     $nummer = $_GET['nummer'];
     $stmt = $db->query("SELECT * FROM `artikelen` WHERE `nummer`=" . $nummer . "");
-    $result = $stmt->fetch();
-
-    $naam = $result["naam"];
-    $prijs = $result["prijs"];
-    $foto = $result["foto"];
-    $categorie = $result["categorie"];
-    $descriptie = $result["descriptie"];
+    $stmt->execute();
+    while ($result = $stmt->fetch()) {
+        $naam = $result["naam"];
+        $prijs = $result["prijs"];
+        $foto = $result["foto"];
+        $categorie = $result["categorie"];
+        $descriptie = $result["descriptie"];
+    }
 } elseif ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nummer = (int) $_POST['nummer'];
     if (empty($_POST["naam"])) {

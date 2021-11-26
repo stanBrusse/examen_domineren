@@ -1,4 +1,5 @@
 <?php
+
 include('header.php');
 include('../php/db.php');
 
@@ -12,27 +13,36 @@ if (isset($_SESSION['rol']) && $_SESSION['rol'] != "admin" && isset($_SESSION['l
 
 // define variables and set to empty values
 $codeErr = $soortErr = $liggingErr = $lengteErr = $breedteErr = $vloerErr = $checkErr = $serviceErr = "";
-$code = $soort = $ligging = $lengte = $breedte = $vloer = $check = $service = "";
-
+$code = $soort = $ligging = $lengte = $breedte = $vloer = $check = $service = $checkA = $serviceA = "";
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $db = new db;
-    $nummer = $_GET['nummer'];
+    $nummer = (int) $_GET['nummer'];
+    $nummer = intval($nummer);
+
     $stmt = $db->query("SELECT * FROM `banen` WHERE `nummer`=" . $nummer . "");
-    $result = $stmt->fetch();
-    print_r($result);
-    echo $result;
-
-    $code = $result["code"];
-    $soort = $result["soort"];
-    $ligging = $result["ligging"];
-    $lengte = $result["afmeting_lengte"];
-    $breedte = $result["afmeting_breedte"];
-    $vloer = $result["vloer"];
-    $check = $result["check_datum"];
-    $service = $result["service_datum"];
-
-} elseif ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $stmt->execute();
+    while ($result = $stmt->fetch()) {
+        $code = $result["code"];
+        $soort = $result["soort"];
+        $ligging = $result["ligging"];
+        $lengte = $result["afmeting_lengte"];
+        $breedte = $result["afmeting_breedte"];
+        $vloer = $result["vloer"];
+        $checkA = $result["check_datum"];
+        $serviceA = $result["service_datum"];
+        setlocale(LC_TIME, "Dutch");
+        $check = strftime("%A %d %B %Y", strtotime($result["check_datum"]));
+        $service = strftime("%A %d %B %Y", strtotime($result["service_datum"]));
+    }
+} elseif ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit']) && !isset($_POST['delete'])) {
+    $db = new db;
     $nummer = $_POST["nummer"];
+    $stmt = $db->query("SELECT `check_datum`, `service_datum` FROM `banen` WHERE `nummer`=" . $nummer . "");
+    $stmt->execute();
+    while ($result = $stmt->fetch()) {
+        $checkA = $result["check_datum"];
+        $serviceA = $result["service_datum"];
+    }
     $uploadOk = 0;
     if (empty($_POST["code"])) {
         $uploadOk = 0;
@@ -83,7 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     }
 
     if (empty($_POST["check"])) {
-        $uploadOk = 0;
+        $check = $checkA;
         echo 'Check failed';
     } else {
         $check = test_input($_POST["check"]);
@@ -92,7 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     }
 
     if (empty($_POST["service"])) {
-        $uploadOk = 0;
+        $service = $serviceA;
         echo 'Service failed';
     } else {
         $service = test_input($_POST["service"]);
@@ -119,6 +129,30 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $codeErr = $soortErr = $liggingErr = $lengteErr = $breedteErr = $vloerErr = $checkErr = $serviceErr = "";
         $code = $soort = $ligging = $lengte = $breedte = $vloer = $check = $service = $nummer = "";
         $pdo = null;
+        if (headers_sent()) {
+            die("Redirect failed. Please click on this link: <a href=../pages/banen_onderhoud.php>Onderhoud banen Page</a>");
+        } else {
+            exit(header("location:banen_onderhoud.php"));
+        }
+    }
+} elseif ($_SERVER["REQUEST_METHOD"] == "POST" && !isset($_POST['submit']) && isset($_POST['delete'])) {
+    $nummer = $_POST["nummer"];
+    
+    try {
+        $db = new db;
+        $stmt = $db->query("DELETE FROM `banen` WHERE nummer=?");
+        // use exec() because no results are returned
+        $stmt->execute([$nummer]);
+    } catch (PDOException $e) {
+        echo $sql . "<br>" . $e->getMessage();
+    }
+    $codeErr = $soortErr = $liggingErr = $lengteErr = $breedteErr = $vloerErr = $checkErr = $serviceErr = "";
+    $code = $soort = $ligging = $lengte = $breedte = $vloer = $check = $service = $nummer = "";
+    $pdo = null;
+    if (headers_sent()) {
+        die("Redirect failed. Please click on this link: <a href=../pages/banen_onderhoud.php>Onderhoud banen Page</a>");
+    } else {
+        exit(header("location:banen_onderhoud.php"));
     }
 }
 function test_input($data)
@@ -133,7 +167,7 @@ function test_input($data)
 <html>
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" lang="nl">
     <title>banen Create</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/banen_admin.css">
@@ -167,19 +201,19 @@ function test_input($data)
                 </section>
                 <section class="section-vloer">
                     <label for="vloer"><strong>Baan vloer:</strong></label>
-                    <input type="text" id="vloer" name="vloer" required value="<?php echo $vloer; ?>"><br />
+                    <input type="text" id="vloer" name="vloer" required value="<?php echo $vloer ?>"><br />
                 </section>
                 <section class="section-check">
-                    <label for="check"><strong>Baan check:</strong></label>
-                    <input type="date" id="check" name="check" required value="<?php echo $check; ?>"><br />
+                    <label for="check"><strong>Baan check: <?php echo $check ?></strong></label>
+                    <input type="date" id="check" name="check" ><br />
                 </section>
                 <section class="section-service">
-                    <label for="service"><strong>Baan service:</strong></label>
-                    <input type="date" id="service" name="service" required value="<?php echo $service; ?>"><br />
+                    <label for="service"><strong>Baan service: <?php echo $service ?></strong></label>
+                    <input type="date" id="service" name="service" ><br />
                 </section>
                 <section class="section-submit">
                     <input type="submit" value="Submit" name="submit">
-                    <input type="delete" value="Delete" name="delete">
+                    <input type="submit" onclick="return confirm('Weet je het heel zeker?');" value="Delete" name="delete">
                 </section>
             </form>
 

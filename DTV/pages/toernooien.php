@@ -83,11 +83,33 @@ include('header.php');
                     <tr>
                         <td><small class="">7:00 am</small></td>
                         <?php
+                        // echo "<tr>";
+
+                            foreach ($data as $date) {
+                                $query = $pdo->prepare("SELECT * FROM activiteiten WHERE datum_activiteit='$date'");
+                                $query->execute();
+                                // $num_rows = $query->fetchColumn();
+                                // $toernooi = $query->fetch();
+                                var_dump($query);
+                                if ($query->rowCount() >0) {
+                                    foreach ($query as $toernooi) {
+                                        echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
+                                    <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
+                                    }
+                                } else {
+
+                                    echo "<td></td>";
+                                }
+                            }
+                    
+   /*                 
+                        // echo "</tr>";
                         $query = $pdo->prepare("SELECT * FROM activiteiten");
                         $query->execute();
                         $num_rows = $query->fetchColumn();
                         $toernooi = $query->fetch();
 
+                        foreach ($query as $toernooi) {
                             foreach ($data as $date) {
                                 if ($toernooi["datum_activiteit"] == $date) {
                                     echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
@@ -96,7 +118,7 @@ include('header.php');
                                     echo '<td></td>';
                                 }
                             }
-
+                        }
 
 
                         ?>
@@ -264,6 +286,8 @@ include('header.php');
                         }
                         ?>
                     </tr>
+                    */
+                    ?>
                     </tbody>
                 </table>
             </div>
