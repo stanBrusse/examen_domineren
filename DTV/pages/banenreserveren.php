@@ -46,6 +46,7 @@ $dbname = "dtv";
 <?php 
 include('header.php');
 ?>
+<a style="border: 1px solid black; padding:3px;" href="banen.php">Terug</a>
 <section class="content">
 <h1><?php echo $_GET['dag'] . " " . $_GET['date']; ?></h1>
 <head>

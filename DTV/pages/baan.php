@@ -31,7 +31,9 @@ $result = $stmtB;
 </head>
 
 <body>
-    <?php include('header.php');
+    <?php include('header.php'); ?>
+<a style="border: 1px solid black; padding:3px;" href="banen.php">Terug</a>
+    <?php
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {  
   $stmtA = "INSERT INTO `reservatie_baan` (nummer, datum, baan_nummer, tijd_Begin, tijd_Eind, lid_nummer) VALUES (?, ?, ?, ?, ?, ?)";
