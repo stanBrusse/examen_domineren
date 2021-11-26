@@ -47,19 +47,19 @@ $result = $stmt;
                 </tr>
             </thead>
             <tbody>
-                <?php while ($baan = $result->fetch()) { ?>
-                    <tr>
-                        <td><?php echo $baan['code']; ?></td>
-                        <td><?php echo $baan['soort']; ?></td>
-                        <td><?php echo $baan['ligging']; ?></td>
-                        <td><?php echo $baan['afmeting_lengte']; ?></td>
-                        <td><?php echo $baan['afmeting_breedte']; ?></td>
-                        <td><?php echo $baan['vloer']; ?></td>
-                        <td><?php echo $baan['check_datum']; ?></td>
-                        <td><?php echo $baan['service_datum']; ?></td>
-                        <td><a href="banen_edit.php?nummer=<?php echo $baan['nummer']; ?>"><img class="change" type="button" src="../images/icons/change.svg"></a></td>
-                    </tr>
-                <?php } ?>
+                <?php while ($baan = $result->fetch()) {
+                    echo '<tr>
+                        <td>' . $baan['code'] . '</td>
+                        <td>' . $baan['soort'] . '</td>
+                        <td>' . $baan['ligging'] . '</td>
+                        <td>' . $baan['afmeting_lengte'] . '</td>
+                        <td>' . $baan['afmeting_breedte'] . '</td>
+                        <td>' . $baan['vloer'] . '</td>
+                        <td>' . $baan['check_datum'] . '</td>
+                        <td>' . $baan['service_datum'] . '</td>
+                        <td><a href="banen_edit.php?nummer=' . $baan['nummer'] . '"><img class="change" type="button" src="../images/icons/change.svg"></a></td>
+                    </tr>';
+                } ?>
             </tbody>
         </table>
     </section>
