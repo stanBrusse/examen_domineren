@@ -78,6 +78,7 @@ CREATE TABLE `account_bevoeging` (
 DROP TABLE IF EXISTS `activiteiten`;
 CREATE TABLE `activiteiten` (
   `nummer` int(11) NOT NULL,
+  `activiteit` varchar(11),
   `title` varchar(55) NOT NULL,
   `datum_activiteit` date NOT NULL COMMENT 'op daze datum begint toernooi',
   `datum_ingeschreven` date NOT NULL COMMENT 'voor deze datum moet lid geregistreerd zijn',
