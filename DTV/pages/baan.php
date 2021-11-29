@@ -34,13 +34,32 @@ $result = $stmtB;
     <?php include('header.php'); ?>
 <a style="border: 1px solid black; padding:3px;" href="banen.php">Terug</a>
     <?php
+if ($_SESSION['rol'] == "admin" && $_SESSION['loggedIn'] == true) {
+} else {
+    if (headers_sent()) {
+        die("Redirect failed. Please click on this link: <a href=../pages/index.php");
+    } else {
+        exit(header("location:index.php"));
+    }
+}
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {  
-  $stmtA = "INSERT INTO `reservatie_baan` (nummer, datum, baan_nummer, tijd_Begin, tijd_Eind, lid_nummer) VALUES (?, ?, ?, ?, ?, ?)";
-  $pdo->prepare($stmtA)->execute([NULL, $date, $baan, $begintijd, $eindtijd, 1]);
-  echo "<p>Reservatie is geslaagd!</p>";
-  $_SERVER["REQUEST_METHOD"] = "GET";
-}  ?>
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $sql = $pdo->prepare("SELECT * FROM reservatie_baan WHERE lid_nummer=? AND datum=?");
+    $sql->bindParam(1, $_SESSION['lidnummer']);
+    $sql->bindParam(2, $date);
+    $sql->execute();
+    $results = $sql->fetch();
+        if (isset($results["nummer"])){
+            echo "<p>U heeft op deze dag al een baan gereserveerd</p>";
+        } else {
+            $stmtA = "INSERT INTO `reservatie_baan` (nummer, datum, baan_nummer, tijd_Begin, tijd_Eind, lid_nummer) VALUES (?, ?, ?, ?, ?, ?)";
+            $pdo->prepare($stmtA)->execute([NULL, $date, $baan, $begintijd, $eindtijd, $_SESSION['lidnummer']]);
+            echo "<p>Reservatie is geslaagd!</p>";
+        }
+    $_SERVER["REQUEST_METHOD"] = "GET";
+}  
+
+?>
     <section>
                 <?php while ($baan = $result->fetch()) { ?>
                         <?php echo "<h3>" . $baan['soort'] . " : " . $baan['code'] . "</h3>"?>
