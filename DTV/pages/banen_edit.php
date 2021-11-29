@@ -212,7 +212,7 @@ function test_input($data)
                     <input type="date" id="service" name="service"><br />
                 </section>
                 <section class="section-submit">
-                    <input type="submit" value="Submit" name="submit">
+                    <input type="submit" value="Update" name="submit">
                     <input type="submit" onclick="return confirm('Weet je het heel zeker?');" value="Delete" name="delete">
                 </section>
             </form>

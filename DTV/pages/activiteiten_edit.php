@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $datum_activiteit = strftime("%A %d %B %Y", strtotime($result["datum_activiteit"]));
         $datum_ingeschreven = strftime("%A %d %B %Y", strtotime($result["datum_ingeschreven"]));
     }
-} elseif ($_SERVER["REQUEST_METHOD"] == "POST") {
+} elseif ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit']) && !isset($_POST['delete'])) {
     $uploadOk = 0;
     $db = new db;
     $nummer = $_POST["nummer"];
@@ -113,6 +113,24 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             exit(header("location:activiteiten_beheer.php"));
         }
     }
+} elseif ($_SERVER["REQUEST_METHOD"] == "POST" && !isset($_POST['submit']) && isset($_POST['delete'])) {
+    $nummer = $_POST["nummer"];
+
+    try {
+        $db = new db;
+        $stmt = $db->query("DELETE FROM `activiteiten` WHERE nummer=?");
+        // use exec() because no results are returned
+        $stmt->execute([$nummer]);
+    } catch (PDOException $e) {
+        echo $sql . "<br>" . $e->getMessage();
+    }
+    $titleErr = $activiteitErr = $datum_activiteitErr = $datum_ingeschrevenErr = $tijd_startErr = $tijd_eindErr = "";
+    $title = $activiteit = $datum_activiteit = $datum_ingeschreven = $tijd_start = $tijd_eind = $nummer = "";
+    if (headers_sent()) {
+        die("Redirect failed. Please click on this link: <a href=../pages/activiteiten_beheer.php>Beheer activiteiten Page</a>");
+    } else {
+        exit(header("location:activiteiten_beheer.php"));
+    }
 }
 function test_input($data)
 {
@@ -143,7 +161,7 @@ function test_input($data)
                 <input type="hidden" name="nummer" value="<?php echo $nummer; ?>">
                 <section class="section-activiteit">
                     <label for="activiteit">Activiteit:</label><br>
-                    <?php if ($activiteit == "Toernooi" || !($activiteit == "Toernooi" && $activiteit == "Wedstrijd" && $activiteit == "Training")) { ?>
+                    <?php if ($activiteit == "Toernooi" || !(($activiteit == "Toernooi") || ($activiteit == "Wedstrijd") || ($activiteit == "Training"))) { ?>
                         <label for="Toernooi">Toernooi</label>
                         <input class="mdc-radio__native-control" type="radio" id="Toernooi" value="Toernooi" name="activiteit" checked>
                         <label for="Wedstrijd">Wedstrijd</label>
@@ -193,11 +211,9 @@ function test_input($data)
                 </section>
 
                 <section class="section-submit">
-                    <input type="submit" value="Toevoegen">
+                    <input type="submit" value="Update" name="submit">
+                    <input type="submit" onclick="return confirm('Weet je het heel zeker?');" value="Delete" name="delete">
                 </section>
-            </form>
-            <form class="activiteiten-form" action="activiteiten_beheer.php" method="GET">
-                <section class="section-return"><input type="submit" value="Ik heb genoeg toegevoegd." name="submit"></section>
             </form>
         </div>
     </div>
