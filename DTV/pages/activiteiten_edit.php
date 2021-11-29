@@ -192,21 +192,21 @@ function test_input($data)
 
                 <section class="section-datum_activiteit">
                     <label for="datum_activiteit">Activiteit Datum: <?php echo $datum_activiteit ?></label>
-                    <input type="date" name="datum_activiteit"><br>
+                    <input type="date" name="datum_activiteit" min="<?php echo date('Y-m-d') ?>"><br>
                 </section>
 
                 <section class="section-datum_ingeschreven">
                     <label for="datum_ingeschreven">Voor Datum Inschrijven: <?php echo $datum_ingeschreven ?></label>
-                    <input type="date" name="datum_ingeschreven"><br>
+                    <input type="date" name="datum_ingeschreven" min="<?php echo date('Y-m-d') ?>"><br>
                 </section>
 
                 <section class="section-tijd_start">
-                    <label for="tijd_start">Start:</label>
+                    <label for="tijd_start">Start tijd:</label>
                     <input type="time" name="tijd_start" min="12:00" max="22:00" step="1800" value="<?php echo substr_replace($tijd_start, ':', 2, 0); ?>"><br>
                 </section>
 
                 <section class="section-tijd_eind">
-                    <label for="tijd_start">Eind:</label>
+                    <label for="tijd_start">Eind tijd:</label>
                     <input type="time" name="tijd_eind" min="13:00" max="23:00" step="1800" value="<?php echo substr_replace($tijd_eind, ':', 2, 0); ?>"><br>
                 </section>
 

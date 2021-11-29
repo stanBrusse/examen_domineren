@@ -184,7 +184,7 @@ function test_input($data)
                     <input type="text" id="code" name="code" required value="<?php echo $code; ?>"><br />
                 </section>
                 <section class="section-soort">
-                    <label for="soort"><strong>Baan soort:</strong></label>
+                    <label for="soort"><strong>Baan sport:</strong></label>
                     <input type="text" id="soort" name="soort" required value="<?php echo $soort; ?>"><br />
                 </section>
                 <section class="section-ligging">
@@ -192,11 +192,11 @@ function test_input($data)
                     <input type="text" id="ligging" name="ligging" required value="<?php echo $ligging; ?>"><br />
                 </section>
                 <section class="section-lengte">
-                    <label for="lengte"><strong>Baan lengte:</strong></label>
+                    <label for="lengte"><strong>Baan lengte(23.43):</strong></label>
                     <input type="doubleval" id="lengte" name="lengte" required value="<?php echo $lengte; ?>"><br />
                 </section>
                 <section class="section-breedte">
-                    <label for="breedte"><strong>Baan breedte:</strong></label>
+                    <label for="breedte"><strong>Baan breedte(23.43):</strong></label>
                     <input type="doubleval" id="breedte" name="breedte" required value="<?php echo $breedte; ?>"><br />
                 </section>
                 <section class="section-vloer">

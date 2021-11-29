@@ -131,7 +131,7 @@ function test_input($data)
                     <input type="text" id="code" name="code" required><br />
                 </section>
                 <section class="section-soort">
-                    <label for="soort"><strong>Baan soort:</strong></label>
+                    <label for="soort"><strong>Baan sport:</strong></label>
                     <input type="text" id="soort" name="soort" required><br />
                 </section>
                 <section class="section-ligging">
@@ -139,11 +139,11 @@ function test_input($data)
                     <input type="text" id="ligging" name="ligging" required><br />
                 </section>
                 <section class="section-lengte">
-                    <label for="lengte"><strong>Baan lengte:</strong></label>
+                    <label for="lengte"><strong>Baan lengte(23.47):</strong></label>
                     <input type="doubleval" id="lengte" name="lengte" required><br />
                 </section>
                 <section class="section-breedte">
-                    <label for="breedte"><strong>Baan breedte:</strong></label>
+                    <label for="breedte"><strong>Baan breedte(23.47):</strong></label>
                     <input type="doubleval" id="breedte" name="breedte" required><br />
                 </section>
                 <section class="section-vloer">
@@ -151,11 +151,11 @@ function test_input($data)
                     <input type="text" id="vloer" name="vloer" required><br />
                 </section>
                 <section class="section-check">
-                    <label for="check"><strong>Baan check:</strong></label>
+                    <label for="check"><strong>Baan laatst gechecked:</strong></label>
                     <input type="date" id="check" name="check" required><br />
                 </section>
                 <section class="section-service">
-                    <label for="service"><strong>Baan service:</strong></label>
+                    <label for="service"><strong>Baan laatst geserviced:</strong></label>
                     <input type="date" id="service" name="service" required><br />
                 </section>
                 <section class="section-submit">

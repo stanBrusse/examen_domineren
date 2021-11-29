@@ -132,12 +132,12 @@ function test_input($data)
 
         <section class="section-datum_activiteit">
           <label for="datum_activiteit">Datum van:</label>
-          <input type="date" name="datum_activiteit"><br>
+          <input type="date" name="datum_activiteit" min="<?php echo date('Y-m-d') ?>"><br>
         </section>
 
         <section class="section-datum_ingeschreven">
           <label for="datum_ingeschreven">Leden Maximaal Inschrijven</label>
-          <input type="date" name="datum_ingeschreven"><br>
+          <input type="date" name="datum_ingeschreven" min="<?php echo date('Y-m-d') ?>"><br>
         </section>
 
         <section class="section-tijd_start">

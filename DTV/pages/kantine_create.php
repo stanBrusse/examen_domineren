@@ -17,30 +17,39 @@ $naam = $prijs = $foto = $categorie = $descriptie = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["naam"])) {
         $naamErr = "Naam is required";
+        $uploadOk = 0;
     } else {
         $naam = test_input($_POST["naam"]);
+        $uploadOk = 1;
     }
     if (empty($_POST["prijs"])) {
         $prijsErr = "Prijs is required";
+        $uploadOk = 0;
     } else {
         $prijs = test_input($_POST["prijs"]);
     }
     if (!isset($_FILES["foto"])) {
         $fotoErr = "Foto is required";
+        $uploadOk = 0;
     } else {
         $foto = test_input(htmlspecialchars(basename($_FILES["foto"]["name"])));
         $foto = "images/kantine_items/" . $foto;
+        $uploadOk = 1;
     }
     if (empty($_POST["categorie"])) {
         $categorieErr = "categorie is required";
+        $uploadOk = 0;
     } else {
         $categorie = test_input($_POST["categorie"]);
         $categorie = strtolower($categorie);
+        $uploadOk = 1;
     }
     if (empty($_POST["descriptie"])) {
         $descriptieErr = "Description is required";
+        $uploadOk = 0;
     } else {
         $descriptie = test_input($_POST["descriptie"]);
+        $uploadOk = 1;
     }
     $target_dir = "../images/kantine_items/";
     $target_file = $target_dir . basename($_FILES["foto"]["name"]);
@@ -72,10 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Allow certain file formats
-    if (
-        $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-        && $imageFileType != "gif"
-    ) {
+    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
         echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
         $uploadOk = 0;
     }
@@ -141,7 +147,7 @@ function test_input($data)
                 </section>
 
                 <section class="section-prijs">
-                    <label for="prijs"><strong>Item Prijs</strong></label>
+                    <label for="prijs"><strong>Item Prijs(00.00)</strong></label>
                     <input type="doubleval" id="prijs" name="prijs" required><br />
                 </section>
 

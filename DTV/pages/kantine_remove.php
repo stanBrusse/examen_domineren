@@ -14,14 +14,15 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $db = new db;
     $nummer = $_GET['nummer'];
     $stmt = $db->query("SELECT * FROM `artikelen` WHERE `nummer`=" . $nummer . "");
-    $result = $stmt->fetch();
+    $stmt->execute();
+    $result = $stmt;
 } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     try {
         $target_dir = "../";
         $target_file = $target_dir . $_POST["foto"];
-        if (file_exists($target_file)) {
+        if (file_exists($target_file) && $_POST["foto"] != "images/NoImage.png") {
             unlink($target_file);
         } else {
             echo 'Could not delete ' . $target_file . ', file does not exist';
@@ -58,19 +59,22 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
 <body>
     <?php
-    $action = htmlspecialchars($_SERVER["PHP_SELF"]);
-    $areyousure = `Weet je het zeker?`;
-    $foto = "images/NoImage.png";
-    if (file_exists('../' . $result["foto"]) && $result["foto"] != "") {
-        $foto = $result["foto"];
-    } else {
+    while ($item = $result->fetch()) {
+        $action = htmlspecialchars($_SERVER["PHP_SELF"]);
+        $areyousure = `Weet je het zeker?`;
         $foto = "images/NoImage.png";
+        if (file_exists('../' . $item["foto"]) && $item["foto"] != "") {
+            $foto = $item["foto"];
+        } else {
+            $foto = "images/NoImage.png";
+        }
+
+        $nummer = $item["nummer"];
+        $naam = $item["naam"];
+        $descriptie = $item["descriptie"];
+        $prijs = $item["prijs"];
+        $categorie = strtoupper($item["categorie"]);
     }
-    $nummer = $result["nummer"];
-    $naam = $result["naam"];
-    $descriptie = $result["descriptie"];
-    $prijs = $result["prijs"];
-    $categorie = strtoupper($result["categorie"]);
     ?>
     <div class="kantine-container">
         <div id="kantine-remove">

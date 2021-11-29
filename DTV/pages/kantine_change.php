@@ -60,7 +60,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     }
 
     $fotoUp = basename($_FILES["foto"]["name"]);
-
     if ($fotoUp == "") {
         // Check if $uploadOk is set to 0 by an error
         if ($uploadOk == 0) {
@@ -73,11 +72,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
                 $stmt = $db->query("UPDATE artikelen SET naam=?, descriptie=?, foto=?, prijs=?, categorie=? WHERE nummer=?");
                 $nummer = (int) $_POST['nummer'];
-                $fotoUp = basename($_FILES["foto"]["name"]);
-                if ($fotoUp == "") {
-                    $fotoUp = "NoImageWasUploaded";
-                }
-                $foto = "images/kantine_items/" . $fotoUp;
+                
+                $foto = $_POST['foto_old'];
                 $stmt->execute([$naam, $descriptie, $foto, $prijs, $categorie, $nummer]);
 
                 $naam = $prijs = $foto = $categorie = $descriptie = "";
@@ -138,26 +134,13 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
 
             if ($_POST['foto_old'] == "images/NoImage.png") {
-            } else {
-                $target_file_old = '../' . $_POST['foto_old'];
-                $imageFileType = strtolower(pathinfo($target_file_old, PATHINFO_EXTENSION));
-                if (file_exists($target_file_old)) {
-                    unlink($target_file_old);
-                }
-            }
-
-
-            if (move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file)) {
+                $uploadOk = 1;
                 try {
                     $db = new db;
 
                     $stmt = $db->query("UPDATE artikelen SET naam=?, descriptie=?, foto=?, prijs=?, categorie=? WHERE nummer=?");
                     $nummer = (int) $_POST['nummer'];
-                    $fotoUp = basename($_FILES["foto"]["name"]);
-                    if ($fotoUp == "") {
-                        $fotoUp = "NoImageWasUploaded";
-                    }
-                    $foto = "images/kantine_items/" . $fotoUp;
+                    $foto = $_POST['foto_old'];
                     $stmt->execute([$naam, $descriptie, $foto, $prijs, $categorie, $nummer]);
 
                     $naam = $prijs = $foto = $categorie = $descriptie = "";
@@ -171,7 +154,39 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                     echo $sql . "<br>" . $e->getMessage();
                 }
             } else {
-                echo "Sorry, there was an error uploading your file.";
+                $uploadOk = 1;
+                $target_file_old = '../' . $_POST['foto_old'];
+                $imageFileType = strtolower(pathinfo($target_file_old, PATHINFO_EXTENSION));
+                if (file_exists($target_file_old)) {
+                    unlink($target_file_old);
+                }
+
+                if (move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file)) {
+                    try {
+                        $db = new db;
+
+                        $stmt = $db->query("UPDATE artikelen SET naam=?, descriptie=?, foto=?, prijs=?, categorie=? WHERE nummer=?");
+                        $nummer = (int) $_POST['nummer'];
+                        $fotoUp = basename($_FILES["foto"]["name"]);
+                        if ($fotoUp == "") {
+                            $fotoUp = "NoImageWasUploaded";
+                        }
+                        $foto = "images/kantine_items/" . $fotoUp;
+                        $stmt->execute([$naam, $descriptie, $foto, $prijs, $categorie, $nummer]);
+
+                        $naam = $prijs = $foto = $categorie = $descriptie = "";
+                        $conn = null;
+                        if (headers_sent()) {
+                            die("Redirect failed. Please click on this link: <a href=../pages/kantine.php>Kantine Page</a>");
+                        } else {
+                            exit(header("location:kantine.php"));
+                        }
+                    } catch (PDOException $e) {
+                        echo $sql . "<br>" . $e->getMessage();
+                    }
+                } else {
+                    echo "Sorry, there was an error uploading your file.";
+                }
             }
         }
     }
@@ -223,7 +238,7 @@ function test_input($data)
                 </section>
 
                 <section class="section-prijs">
-                    <label for="prijs"><strong>Item Prijs: </strong></label>
+                    <label for="prijs"><strong>Item Prijs(00.00): </strong></label>
                     <input type="doubleval" id="prijs" name="prijs" required value="<?php echo $prijs; ?>"><br />
                 </section>
 
