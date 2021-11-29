@@ -96,16 +96,6 @@ function test_input($data)
   return $data;
 }
 
-$db = new db;
-
-$stmt = $db->query('SELECT * FROM `banen`');
-$stmt->execute();
-$banen = $stmt;
-
-$stmt = $db->query('SELECT * FROM `activiteiten`');
-$stmt->execute();
-$activiteiten = $stmt;
-
 ?>
 
 <!DOCTYPE html>

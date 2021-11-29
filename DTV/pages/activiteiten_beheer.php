@@ -38,6 +38,7 @@ $result = $stmt;
                 <col class="b" />
                 <col class="a" />
                 <col class="b" />
+                <col class="a" />
             </colgroup>
             <thead>
                 <tr>
@@ -47,6 +48,7 @@ $result = $stmt;
                     <th>Datum Inschrijvingen</th>
                     <th>Start Tijd</th>
                     <th>Eind Tijd</th>
+                    <th>Edit</th>
                 </tr>
             </thead>
             <tbody>
@@ -58,6 +60,7 @@ $result = $stmt;
                         <td>' . $row['datum_ingeschreven'] . '</td>
                         <td>' . substr_replace($row['tijd_start'], ':', 2, 0) . '</td>
                         <td>' . substr_replace($row['tijd_eind'], ':', 2, 0) . '</td>
+                        <td><a href="activiteiten_edit.php?nummer=' . $row['nummer'] . '"><img class="change" type="button" src="../images/icons/change.svg"></a></td>
                     </tr>';
                 } ?>
             </tbody>
