@@ -49,6 +49,11 @@ if (isset($_POST['zoek'])) {
                         $selecteerLeden = $pdo->prepare("SELECT * FROM accounts WHERE naam_tussen LIKE? ORDER BY $order");
                         $selecteerLeden->bindParam(1, $zoek);
                         $selecteerLeden->execute();
+                        if ($selecteerLeden->rowCount() == 0) {
+                            $selecteerLeden = $pdo->prepare("SELECT * FROM accounts WHERE rol LIKE? ORDER BY $order");
+                            $selecteerLeden->bindParam(1, $zoek);
+                            $selecteerLeden->execute();
+                        }
                     }
                 }
             }
@@ -86,6 +91,17 @@ if (isset($_GET['promoveren']) && isset($_GET['rol'])) {
             } else {
                 exit(header("location:adminLeden.php"));
             }
+        } elseif ($rol == "afgewezen") {
+            $rol = "aangemeld";
+            $sql = $pdo->prepare("UPDATE accounts SET account_rol=? WHERE nummer=?");
+            $sql->bindParam(1, $rol);
+            $sql->bindParam(2, $_GET['promoveren']);
+            $sql->execute();
+            if (headers_sent()) {
+                die("Redirect failed. Please click on this link: <a href=../pages/adminLeden.php");
+            } else {
+                exit(header("location:adminLeden.php"));
+            }
         }
     }
     
@@ -105,6 +121,17 @@ if (isset($_GET['promoveren']) && isset($_GET['rol'])) {
             }
         } elseif ($rol == "lid") {
             $rol = "aangemeld";
+            $sql = $pdo->prepare("UPDATE accounts SET account_rol=? WHERE nummer=?");
+            $sql->bindParam(1, $rol);
+            $sql->bindParam(2, $_GET['degraderen']);
+            $sql->execute();
+            if (headers_sent()) {
+                die("Redirect failed. Please click on this link: <a href=../pages/adminLeden.php");
+            } else {
+                exit(header("location:adminLeden.php"));
+            }
+        }elseif ($rol == "aangemeld") {
+            $rol = "afgewezen";
             $sql = $pdo->prepare("UPDATE accounts SET account_rol=? WHERE nummer=?");
             $sql->bindParam(1, $rol);
             $sql->bindParam(2, $_GET['degraderen']);
