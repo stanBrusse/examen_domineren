@@ -123,8 +123,22 @@ if(isset($_POST['btnUitloggen']))
 
 
     <div class="cont">
-        <div class="containerlinks">
-    <?php 
+        <div class="containerlinks ml-auto col-lg-5 col-md-6 col-12" >
+        <form action="profiel.php" method="POST">
+                <input type="submit" name="btnUitloggen" class="btn btn-danger" value="uitloggen"><br><br>
+            </form>
+            
+            <h4>wilt u iets veranderen van uw profiel?<br>kies hier wat u wilt veranderen</h4>
+            <form action="profielVeranderen.php" method="POST">
+        
+                <input type="submit" name="wachtwoord" value="wachtwoord" class="buttonInloggen"><br>
+                <input type="submit" name="email" value="email" class="buttonInloggen"><br>
+                <input type="submit" name="adres" value="adres" class="buttonInloggen"><br>
+            </form>
+    
+        </div>
+        <div class="containerrechts mx-auto mt-4 mt-lg-0 mt-md-0 col-lg-5 col-md-6 col-12" >
+        <?php 
     $sql = $pdo->prepare("SELECT * FROM accounts WHERE nummer=?");
     $sql->bindParam(1, $_SESSION['lidnummer']);
     $sql->execute();
@@ -199,19 +213,7 @@ if(isset($_POST['btnUitloggen']))
             
                 
             </table>
-        </div>
-        <div class="containerrechts">
-            <form action="profiel.php" method="POST">
-                <input type="submit" name="btnUitloggen" class="btn btn-danger" value="uitloggen"><br><br>
-            </form>
-            
-            <h4>wilt u iets veranderen van uw profiel?<br>kies hier wat u wilt veranderen</h4>
-            <form action="profielVeranderen.php" method="POST">
-        
-                <input type="submit" name="wachtwoord" value="wachtwoord" class="buttonInloggen"><br>
-                <input type="submit" name="email" value="email" class="buttonInloggen"><br>
-                <input type="submit" name="adres" value="adres" class="buttonInloggen"><br>
-            </form>
+
         </div>
 
     </div>
