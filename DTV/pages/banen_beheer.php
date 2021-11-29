@@ -1,5 +1,5 @@
 <?php
-
+include('header.php');
 if (isset($_SESSION['rol']) && $_SESSION['rol'] != "admin" && isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] != true) {
     if (headers_sent()) {
         die("You are not a Admin. Redirect failed. Please click on this link: <a href=../pages/index.php>home Page</a>");
@@ -27,7 +27,6 @@ $result = $stmt;
 </head>
 
 <body>
-    <?php include('header.php'); ?>
     <section>
         <a type="button" href="banen_create.php">Create</a>
         <table>

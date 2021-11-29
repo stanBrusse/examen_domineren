@@ -74,7 +74,7 @@ if ($_SESSION['rol'] == "admin" && $_SESSION['loggedIn'] == true) {
                 <form action="banen_beheer.php" method="GET"><input type="submit" value="Baan beheer" class="banenButton"></form>
             </div>
 
-            <div class="box kantine">
+            <div class="box kantine_beheer">
                 <h3 class="tekst">Kantine beheer</h3>
                 <form action="kantine.php" method="GET"><input type="submit" value="Kantine beheer" class="banenButton"></form>
             </div>

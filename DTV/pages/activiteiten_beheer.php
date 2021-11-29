@@ -1,4 +1,5 @@
 <?php
+include('header.php');
 
 if (isset($_SESSION['rol']) && $_SESSION['rol'] != "admin" && isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] != true) {
     if (headers_sent()) {
@@ -27,7 +28,6 @@ $result = $stmt;
 </head>
 
 <body>
-    <?php include('header.php'); ?>
     <section>
         <a type="button" href="activiteiten_create.php">Create</a>
         <table>

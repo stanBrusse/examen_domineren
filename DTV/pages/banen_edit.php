@@ -137,7 +137,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     }
 } elseif ($_SERVER["REQUEST_METHOD"] == "POST" && !isset($_POST['submit']) && isset($_POST['delete'])) {
     $nummer = $_POST["nummer"];
-    
+
     try {
         $db = new db;
         $stmt = $db->query("DELETE FROM `banen` WHERE nummer=?");
@@ -205,11 +205,11 @@ function test_input($data)
                 </section>
                 <section class="section-check">
                     <label for="check"><strong>Baan check: <?php echo $check ?></strong></label>
-                    <input type="date" id="check" name="check" ><br />
+                    <input type="date" id="check" name="check"><br />
                 </section>
                 <section class="section-service">
                     <label for="service"><strong>Baan service: <?php echo $service ?></strong></label>
-                    <input type="date" id="service" name="service" ><br />
+                    <input type="date" id="service" name="service"><br />
                 </section>
                 <section class="section-submit">
                     <input type="submit" value="Submit" name="submit">
