@@ -26,7 +26,7 @@ if (isset($_POST['voornaam']) && isset($_POST['tussen']) && isset($_POST['achter
     $huisnummer = $_POST['huisnummer'];
     $geboortedatum = $_POST['geboortedatum'];
     $telefoonnummer = $_POST['telefoon'];
-    $accountrol = "niets";
+    $accountrol = "aangemeld";
     $wachtwoord = md5($wachtwoord);
     $wachtwoordherhalen = md5($wachtwoordherhalen);
 
