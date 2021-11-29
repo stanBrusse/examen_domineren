@@ -153,7 +153,7 @@ if (isset($_POST['huidigwachtwoord']) && isset($_POST['nieuwWachtwoord']) && iss
                     
                             foreach($sql as $row)
                             {
-                                echo  " <label>huidig wachtwoord</label><input type='text' name='huidigwachtwoord'placeholder='huidigwachtwoord'> <br>";
+                                echo  " <label>huidig wachtwoord</label><input type='password' name='huidigwachtwoord'placeholder='huidigwachtwoord'> <br>";
                                 echo  "<label>nieuw wachtwoord</label><input type='password'name='nieuwWachtwoord' placeholder='nieuw wachtwoord'> <br>";
                                 echo  "<label>herhaal nieuw wachtwoord</label><input type='password' name='herhaalWachtwoord' placeholder='herhaal wachtwoord'>";
                                 echo  "<input type='submit' value='verander wachtwoord'>";
