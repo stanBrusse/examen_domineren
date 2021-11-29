@@ -146,16 +146,17 @@ if(isset($_POST['btnUitloggen']))
             $sql = $pdo->prepare("SELECT * FROM reservatie_baan WHERE lid_nummer=?");
             $sql->bindParam(1, $_SESSION['lidnummer']);
             $sql->execute();
+            
             foreach($sql as $row)
             {
                 $sql = $pdo->prepare("SELECT * FROM banen WHERE nummer=?");
                 $sql->bindParam(1, $row['baan_nummer']);
                 $sql->execute();
+                
                 foreach($sql as $result)
                 {
                     $nummer = $row['nummer'];
                     $datum = date("d-m-Y", strtotime($row['datum']));
-    
                     echo "<tr>";
                     echo "<td>".$result['code'] . " " . $result['ligging']  . "</td>";            
                     echo "<td>". $datum . "<br>" . $row['tijd_Begin'] . " - " . $row['tijd_Eind']  . "</td>";            

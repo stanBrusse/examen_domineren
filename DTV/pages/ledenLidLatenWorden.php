@@ -21,7 +21,7 @@ if($_SESSION['rol'] == "admin" && $_SESSION['loggedIn'] == true)
   $dsn = "mysql:host=" . $servername . "; dbname=" . $dbname . "; charset=" . $charset;
   $pdo = new PDO($dsn, $username, $password);
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
-  $selecteerNieuweLeden = $pdo->prepare("SELECT * FROM accounts WHERE Account_Rol= 'niets' ");
+  $selecteerNieuweLeden = $pdo->prepare("SELECT * FROM accounts WHERE Account_Rol= 'aangemeld' ");
   $selecteerNieuweLeden->execute();
 
   if(isset($_POST['afwijzen']) && isset($_POST['id']))

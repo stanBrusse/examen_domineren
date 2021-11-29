@@ -64,7 +64,7 @@ if (isset($_GET['promoveren']) && isset($_GET['rol'])) {
     $rol = $_GET['rol'];
     if($_GET['promoveren'] >=2)
     {
-        if ($rol == "niets") {
+        if ($rol == "aangemeld") {
             $rol = "lid";
             $sql = $pdo->prepare("UPDATE accounts SET account_rol=? WHERE nummer=?");
             $sql->bindParam(1, $rol);
@@ -104,7 +104,7 @@ if (isset($_GET['promoveren']) && isset($_GET['rol'])) {
                 exit(header("location:adminLeden.php"));
             }
         } elseif ($rol == "lid") {
-            $rol = "niets";
+            $rol = "aangemeld";
             $sql = $pdo->prepare("UPDATE accounts SET account_rol=? WHERE nummer=?");
             $sql->bindParam(1, $rol);
             $sql->bindParam(2, $_GET['degraderen']);
