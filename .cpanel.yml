@@ -2,8 +2,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/bveens/public_html/DTV/deploy/
-    - /DTV -R pages $DEPLOYPATH
-    - /DTV -R css $DEPLOYPATH
-    - /DTV -R images $DEPLOYPATH
-    - /DTV -R js $DEPLOYPATH
-    - /DTV -R php $DEPLOYPATH
+    - /bin/cp -r /home/bveens/repositories/examen_domineren/*
