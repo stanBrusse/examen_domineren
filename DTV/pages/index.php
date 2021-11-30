@@ -1,3 +1,7 @@
+<?php
+include('header.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,27 +13,26 @@
 
 </head>
 <style>
-.divFoto{
-    background: url("../images/1507858.jpg") no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-    
-    
-}
-.h6wit{
-    color: white;
-}
+    .divFoto {
+        background: url("../images/1507858.jpg") no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+
+
+    }
+
+    .h6wit {
+        color: white;
+    }
 </style>
 
 <body>
     <div class="divFoto">
-    <div class="container">
-        <?php
-        include('header.php');
-        ?>
-        <section class="hero d-flex flex-column justify-content-center align-items-center" id="home">
+        <div class="container">
+
+            <section class="hero d-flex flex-column justify-content-center align-items-center" id="home">
 
                 <div class="container">
                     <div class="row">
@@ -47,13 +50,13 @@
 
                     </div>
                 </div>
-        </section>
-        
-    </div>
+            </section>
+
+        </div>
     </div>
     <?php
-        include('footer.php');
-        ?>
+    include('footer.php');
+    ?>
 </body>
 
 </html>
