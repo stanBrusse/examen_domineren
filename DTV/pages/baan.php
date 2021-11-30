@@ -8,14 +8,6 @@ $eindtijd = $_GET['eindtijd'];
 $stringTijd = strval($begintijd);
 $stringTijd2 = strval($eindtijd);
 
-$host = "localhost";
-$dbuser = "root";
-$dbpass = "";
-$dbname = "dtv";
-
-$pdo = new PDO("mysql:host=$host;dbname=$dbname", $dbuser, $dbpass);
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
 $stmtB = $pdo->query('SELECT * FROM `banen` WHERE nummer = ' .$baan .'');
 $stmtB->execute();
 $result = $stmtB;

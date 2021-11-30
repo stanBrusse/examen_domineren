@@ -1,12 +1,5 @@
 <?php
-
-$host = "localhost";
-$dbuser = "root";
-$dbpass = "";
-$dbname = "dtv";
-
-  $pdo = new PDO("mysql:host=$host;dbname=$dbname", $dbuser, $dbpass);
-  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+include('../php/db.php');
 
   $stmtB = $pdo->prepare("SELECT * FROM `banen`");
   $stmtB->execute();
