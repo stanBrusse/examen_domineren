@@ -13,7 +13,7 @@ if(isset($_POST['emailadres']) && isset($_POST['wachtwoord']))
         if ($sql->rowCount() == 1) {
             foreach($sql as $row)
             {
-                if($row['account_rol'] == "niets")
+                if($row['account_rol'] == "aangemeld")
                 {
                     $info = "de club moet u eerst nog als lid toevoegen";
                 }else{
