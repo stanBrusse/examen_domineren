@@ -9,7 +9,7 @@ if (isset($_SESSION['rol']) && $_SESSION['rol'] != "admin" && isset($_SESSION['l
     }
 }
 
-include('../php/db.php');
+
 
 $db = new db;
 
