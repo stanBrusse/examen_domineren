@@ -33,13 +33,6 @@ $dbname = "dtv";
             margin-top: 100px;
             line-height: 1;       
         }
-        input{
-          border: none; 
-          background-color: transparent;
-        }
-        input:hover{
-          background-color: cornflowerblue;
-        }
     </style>
 </head>
 <body>
@@ -48,6 +41,7 @@ include('header.php');
 ?>
 <section class="content">
 <a style="border: 1px solid black; padding:3px;" href="banen.php">Terug</a>
+<h1><?php echo $_GET['dag'] . " " . $_GET['date']; ?></h1>
 <?php 
 $date = $_GET["date"];
 $sql = $pdo->prepare("SELECT * FROM reservatie_baan WHERE lid_nummer=? AND datum=?");
@@ -60,7 +54,6 @@ $results = $sql->fetch();
     }
 
 ?>
-<h1><?php echo $_GET['dag'] . " " . $_GET['date']; ?></h1>
 <head>
 <link rel="stylesheet" href="../css/test.css">
 </head>
