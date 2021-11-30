@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/bveens/public_html/DTV/
+    - export DEPLOYPATH=/home/bveens/public_html/sites/
     - /bin/cp -R * $DEPLOYPATH
