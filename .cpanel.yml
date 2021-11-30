@@ -1,7 +1,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/bveens/public_html/sites/
+    - export DEPLOYPATH=/home/bveens/public_html/DTV/deploy/
     - /DTV -R pages $DEPLOYPATH
     - /DTV -R css $DEPLOYPATH
     - /DTV -R images $DEPLOYPATH
