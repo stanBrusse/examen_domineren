@@ -1,5 +1,5 @@
-<?php
-include('../php/db.php');
+<?php 
+include('header.php');
 
   $stmtB = $pdo->prepare("SELECT * FROM `banen`");
   $stmtB->execute();
@@ -29,9 +29,6 @@ include('../php/db.php');
     </style>
 </head>
 <body>
-<?php 
-include('header.php');
-?>
 <section class="content">
 <a style="border: 1px solid black; padding:3px;" href="banen.php">Terug</a>
 <h1><?php echo $_GET['dag'] . " " . $_GET['date']; ?></h1>

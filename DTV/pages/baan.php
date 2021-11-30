@@ -1,5 +1,5 @@
-<?php
-include('../php/db.php');
+<?php 
+include('header.php'); 
 
 $baan = $_GET['baan'];
 $date = $_GET['date'];
@@ -23,7 +23,6 @@ $result = $stmtB;
 </head>
 
 <body>
-    <?php include('header.php'); ?>
 <a style="border: 1px solid black; padding:3px;" href="banenreserveren.php?dag=<?php echo $_GET["dag"]; ?>&date=<?php echo $date; ?>">Terug</a>
     <?php
 if ($_SESSION['rol'] != "aangemeld" && $_SESSION['loggedIn'] == true) {
