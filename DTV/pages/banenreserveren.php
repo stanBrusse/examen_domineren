@@ -46,8 +46,20 @@ $dbname = "dtv";
 <?php 
 include('header.php');
 ?>
-<a style="border: 1px solid black; padding:3px;" href="banen.php">Terug</a>
 <section class="content">
+<a style="border: 1px solid black; padding:3px;" href="banen.php">Terug</a>
+<?php 
+$date = $_GET["date"];
+$sql = $pdo->prepare("SELECT * FROM reservatie_baan WHERE lid_nummer=? AND datum=?");
+$sql->bindParam(1, $_SESSION['lidnummer']);
+$sql->bindParam(2, $date);
+$sql->execute();
+$results = $sql->fetch();
+    if (isset($results["nummer"])){
+        echo "<p>U heeft op deze dag al een baan gereserveerd</p>";
+    }
+
+?>
 <h1><?php echo $_GET['dag'] . " " . $_GET['date']; ?></h1>
 <head>
 <link rel="stylesheet" href="../css/test.css">
@@ -104,7 +116,7 @@ while($tijd != 2300) {
           if ($r_baan_nummer == $baan["nummer"]) { ?>
             <td colspan='2' style="background-color: red;">Gereserveerd</td>
           <?php } else { ?>
-            <td colspan='2' style="background-color: greenyellow;"><a href="baan.php?baan=<?php echo $baan["nummer"]; ?>&date=<?php echo $datum; ?>&begintijd=<?php echo $tijd; ?>&eindtijd=<?php echo $t; ?>">Beschikbaar</a></td>
+            <td colspan='2' style="background-color: greenyellow;"><a href="baan.php?dag=<?php echo $_GET['dag']; ?>&baan=<?php echo $baan["nummer"]; ?>&date=<?php echo $datum; ?>&begintijd=<?php echo $tijd; ?>&eindtijd=<?php echo $t; ?>">Beschikbaar</a></td>
         <?php 
       }
         } ?>
