@@ -10,18 +10,6 @@ if ($_SESSION['rol'] == "admin" && $_SESSION['loggedIn'] == true) {
 }
 
 
-//dit is om te testen. kan weg als er een nieuwe database is
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "dtv";
-$charset = "utf8mb4";
-
-//maakt de connectie aan 
-$dsn = "mysql:host=" . $servername . "; dbname=" . $dbname . "; charset=" . $charset;
-$pdo = new PDO($dsn, $username, $password);
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
 if (isset($_POST['zoek'])) {
     $zoek = $_POST['zoek'];
     $order = "nummer";

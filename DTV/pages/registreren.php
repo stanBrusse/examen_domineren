@@ -1,16 +1,7 @@
 <?php
 include('header.php');
 $info = "";
-// deze database is voor het maken en testen. kan weg
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "dtv";
-$charset = "utf8mb4";
-//maakt de connectie aan 
-$dsn = "mysql:host=" . $servername . "; dbname=" . $dbname . "; charset=" . $charset;
-$pdo = new PDO($dsn, $username, $password);
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
 echo $_POST['postcode2'];
 if (isset($_POST['voornaam']) && isset($_POST['tussen']) && isset($_POST['achternaam']) && isset($_POST['straatnaam']) && isset($_POST['huisnummer']) && isset($_POST['plaatsnaam']) && isset($_POST['postcode1']) && isset($_POST['postcode2']) && isset($_POST['geboortedatum']) && isset($_POST['geslacht']) && isset($_POST['email']) && isset($_POST['telefoon']) && isset($_POST['wachtwoord']) && isset($_POST['wachtwoordherhalen'])) {
     $voornaam =   str_replace(' ', '', $_POST['voornaam']);

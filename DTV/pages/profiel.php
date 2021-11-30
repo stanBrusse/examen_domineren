@@ -58,17 +58,7 @@ if( $_SESSION['loggedIn'] == true)
         } 
 }
 $info = "";
-// deze database is voor het maken en testen. kan weg
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "dtv";
-$charset = "utf8mb4";
 
-//maakt de connectie aan 
-$dsn = "mysql:host=" . $servername . "; dbname=" . $dbname . "; charset=" . $charset;
-$pdo = new PDO($dsn, $username, $password);
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
 
 if(isset($_POST['btnUitloggen']))
 {
