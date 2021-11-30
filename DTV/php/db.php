@@ -1,7 +1,7 @@
 <?php
 $host = "localhost";
-$username = "bveens_dtv";
-$password = "Tennis@DTV!";
+$dbuser = "bveens_dtv";
+$dbpass = "Tennis@DTV!";
 $dbname = "bveens_dtv";
 
 class db
