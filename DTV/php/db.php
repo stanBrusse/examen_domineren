@@ -8,9 +8,9 @@ class db
     // $dbname = "bveens_dtv";
     // --------CPANEL-------------
     private  $host = "localhost";
-    private  $dbuser = "root";
-    private  $dbpass = "";
-    private  $dbname = "dtv";
+    private  $dbuser = "bveens_dtv";
+    private  $dbpass = "Tennis@DTV!";
+    private  $dbname = "bveens_dtv";
 
     function query($query)
     {
