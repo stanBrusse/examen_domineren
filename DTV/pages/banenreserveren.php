@@ -33,13 +33,6 @@ $dbname = "dtv";
             margin-top: 100px;
             line-height: 1;       
         }
-        input{
-          border: none; 
-          background-color: transparent;
-        }
-        input:hover{
-          background-color: cornflowerblue;
-        }
     </style>
 </head>
 <body>
