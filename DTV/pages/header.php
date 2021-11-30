@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <link rel="stylesheet" href="../css/bootstrap.min.css">
  <link rel="stylesheet" href="../css/font-awesome.min.css">
  <link rel="stylesheet" href="../css/aos.css">
@@ -33,7 +34,7 @@
                         <a href="contact.php" class="nav-link smoothScroll">Contact</a>
                     </li>
                     <?php 
-                    session_start();
+                    
                     if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true)
                    {
                     echo '
