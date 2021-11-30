@@ -1,7 +1,3 @@
-<?php
-include('header.php');
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,6 +26,9 @@ include('header.php');
 
 <body>
     <div class="divFoto">
+        <?php
+        include('header.php');
+        ?>
         <div class="container">
 
             <section class="hero d-flex flex-column justify-content-center align-items-center" id="home">
