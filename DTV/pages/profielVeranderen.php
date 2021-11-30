@@ -57,14 +57,31 @@ if (isset($_POST['huidigwachtwoord']) && isset($_POST['nieuwWachtwoord']) && iss
     if(!empty($_POST['straatnaam'])&& !empty($_POST['huisnummer'])&& !empty($_POST['postcode'])&& !empty($_POST['plaatsnaam']))
     {
         if ( PostcodeCheck($_POST['postcode']) !== false) {
-            $sql = $pdo->prepare("UPDATE accounts SET  adres_straat_naam=?, adres_straat_nummer=?, adres_plaats_postcode=?, adres_plaats_naam=? WHERE nummer=? ");
-            $sql->bindParam(1, $_POST['straatnaam']);
-            $sql->bindParam(2, $_POST['huisnummer']);
-            $sql->bindParam(3, $_POST['postcode']);
-            $sql->bindParam(4, $_POST['plaatsnaam']);
-            $sql->bindParam(5, $_SESSION['lidnummer']);
-            $sql->execute();
-            $info = "adres gegevens aangepast";
+            if(preg_match('/[^a-zA-Z]/', $_POST['straatnaam']) == false)
+            {
+                if(preg_match("/^\d+$/", $_POST['huisnummer']))
+                {
+                    if (preg_match('/[^a-zA-Z]/', $_POST['plaatsnaam']) == false) {
+                        $sql = $pdo->prepare("UPDATE accounts SET  adres_straat_naam=?, adres_straat_nummer=?, adres_plaats_postcode=?, adres_plaats_naam=? WHERE nummer=? ");
+                        $sql->bindParam(1, $_POST['straatnaam']);
+                        $sql->bindParam(2, $_POST['huisnummer']);
+                        $sql->bindParam(3, $_POST['postcode']);
+                        $sql->bindParam(4, $_POST['plaatsnaam']);
+                        $sql->bindParam(5, $_SESSION['lidnummer']);
+                        $sql->execute();
+                        $info = "adres gegevens aangepast";
+                    }else
+                    {
+                        $info = "plaatsnaam is niet correct";
+                    }
+                }else
+                {
+                    $info = "huisnummer is niet correct";
+                }
+            }else
+            {
+                $info = "straatnaam is niet correct";
+            }
         }else{
             $info = "Postcode is niet correct";
         }
