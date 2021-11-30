@@ -1,56 +1,47 @@
 <?php
+include('../php/db.php');
+
+$baan = $_GET['baan'];
+$date = $_GET['date'];
+$begintijd = $_GET['begintijd'];
+$eindtijd = $_GET['eindtijd'];
+$stringTijd = strval($begintijd);
+$stringTijd2 = strval($eindtijd);
 
 $host = "localhost";
 $dbuser = "root";
 $dbpass = "";
 $dbname = "dtv";
 
-  $pdo = new PDO("mysql:host=$host;dbname=$dbname", $dbuser, $dbpass);
-  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$pdo = new PDO("mysql:host=$host;dbname=$dbname", $dbuser, $dbpass);
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-  $stmtB = $pdo->prepare("SELECT * FROM `banen`");
-  $stmtB->execute();
-  $resultBan = $stmtB;
-
+$stmtB = $pdo->query('SELECT * FROM `banen` WHERE nummer = ' .$baan .'');
+$stmtB->execute();
+$result = $stmtB;
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
+</div>
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banen</title>
-    <style>        
-        table, th{
-            background-color: gray;
-            border: 4px solid black;    
-        }
-        tr, td{
-            color: white;
-            border: 3px solid black;    
-        }
-        .content{
-            margin-top: 100px;
-            line-height: 1;       
-        }
-        input{
-          border: none; 
-          background-color: transparent;
-        }
-        input:hover{
-          background-color: cornflowerblue;
-        }
-    </style>
+    <meta charset="utf-8">
+    <title>Banen Onderhoud</title>
+    <link rel="stylesheet" href="../css/banen_admin.css">
 </head>
+
 <body>
-<?php 
-include('header.php');
-?>
-<section class="content">
-<a style="border: 1px solid black; padding:3px;" href="banen.php">Terug</a>
-<h1><?php echo $_GET['dag'] . " " . $_GET['date']; ?></h1>
-<?php 
-$date = $_GET["date"];
+    <?php include('header.php'); ?>
+<a style="border: 1px solid black; padding:3px;" href="banenreserveren.php?dag=<?php echo $_GET["dag"]; ?>&date=<?php echo $date; ?>">Terug</a>
+    <?php
+if ($_SESSION['rol'] != "aangemeld" && $_SESSION['loggedIn'] == true) {
+} else {
+    if (headers_sent()) {
+        die("Redirect failed. Please click on this link: <a href=../pages/index.php");
+    } else {
+        exit(header("location:index.php"));
+    }
+}
 $sql = $pdo->prepare("SELECT * FROM reservatie_baan WHERE lid_nummer=? AND datum=?");
 $sql->bindParam(1, $_SESSION['lidnummer']);
 $sql->bindParam(2, $date);
@@ -60,75 +51,32 @@ $results = $sql->fetch();
         echo "<p>U heeft op deze dag al een baan gereserveerd</p>";
     }
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (isset($results["nummer"])){
+            echo "<p>U heeft al een baan gereserveerd op deze dag</p>";
+        } else {
+            $stmtA = "INSERT INTO `reservatie_baan` (nummer, datum, baan_nummer, tijd_Begin, tijd_Eind, lid_nummer) VALUES (?, ?, ?, ?, ?, ?)";
+            $pdo->prepare($stmtA)->execute([NULL, $date, $baan, $begintijd, $eindtijd, $_SESSION['lidnummer']]);
+            echo "<p>Reservatie is geslaagd!</p>";
+        }
+    $_SERVER["REQUEST_METHOD"] = "GET";
+}  
+
 ?>
-<head>
-<link rel="stylesheet" href="../css/test.css">
-</head>
-<table border="black 1px" align="center" cellpadding="5px">
+    <section>
+                <?php while ($baan = $result->fetch()) { ?>
+                        <?php echo "<h3>" . $baan['soort'] . " : " . $baan['code'] . "</h3>"?>
+                        <?php echo "Ligging: " . $baan['ligging'] . "<br>"?>
+                        <?php echo "Lengte baan: " . $baan['afmeting_lengte'] . "<br>"?>
+                        <?php echo "Breedte baan: " . $baan['afmeting_breedte'] . "<br>"?>
+                        <?php echo "Vloer: " . $baan['vloer'] . "<br><br>"?>
+                        <?php } ?>
+                        <?php echo "Wilt u deze baan reserveren op " . $date . " van " . $stringTijd[0] . $stringTijd[1] . ":00 tot ". $stringTijd2[0] . $stringTijd2[1] . ":00?<br><br>";?>
+                        <form method="POST"><input type="submit" value="Reserveren"></form>
+    </section>
 
-  <thead>
-    <tr>
-      <?php
-      echo "<th colspan='2'>Tijd</th>";
-      while ($baan = $resultBan->fetch()) {  ?>
-        <th colspan="2">Baan <?php echo $baan["nummer"]; ?> (<?php echo $baan["soort"]; ?>)</th>
-      <?php } ?>
-    </tr>
-  </thead>
-  <tbody>
-    <?php
-$t = 1200; 
-$tijd = 1200; 
-$datum = $_GET["date"];
-while($tijd != 2300) {
-  ?>
-      <tr>
 
-        <td colspan="2"><?php 
-        $t += 100;
-        $stringTijd = strval($tijd);
-        $stringTijd2 = strval($t);
-        echo $stringTijd[0] . $stringTijd[1] . ":00 - ". $stringTijd2[0] . $stringTijd2[1] . ":00"; ?></td>
-        <?php
-
-        $stmtB = $pdo->prepare("SELECT * FROM `banen`");
-        $stmtB->execute();
-        $resultBan = $stmtB; 
-        while ($baan = $resultBan->fetch()) {
-
-          $stmtA = $pdo->query("SELECT * FROM `reservatie_baan` WHERE `baan_nummer`=" . $baan["nummer"] . " AND `tijd_Begin`='". $tijd ."' AND `datum`='" . $_GET['date'] . "'");
-          $resultRes = $stmtA->fetch();
-
-          if ($resultRes) {
-            $r_datum = $resultRes["datum"];
-            $r_baan_nummer = $resultRes["baan_nummer"];
-            $r_tijd_Begin = $resultRes["tijd_Begin"];
-            $r_tijd_Eind = $resultRes["tijd_Eind"];
-            $r_lid_nummer = $resultRes["lid_nummer"];
-          } else {
-            $r_datum = null;
-            $r_baan_nummer = null;
-            $r_tijd_Begin = null;
-            $r_tijd_Eind = null;
-            $r_lid_nummer = null;
-          }
-
-          if ($r_baan_nummer == $baan["nummer"]) { ?>
-            <td colspan='2' style="background-color: red;">Gereserveerd</td>
-          <?php } else { ?>
-            <td colspan='2' style="background-color: greenyellow;"><a href="baan.php?dag=<?php echo $_GET['dag']; ?>&baan=<?php echo $baan["nummer"]; ?>&date=<?php echo $datum; ?>&begintijd=<?php echo $tijd; ?>&eindtijd=<?php echo $t; ?>">Beschikbaar</a></td>
-        <?php 
-      }
-        } ?>
-      </tr>
-    <?php $tijd = $tijd + 100; } ?>
-  </tbody>
-</table>
-
-<?php $pdo = null; ?>
-            </section>
-<?php 
-include('footer.php');
-?>
+    <?php include('footer.php'); ?>
 </body>
+
 </html>
