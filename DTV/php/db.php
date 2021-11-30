@@ -4,6 +4,8 @@ $dbuser = "bveens_dtv";
 $dbpass = "Tennis@DTV!";
 $dbname = "bveens_dtv";
 
+$pdo = new PDO("mysql:host=$this->host;dbname=$this->dbname", $this->dbuser, $this->dbpass);
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 class db
 {
     // --------CPANEL-------------
