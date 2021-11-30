@@ -12,6 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 <!DOCTYPE html>
 <html>
 </div>
+
 <head>
     <meta charset="utf-8">
     <title>Kantine</title>

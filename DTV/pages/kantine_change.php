@@ -72,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
                 $stmt = $db->query("UPDATE artikelen SET naam=?, descriptie=?, foto=?, prijs=?, categorie=? WHERE nummer=?");
                 $nummer = (int) $_POST['nummer'];
-                
+
                 $foto = $_POST['foto_old'];
                 $stmt->execute([$naam, $descriptie, $foto, $prijs, $categorie, $nummer]);
 
