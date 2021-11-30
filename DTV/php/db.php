@@ -4,14 +4,15 @@ $dbuser = "bveens_dtv";
 $dbpass = "Tennis@DTV!";
 $dbname = "bveens_dtv";
 
-$pdo = new PDO("mysql:host=$host;dbname=$dbuser", $dbpass, $dbname);
+$pdo = new PDO("mysql:host=$host;dbname=$dbname", $dbuser, $dbpass);
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
 
 class db
 {
     // --------CPANEL-------------
-    // $username = "bveens_dtv";
-    // $password = "Tennis@DTV!";
+    // $dbuser = "bveens_dtv";
+    // $dbpass = "Tennis@DTV!";
     // $dbname = "bveens_dtv";
     // --------CPANEL-------------
     private  $host = "localhost";
