@@ -105,13 +105,16 @@ while($tijd != 2300) {
             $r_tijd_Eind = null;
             $r_lid_nummer = null;
           }
+          if ($r_baan_nummer == $baan["nummer"]) {
+            if ($resultRes["lid_nummer"] == $_SESSION['lidnummer']) { ?>
+            <td colspan='2' style="background-color: orange;">Gereserveerd</td> <?php            
+            } else { ?>
+              <td colspan='2' style="background-color: red;">Gereserveerd</td> <?php
+            } 
+          } else { ?>
+            <td colspan='2' style="background-color: greenyellow;"><a href="baan.php?dag=<?php echo $_GET['dag']; ?>&baan=<?php echo $baan["nummer"]; ?>&date=<?php echo $datum; ?>&begintijd=<?php echo $tijd; ?>&eindtijd=<?php echo $t; ?>">Beschikbaar</a></td> <?php 
+          }
 
-          if ($r_baan_nummer == $baan["nummer"]) { ?>
-            <td colspan='2' style="background-color: red;">Gereserveerd</td>
-          <?php } else { ?>
-            <td colspan='2' style="background-color: greenyellow;"><a href="baan.php?dag=<?php echo $_GET['dag']; ?>&baan=<?php echo $baan["nummer"]; ?>&date=<?php echo $datum; ?>&begintijd=<?php echo $tijd; ?>&eindtijd=<?php echo $t; ?>">Beschikbaar</a></td>
-        <?php 
-      }
         } ?>
       </tr>
     <?php $tijd = $tijd + 100; } ?>
