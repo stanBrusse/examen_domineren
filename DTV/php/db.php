@@ -1,10 +1,10 @@
 <?php
-$databasehost = "localhost";
-$databasedbuser = "bveens_dtv";
-$databasedbpass = "Tennis@DTV!";
-$databasedbname = "bveens_dtv";
+$host = "localhost";
+$dbuser = "bveens_dtv";
+$dbpass = "Tennis@DTV!";
+$dbname = "bveens_dtv";
 
-$pdo = new PDO("mysql:host=$databasehost;dbname=$databasedbname", $databasedbuser, $databasedbpass);
+$pdo = new PDO("mysql:host=$host;dbname=$dbuser", $dbpass, $dbname);
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 class db
