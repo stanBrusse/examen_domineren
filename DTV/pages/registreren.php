@@ -11,13 +11,14 @@ $charset = "utf8mb4";
 $dsn = "mysql:host=" . $servername . "; dbname=" . $dbname . "; charset=" . $charset;
 $pdo = new PDO($dsn, $username, $password);
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-if (isset($_POST['voornaam']) && isset($_POST['tussen']) && isset($_POST['achternaam']) && isset($_POST['straatnaam']) && isset($_POST['huisnummer']) && isset($_POST['plaatsnaam']) && isset($_POST['postcode']) && isset($_POST['geboortedatum']) && isset($_POST['geslacht']) && isset($_POST['email']) && isset($_POST['telefoon']) && isset($_POST['wachtwoord']) && isset($_POST['wachtwoordherhalen'])) {
+echo $_POST['postcode2'];
+if (isset($_POST['voornaam']) && isset($_POST['tussen']) && isset($_POST['achternaam']) && isset($_POST['straatnaam']) && isset($_POST['huisnummer']) && isset($_POST['plaatsnaam']) && isset($_POST['postcode1']) && isset($_POST['postcode2']) && isset($_POST['geboortedatum']) && isset($_POST['geslacht']) && isset($_POST['email']) && isset($_POST['telefoon']) && isset($_POST['wachtwoord']) && isset($_POST['wachtwoordherhalen'])) {
     $voornaam =   str_replace(' ', '', $_POST['voornaam']);
     $tussen =     str_replace(' ', '', $_POST['tussen']);
     $achternaam = str_replace(' ', '', $_POST['achternaam']);
     $plaatsnaam = $_POST['plaatsnaam'];
-    $postcode =   str_replace(' ', '', $_POST['postcode']);
+    $postcode1 =   str_replace(' ', '', $_POST['postcode1']);
+    $postcode2 =   str_replace(' ', '', $_POST['postcode2']);
     $geslacht =   str_replace(' ', '', $_POST['geslacht']);
     $email =      str_replace(' ', '', $_POST['email']);
     $wachtwoord = str_replace(' ', '', $_POST['wachtwoord']);
@@ -30,50 +31,100 @@ if (isset($_POST['voornaam']) && isset($_POST['tussen']) && isset($_POST['achter
     $wachtwoord = md5($wachtwoord);
     $wachtwoordherhalen = md5($wachtwoordherhalen);
 
-    /*
-**  regels met wachtwoorden nog toevoegen
-*/
-    $geboortedatum = date("Y-m-d", strtotime($geboortedatum));
-
-    $zoekNaarDubbel = $pdo->prepare("SELECT * FROM accounts WHERE email=?");
-    $zoekNaarDubbel->bindParam(1, $_POST['email']);
-    $zoekNaarDubbel->execute();
-    if ($zoekNaarDubbel->rowCount() == 0) {
-        if ($wachtwoord == $wachtwoordherhalen) {
-            if (strlen($wachtwoord) <= 8) {
-                $info = "uw wachtwoord moet minstens 8 tekens zijn";
-            }else {
-                $insert = $pdo->prepare("INSERT INTO accounts (wachtwoord, naam_voor, naam_tussen, naam_achter, adres_straat_naam, adres_straat_nummer, adres_plaats_postcode, adres_plaats_naam, geboorte_datum, geslacht, email, telefoon, account_rol) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
-                $insert->bindParam(1, $wachtwoord);
-                $insert->bindParam(2, $voornaam);
-                $insert->bindParam(3, $tussen);
-                $insert->bindParam(4, $achternaam);
-                $insert->bindParam(5, $straatnaam);
-                $insert->bindParam(6, $huisnummer);
-                $insert->bindParam(7, $postcode);
-                $insert->bindParam(8, $plaatsnaam);
-                $insert->bindParam(9, $geboortedatum);
-                $insert->bindParam(10, $geslacht);
-                $insert->bindParam(11, $email);
-                $insert->bindParam(12, $telefoonnummer);
-                $insert->bindParam(13, $accountrol);
-                $insert->execute();
-                if (headers_sent()) {
-                    die("Redirect failed. Please click on this link: <a href=../pages/inloggen.php");
+    if(preg_match('/[^a-zA-Z]/', $voornaam) == false)
+    {
+        if(preg_match('/[^a-zA-Z]/', $tussen) == false)
+        {
+            if(preg_match('/[^a-zA-Z]/', $achternaam) == false)
+            {
+                if(preg_match('/[^a-zA-Z]/', $plaatsnaam) == false)
+                {
+                    if(preg_match('/[^a-zA-Z]/', $geslacht) == false)
+                    {
+                        if(preg_match('/[^a-zA-Z]/', $straatnaam) == false)
+                        {
+                                if (preg_match("/^\d+$/", $telefoonnummer)) {
+                                    $maxleeftijd = (date("Y")-100);
+                                        $minleeftijd = (date("Y")-10);
+                                        
+                                        $date = DateTime::createFromFormat("Y-m-d", $geboortedatum);
+                                        $date = $date->format("Y");
+                                        if ($date > $maxleeftijd && $date < $minleeftijd) {
+                                            if (strlen($postcode1)==4 && strlen($postcode2) == 2 && preg_match("/^\d+$/", $postcode1) &&  preg_match('/[^a-zA-Z]/', $postcode2)== false) {
+                                                $geboortedatum = date("Y-m-d", strtotime($geboortedatum));
+                                                $postcode = $postcode1 . $postcode2;
+                                                $zoekNaarDubbel = $pdo->prepare("SELECT * FROM accounts WHERE email=?");
+                                                $zoekNaarDubbel->bindParam(1, $_POST['email']);
+                                                $zoekNaarDubbel->execute();
+                                                if ($zoekNaarDubbel->rowCount() == 0) {
+                                                    if ($wachtwoord == $wachtwoordherhalen) {
+                                                        if (strlen($wachtwoord) <= 8) {
+                                                            $info = "uw wachtwoord moet minstens 8 tekens zijn";
+                                                        } else {
+                                                            $insert = $pdo->prepare("INSERT INTO accounts (wachtwoord, naam_voor, naam_tussen, naam_achter, adres_straat_naam, adres_straat_nummer, adres_plaats_postcode, adres_plaats_naam, geboorte_datum, geslacht, email, telefoon, account_rol) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                                                            $insert->bindParam(1, $wachtwoord);
+                                                            $insert->bindParam(2, $voornaam);
+                                                            $insert->bindParam(3, $tussen);
+                                                            $insert->bindParam(4, $achternaam);
+                                                            $insert->bindParam(5, $straatnaam);
+                                                            $insert->bindParam(6, $huisnummer);
+                                                            $insert->bindParam(7, $postcode);
+                                                            $insert->bindParam(8, $plaatsnaam);
+                                                            $insert->bindParam(9, $geboortedatum);
+                                                            $insert->bindParam(10, $geslacht);
+                                                            $insert->bindParam(11, $email);
+                                                            $insert->bindParam(12, $telefoonnummer);
+                                                            $insert->bindParam(13, $accountrol);
+                                                            $insert->execute();
+                                                            if (headers_sent()) {
+                                                                die("Redirect failed. Please click on this link: <a href=../pages/inloggen.php");
+                                                            }
+                                                            else{
+                                                                exit(header("location:inloggen.php"));
+                                                            }
+                                                            $info = "Gelukt. U moet nog wel toegevoegd worden door de club";
+                                                        }
+                                                    } else {
+                                                        $info = "uw wachtwoorden komen niet overeen ";
+                                                    }
+                                                } else {
+                                                    $info = "email is al in gebruik";
+                                                }
+                                            } else {
+                                                $info = "postcode klopt niet";
+                                            }
+                                        }else{
+                                            $info = "geboorte datum niet mogenlijk";
+                                        }
+                                }else
+                                {
+                                    $info = "telefoonnummer mag alleen cijfers"; 
+                                }
+                        }else
+                        {
+                            $info = "straatnaam mag alleen letters bevatten";
+                        } 
+                    }else
+                    {
+                        $info = "geslacht mag alleen letters bevatten";
+                    }   
+                }else
+                {
+                    $info = "plaatsnaam mag alleen letters bevatten";
                 }
-                else{
-                    exit(header("location:inloggen.php"));
-                }
-                $info = "Gelukt. U moet nog wel toegevoegd worden door de club";
+            }else
+            {
+                $info = "achternaam mag alleen letters bevatten";
             }
-            
-        } else {
-            $info = "uw wachtwoorden komen niet overeen ";
+        }else
+        {
+            $info = "tussenvoegsel mag alleen letters bevatten";
         }
-    } else {
-        $info = "email is al in gebruik";
-        echo "afssadfafs";
+    }else
+    {
+        $info = "voornaam mag alleen letters bevatten";
     }
+    
 } else {
     $info = "niet alles ingevuld";
 }
@@ -112,13 +163,17 @@ if (isset($_POST['voornaam']) && isset($_POST['tussen']) && isset($_POST['achter
             margin-top: 0px;
         }
 
-        #huisnummer {
-            margin-left: 0px;
-            width: 12%;
+        #huisnummer, #postcode2 {
+            padding-left: 0px;
+            width: 14%;
             text-align: center;
         }
-
-        #voornaam,#tussen,#achternaam,#plaatsnaam,#postcode,#geboortedatum,#geslacht,#email,#telefoonummer,#wachtwoord,#wachtwoordherhalen {
+        
+        #postcode1, #straatnaam{
+            text-align: center; 
+            width: 46%;
+        }
+        #voornaam,#tussen,#achternaam,#plaatsnaam,#geboortedatum,#geslacht,#email,#telefoonummer,#wachtwoord,#wachtwoordherhalen {
             text-align: center;
             width: 60%;
         }
@@ -148,7 +203,8 @@ if (isset($_POST['voornaam']) && isset($_POST['tussen']) && isset($_POST['achter
                 <input value="<?php if(isset($_POST["straatnaam"])) echo $_POST["straatnaam"]; ?>" type="text" id="straatnaam" name="straatnaam" style="text-align: center" placeholder="straatnaam">
                 <input value="<?php if(isset($_POST["huisnummer"])) echo $_POST["huisnummer"]; ?>" type="text" id="huisnummer" name="huisnummer" placeholder="2A"><br>
                 <input value="<?php if(isset($_POST["plaatsnaam"])) echo $_POST["plaatsnaam"]; ?>" type="text" id="plaatsnaam" name="plaatsnaam" placeholder="plaatsnaam"><br>
-                <input value="<?php if(isset($_POST["postcode"])) echo $_POST["postcode"]; ?>" type="text" id="postcode" name="postcode" placeholder="1234AB"> <br>
+                <input value="<?php if(isset($_POST["postcode1"])) echo $_POST["postcode1"]; ?>" type="text" id="postcode1" name="postcode1" placeholder="1234"> 
+                <input value="<?php if(isset($_POST["postcode2"])) echo $_POST["postcode2"]; ?>" type="text" id="postcode2" name="postcode2" placeholder="ab"> 
                 <input value="<?php if(isset($_POST["geboortedatum"])) echo $_POST["geboortedatum"]; ?>" type="date" id="geboortedatum" name="geboortedatum"> <br>
                 <input value="<?php if(isset($_POST["geslacht"])) echo $_POST["geslacht"]; ?>" type="text" id="geslacht" name="geslacht" placeholder="geslacht"><br>
                 <input value="<?php if(isset($_POST["email"])) echo $_POST["email"]; ?>" type="email" id="email" name="email" placeholder="email@email.com"><br>
