@@ -18,7 +18,7 @@ $result = $stmtB;
 
 <head>
     <meta charset="utf-8">
-    <title>Banen Onderhoud</title>
+    <title>Baan reserveren</title>
     <link rel="stylesheet" href="../css/banen_admin.css">
 </head>
 
