@@ -87,6 +87,17 @@ if (isset($_POST['huidigwachtwoord']) && isset($_POST['nieuwWachtwoord']) && iss
         }
         
     }
+}elseif(isset($_POST['nieuwtelefoonnummer']))
+{
+    if (preg_match("/^\d+$/", $_POST['nieuwtelefoonnummer'])) {
+        $sql = $pdo->prepare("UPDATE accounts SET telefoon=? WHERE nummer=? ");
+        $sql->bindParam(1, $_POST['nieuwtelefoonnummer']);
+        $sql->bindParam(2, $_SESSION['lidnummer']);
+        $sql->execute();
+        $info = "telefoonnummer aangepast";
+    }else{
+        $info = "telefoonnummer mag alleen cijfers bevatten";
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -200,6 +211,15 @@ if (isset($_POST['huidigwachtwoord']) && isset($_POST['nieuwWachtwoord']) && iss
                             echo  "<label>postcode</label>      <input type='text' name='postcode' value='".$row['adres_plaats_postcode']."'> <br>";
                             echo  "<label>plaats naam</label>   <input type='text' name='plaatsnaam' value='".$row['adres_plaats_naam']."'> <br>";
                             echo  "<input type='submit' value='verander adresgegevens'>";
+                        }
+                    }elseif(isset($_POST['telefoonnummer'])){
+                        $sql = $pdo->prepare("SELECT * FROM accounts WHERE nummer=?");
+                        $sql->bindParam(1, $_SESSION['lidnummer']);
+                        $sql->execute();
+                        foreach ($sql as $row) {
+                            echo  "<label>huidig telefoonnummer</label><input name='huidigtelefoonnummer' type='text' value='".$row['telefoon']."' readonly> <br>";
+                            echo  "<label>nieuw telefoonnummer</label><input name='nieuwtelefoonnummer' type='text' placeholder='nieuw telefoonnummer'>";
+                            echo  "<input type='submit' value='verander telefoonnummer'>";
                         }
                     }else{
                         if (!headers_sent()) {

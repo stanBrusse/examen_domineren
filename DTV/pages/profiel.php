@@ -124,6 +124,7 @@ if(isset($_POST['btnUitloggen']))
                 <input type="submit" name="wachtwoord" value="wachtwoord" class="buttonInloggen"><br>
                 <input type="submit" name="email" value="email" class="buttonInloggen"><br>
                 <input type="submit" name="adres" value="adres" class="buttonInloggen"><br>
+                <input type="submit" name="telefoonnummer" value="telefoonnummer" class="buttonInloggen"><br>
             </form>
     
         </div>
