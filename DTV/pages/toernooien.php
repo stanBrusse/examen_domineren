@@ -1,16 +1,5 @@
 <?php
-
-// // deze database is voor het maken en testen. kan weg
-// $servername = "localhost";
-// $username = "DTVUSER";
-// $password = "1234";
-// $dbname = "dtv";
-// $charset = "utf8mb4";
-
-//maakt de connectie aan
-// $dsn = "mysql:host=" . $servername . "; dbname=" . $dbname . "; charset=" . $charset;
-// $pdo = new PDO($dsn, $username, $password);
-// $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+include('header.php');
 
 ?>
 <!DOCTYPE html>
@@ -24,9 +13,6 @@
 </head>
 
 <body>
-    <?php
-    include('header.php');
-    ?>
     <section id="schedule">
         <div class="container">
             <div class="row">
@@ -104,7 +90,7 @@
                                 echo '<tr>';
                                 echo '<td><small class="">' . getTijd($tijd - 100) . "PM<br>" . getTijd($tijd) . ' PM</small></td>';
                                 foreach ($data as $date) {
-                                    $query = $pdo->prepare("SELECT * FROM activiteiten WHERE tijd_start='$tijd' AND datum_activiteit='$date'");
+                                    $query = $pdo->prepare("SELECT * FROM activiteiten WHERE tijd_start='$tijd' AND datum_activiteit='$date' AND activiteit='Toernooi'");
                                     $count = $query->fetchColumn();
                                     $query->execute();
                                     if ($query->rowCount() > 0) {
@@ -118,7 +104,7 @@
                                             }
                                         }
                                     } else {
-                                        $query = $pdo->prepare("SELECT * FROM activiteiten WHERE tijd_start='$tijd2' AND datum_activiteit='$date'");
+                                        $query = $pdo->prepare("SELECT * FROM activiteiten WHERE tijd_start='$tijd2' AND datum_activiteit='$date' AND activiteit='Toernooi'");
                                         $count = $query->fetchColumn();
                                         $query->execute();
                                         if ($query->rowCount() > 0) {
@@ -132,7 +118,7 @@
                                                 }
                                             }
                                         } else {
-                                            $query = $pdo->prepare("SELECT * FROM activiteiten WHERE tijd_start='$tijd3' AND datum_activiteit='$date'");
+                                            $query = $pdo->prepare("SELECT * FROM activiteiten WHERE tijd_start='$tijd3' AND datum_activiteit='$date' AND activiteit='Toernooi'");
                                             $count = $query->fetchColumn();
                                             $query->execute();
                                             if ($query->rowCount() > 0) {
@@ -146,7 +132,7 @@
                                                     }
                                                 }
                                             } else {
-                                                $query = $pdo->prepare("SELECT * FROM activiteiten WHERE tijd_start='$tijd4' AND datum_activiteit='$date'");
+                                                $query = $pdo->prepare("SELECT * FROM activiteiten WHERE tijd_start='$tijd4' AND datum_activiteit='$date' AND activiteit='Toernooi'");
                                                 $count = $query->fetchColumn();
                                                 $query->execute();
                                                 if ($query->rowCount() > 0) {
