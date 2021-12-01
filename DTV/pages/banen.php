@@ -32,7 +32,6 @@
     $startdateVrijdag = strtotime("Friday");
     $startdateZaterdag = strtotime("Saturday");
     $startdateZondag = strtotime("Sunday");
-    $enddate = strtotime("+1000 weeks", $startdateMaandag);
 
     $data = array();
 
