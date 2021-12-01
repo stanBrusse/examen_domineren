@@ -55,8 +55,8 @@ if ($_SESSION['rol'] == "admin" && $_SESSION['loggedIn'] == true) {
         <div class="container">
 
             <div class="box leden">
-                <h3 class="tekst">Leden beheren</h3>
-                <form action="adminLeden.php" method="GET"><input type="submit" value="Leden beheren" class="banenButton"></form>
+                <h3 class="tekst">Leden beheer</h3>
+                <form action="adminLeden.php" method="GET"><input type="submit" value="Leden beheer" class="banenButton"></form>
             </div>
 
             <div class="box activiteit_beheer">
