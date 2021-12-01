@@ -59,11 +59,6 @@ if ($_SESSION['rol'] == "admin" && $_SESSION['loggedIn'] == true) {
                 <form action="adminLeden.php" method="GET"><input type="submit" value="Leden beheren" class="banenButton"></form>
             </div>
 
-            <div class="box toernooien">
-                <h3 class="tekst">Toernooien inplannen</h3>
-                <form action="adminToernooien.php" method="GET"><input type="submit" value="Toernooien inplannen" class="banenButton"></form>
-            </div>
-
             <div class="box activiteit_beheer">
                 <h3 class="tekst">Activiteit beheer</h3>
                 <form action="activiteiten_beheer.php" method="GET"><input type="submit" value="Activiteit beheer" class="banenButton"></form>
