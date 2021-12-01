@@ -128,6 +128,7 @@ if(isset($_POST['btnUitloggen']))
             </form>
     
         </div>
+        
         <div class="containerrechts mx-auto mt-4 mt-lg-0 mt-md-0 col-lg-5 col-md-6 col-12" >
         <?php 
     $sql = $pdo->prepare("SELECT * FROM accounts WHERE nummer=?");
@@ -135,7 +136,7 @@ if(isset($_POST['btnUitloggen']))
     $sql->execute();
     foreach($sql as $row)
     {
-        echo $row['naam_voor'] . " " . $row['naam_tussen'] . " " .$row['naam_achter'];
+        echo "<hr>". $row['naam_voor'] . " " . $row['naam_tussen'] . " " .$row['naam_achter'];
     }
     ?>
         
