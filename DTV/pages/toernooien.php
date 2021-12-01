@@ -98,7 +98,7 @@ include('header.php');
                                             if ($toernooi["datum_activiteit"] == $date) {
 
                                                 echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
-                                    <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
+                                    <span>' . $toernooiBeginTijd[0] . $toernooiBeginTijd[1] .":". $toernooiBeginTijd[2].$toernooiBeginTijd[3] . '<span> - </span>' . $toernooiEindTijd[0] . $toernooiEindTijd[1] .":". $toernooiBeginTijd[2].$toernooiEindTijd[3] . '</span></td>';
                                             } else {
                                                 echo "<td></td>";
                                             }
