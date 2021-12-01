@@ -5,8 +5,6 @@ $baan = $_GET['baan'];
 $date = $_GET['date'];
 $begintijd = $_GET['begintijd'];
 $eindtijd = $_GET['eindtijd'];
-$stringTijd = strval($begintijd);
-$stringTijd2 = strval($eindtijd);
 
 $stmtB = $pdo->query('SELECT * FROM `banen` WHERE nummer = ' .$baan .'');
 $stmtB->execute();
@@ -62,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <?php echo "Breedte baan: " . $baan['afmeting_breedte'] . "<br>"?>
                         <?php echo "Vloer: " . $baan['vloer'] . "<br><br>"?>
                         <?php } ?>
-                        <?php echo "Wilt u deze baan reserveren op " . $date . " van " . $stringTijd[0] . $stringTijd[1] . ":00 tot ". $stringTijd2[0] . $stringTijd2[1] . ":00?<br><br>";?>
+                        <?php echo "Wilt u deze baan reserveren op " . $date . " van " . substr_replace($begintijd, ':', 2, 0) . " tot " . substr_replace($eindtijd, ':', 2, 0)."?<br><br>";?>
                         <form method="POST"><input type="submit" value="Reserveren"></form>
     </section>
 

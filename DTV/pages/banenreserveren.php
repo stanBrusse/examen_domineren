@@ -77,9 +77,7 @@ $resultBan = $stmtB;
             <td colspan="2">
               <?php
               $t += 100;
-              $stringTijd = strval($tijd);
-              $stringTijd2 = strval($t);
-              echo $stringTijd[0] . $stringTijd[1] . ":00 - " . $stringTijd2[0] . $stringTijd2[1] . ":00";
+              echo substr_replace($tijd, ':', 2, 0) . " - " . substr_replace($t, ':', 2, 0);
               ?>
             </td>
             <?php
@@ -117,7 +115,7 @@ $resultBan = $stmtB;
               }
             } ?>
           </tr>
-        <?php $tijd = $tijd + 100;
+        <?php $tijd += 100;
         } ?>
       </tbody>
     </table>
