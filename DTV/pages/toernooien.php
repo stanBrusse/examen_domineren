@@ -1,18 +1,6 @@
 <?php
+include('header.php');
 
-// deze database is voor het maken en testen. kan weg
-$servername = "localhost";
-// $username = "DTVUSER";
-$username = "root";
-// $password = "1234";
-$password = "";
-$dbname = "dtv";
-$charset = "utf8mb4";
-
-//maakt de connectie aan
-$dsn = "mysql:host=" . $servername . "; dbname=" . $dbname . "; charset=" . $charset;
-$pdo = new PDO($dsn, $username, $password);
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 ?>
 <!DOCTYPE html>
@@ -24,9 +12,7 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     <title>Home</title>
 </head>
 <body>
-<?php
-include('header.php');
-?>
+
 <section id="schedule">
     <div class="container">
         <div class="row">
