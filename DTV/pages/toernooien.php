@@ -99,6 +99,7 @@ include('header.php');
                                                 </td>';
                                         }
                                     }
+                                    echo '</tr>';
                                 }
                             }
 
