@@ -56,6 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   } else {
     $tijd_start = test_input($_POST["tijd_start"]);
     $tijd_start = str_replace(':', '', $tijd_start);
+    $tijd_start = tijd($tijd_start);
     $uploadOk = 1;
   }
 
@@ -65,10 +66,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   } else {
     $tijd_eind = test_input($_POST["tijd_eind"]);
     $tijd_eind = str_replace(':', '', $tijd_eind);
+    $tijd_eind = tijd($tijd_eind);
     $uploadOk = 1;
   }
 
+  function tijd($tijd)
+  {
+    $num = substr($tijd, 0, -2);
 
+    $low = $num + "00";
+    $high = $num + "30";
+    $new = ($num + 1) + "00";
+
+    if ($tijd < $high && $tijd < $new) {
+
+      for ($il = $tijd; $il >= $low; $il--) {
+      }
+      for ($ih = $tijd; $ih <= $high; $ih++) {
+      }
+
+      if ($il < $ih) {
+        $tijd = $low;
+      } elseif ($il > $ih) {
+        $tijd = $high;
+      }
+    }
+    if ($tijd > $high && $tijd < $new) {
+      for ($ih = $tijd; $ih >= $high; $ih--) {
+      }
+      for ($in = $tijd; $in <= $new; $in++) {
+      }
+
+      if ($ih < $in) {
+        $tijd = $high;
+      } elseif ($ih > $in) {
+        $tijd = $new;
+      }
+    }
+    return $tijd;
+  }
 
   // Check if $uploadOk is set to 0 by an error
   if ($uploadOk == 0) {
