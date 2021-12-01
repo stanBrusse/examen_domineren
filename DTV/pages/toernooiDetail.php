@@ -13,14 +13,7 @@ if(!isset($_SESSION['lidnummer']))
 
 }else{
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "dtv";
-$charset = "utf8mb4";
-$dsn = "mysql:host=" . $servername . "; dbname=" . $dbname . "; charset=" . $charset;
-$pdo = new PDO($dsn, $username, $password);
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
 if (isset($_GET['nummer'])) {
 
     $selectActiviteit = $pdo->prepare("SELECT * FROM activiteiten WHERE nummer=?");
