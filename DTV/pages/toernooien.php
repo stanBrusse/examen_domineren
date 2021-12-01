@@ -85,8 +85,11 @@ include('header.php');
                             <?php
                             foreach ($date as $data) {
                                 for ($tijd = 1200; $tijd <= 2300; $tijd = $tijd + 100) {
+                                echo '<tr><td><small class="">' . getTijd($tijd - 100) . '"PM</small></td></tr>';
+                                }
+                                for ($tijd = 1200; $tijd <= 2300; $tijd = $tijd + 100) {
                                     echo '<tr>';
-                                    echo '<td><small class="">' . getTijd($tijd - 100) . '"PM</small></td>';
+                                    
                                     $query = $pdo->prepare("SELECT * FROM activiteiten WHERE datum_activiteit='$date'");
                                     $query->execute();
                                     while ($row = $query->fetch()) {
