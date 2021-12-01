@@ -83,63 +83,41 @@ include('header.php');
                         </thead>
                         <tbody>
                             <?php
-                            foreach ($date as $data) {
-                                for ($tijd = 1200; $tijd <= 2300; $tijd = $tijd + 100) {
-                                echo '<tr><td><small class="">' . getTijd($tijd - 100) . '"PM</small></td>';
-                                }
-                                for ($tijd = 1200; $tijd <= 2300; $tijd = $tijd + 100) {
-                                    echo '<tr>';
-                                    
+                            
+
+
+                            // foreach ($tijdData as $tijd) {
+                            for ($tijd = 1300; $tijd <= 2200; $tijd = $tijd + 200) {
+                                $tijd2 = $tijd - 100;
+                                $tijd3 = $tijd - 150;
+                                $tijd4 = $tijd - 50;
+
+
+                                echo '<tr>';
+                                echo '<td><small class="">' . getTijd($tijd - 100) . "PM<br>" . getTijd($tijd)  . ' PM</small></td>';
+                                foreach ($data as $date) {
                                     $query = $pdo->prepare("SELECT * FROM activiteiten WHERE datum_activiteit='$date'");
                                     $query->execute();
-                                    while ($row = $query->fetch()) {
-                                        if ($row['start_tijd'] == $tijd) {
-                                            echo '<td>
-                                                    <strong class="text-dark">
-                                                        <a href="toernooiDetail.php?nummer=' . $row["nummer"] . '">' . $row["title"] . '</a>
-                                                    </strong>
-                                                    <span>' . $row["tijd_start"] . '<span> - </span>' . $row["tijd_eind"] . '</span>
-                                                </td>';
+
+                                                                        if ($query->rowCount() > 0) {
+                                        // if ($tijd2 < $tijdData) {
+                                        foreach ($query as $toernooi) {
+                                            if ($toernooi["datum_activiteit"] == $date) {
+                                                if ($toernooi['tijd_start'] == $tijd || $toernooi['tijd_start'] == $tijd2 || $toernooi['tijd_start'] == $tijd3 || $toernooi['tijd_start'] == $tijd4) {
+                                                    echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
+                                    <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
+                                                } else {
+                                                    echo "<td></td>";
+                                                }
+                                            }
                                         }
+                                        // }    
+                                    } else {
+                                        echo "<td></td>";
                                     }
-                                    
                                 }
                                 echo '</tr>';
                             }
-
-
-                            // // foreach ($tijdData as $tijd) {
-                            // for ($tijd = 1300; $tijd <= 2200; $tijd = $tijd + 200) {
-                            //     $tijd2 = $tijd - 100;
-                            //     $tijd3 = $tijd - 150;
-                            //     $tijd4 = $tijd - 50;
-
-
-                            //     echo '<tr>';
-                            //     echo '<td><small class="">' . getTijd($tijd - 100) . "PM<br>" . getTijd($tijd)  . ' PM</small></td>';
-                            //     foreach ($data as $date) {
-                            //         $query = $pdo->prepare("SELECT * FROM activiteiten WHERE datum_activiteit='$date'");
-                            //         $query->execute();
-
-                            //                                             if ($query->rowCount() > 0) {
-                            //             // if ($tijd2 < $tijdData) {
-                            //             foreach ($query as $toernooi) {
-                            //                 if ($toernooi["datum_activiteit"] == $date) {
-                            //                     if ($toernooi['tijd_start'] == $tijd || $toernooi['tijd_start'] == $tijd2 || $toernooi['tijd_start'] == $tijd3 || $toernooi['tijd_start'] == $tijd4) {
-                            //                         echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
-                            //         <span>' . $toernooi["tijd_start"] . '<span> - </span>' . $toernooi["tijd_eind"] . '</span></td>';
-                            //                     } else {
-                            //                         echo "<td></td>";
-                            //                     }
-                            //                 }
-                            //             }
-                            //             // }    
-                            //         } else {
-                            //             echo "<td></td>";
-                            //         }
-                            //     }
-                            //     echo '</tr>';
-                            // }
 
 
 
