@@ -35,7 +35,7 @@ include('header.php');
         <div class="row">
 
             <div class="ml-auto col-lg-5 col-md-6 col-12">
-                <h2 class="mb-4 pb-2" data-aos="fade-up" data-aos-delay="200">Feel free to ask anything</h2>
+                <h2 class="mb-4 pb-2" data-aos="fade-up" data-aos-delay="200">Stel hier uw vragen ons</h2>
 
                 <form action="contact.php" method="post" class="contact-form webform" data-aos="fade-up" data-aos-delay="400" role="form">
                     <input type="text" class="form-control" name="name" placeholder="Name">
@@ -46,12 +46,12 @@ include('header.php');
 
                     <textarea class="form-control" rows="5" name="message" placeholder="Message"></textarea>
 
-                    <button type="submit" class="form-control" id="submit-button" name="submit">Send Message</button>
+                    <button type="submit" class="form-control" id="submit-button" name="submit">Verstuur een bericht</button>
                 </form>
             </div>
 
             <div class="mx-auto mt-4 mt-lg-0 mt-md-0 col-lg-5 col-md-6 col-12">
-                <h2 class="mb-4" data-aos="fade-up" data-aos-delay="600">Where you can <span>find us</span></h2>
+                <h2 class="mb-4" data-aos="fade-up" data-aos-delay="600">Waar je ons <span>kan vinden</span></h2>
 
                 <p data-aos="fade-up" data-aos-delay="800"><i class="fa fa-map-marker mr-1"></i> J.F. Kennedylaan 49, 7001 EA Doetinchem</p>
              
