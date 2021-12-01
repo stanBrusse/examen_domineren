@@ -34,7 +34,6 @@ include('header.php');
                     $startdateVrijdag = strtotime("Friday");
                     $startdateZaterdag = strtotime("Saturday");
                     $startdateZondag = strtotime("Sunday");
-                    $enddate = strtotime("+1000 weeks", $startdateMaandag);
 
                     $data = array();
                     $tijdData = array();
@@ -89,7 +88,7 @@ include('header.php');
                         $tijd4 = $tijd - 70;
 
                         echo '<tr>';
-                        echo '<td><small class="">' . getTijd($tijd - 100) . "PM<br>" . getTijd($tijd) . ' PM</small></td>';
+                        echo '<td><small class="">' . $getBeginTijd = getTijd($tijd - 100) . "PM<br>" . $getEindTijd = getTijd($tijd) . ' PM</small></td>';
                         foreach ($data as $date) {
                             $query = $pdo->prepare("SELECT * FROM activiteiten WHERE tijd_start='$tijd' AND datum_activiteit='$date' AND activiteit='Toernooi'");
                             $query->execute();
@@ -98,10 +97,12 @@ include('header.php');
                                             $toernooiBeginTijd = strval($toernooi["tijd_start"]);
                                             $toernooiEindTijd = strval($toernooi["tijd_eind"]);
                                     if ($toernooi["datum_activiteit"] == $date) {
+                                        if ($getEindTijd && $getBeginTijd == $toernooi["tijd_start"] && $toernooi["tijd_eind"]) {
                                             echo '<td><strong class="text-dark"><a href="toernooiDetail.php?nummer=' . $toernooi["nummer"] . '">' . $toernooi["title"] . '</a></strong>
                                     <span>' . $toernooiBeginTijd[0] . $toernooiBeginTijd[1] . ":" . $toernooiBeginTijd[2] . $toernooiBeginTijd[3] . '<span> - </span>' . $toernooiEindTijd[0] . $toernooiEindTijd[1] . ":" . $toernooiBeginTijd[2] . $toernooiEindTijd[3] . '</span></td>';
                                     } else {
                                         echo "<td></td>";
+                                    }
                                     }
                                 }
                             } else {
