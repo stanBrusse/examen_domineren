@@ -219,7 +219,7 @@ if (isset($_GET['promoveren']) && isset($_GET['rol'])) {
                 <a href="adminLeden.php">Reset</a>
 
             </form>
-            <table>
+            <table class="table table-responsive">
                 <thead>
                     <th>lidnummer</th>
                     <th>voornaam</th>
