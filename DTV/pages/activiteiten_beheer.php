@@ -58,8 +58,8 @@ $result = $stmt;
                     echo '<tr>
                         <td>' . $row['activiteit'] . '</td>
                         <td>' . $row['title'] . '</td>
-                        <td>' . strftime("%A %d %B %Y", strtotime($row['datum_activiteit'])) . '</td>
-                        <td>' . strftime("%A %d %B %Y", strtotime($row['datum_ingeschreven'])) . '</td>
+                        <td>' . strftime("%a %d %b %Y", strtotime($row['datum_activiteit'])) . '</td>
+                        <td>' . strftime("%a %d %b %Y", strtotime($row['datum_ingeschreven'])) . '</td>
                         <td>' . substr_replace($row['tijd_start'], ':', 2, 0) . '</td>
                         <td>' . substr_replace($row['tijd_eind'], ':', 2, 0) . '</td>
                         <td><a href="activiteiten_edit.php?nummer=' . $row['nummer'] . '"><img class="change" type="button" src="../images/icons/change.svg"></a></td>
