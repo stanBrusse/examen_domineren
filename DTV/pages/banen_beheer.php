@@ -56,7 +56,7 @@ $result = $stmt;
             </thead>
             <tbody>
                 <?php
-                setlocale(LC_TIME, "Dutch");
+                setlocale(LC_TIME, 'nl_NL');
                 while ($baan = $result->fetch()) {
                     echo '<tr>
                         <td>' . $baan['code'] . '</td>
