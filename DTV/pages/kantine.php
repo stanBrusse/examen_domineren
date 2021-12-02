@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                     $foto = "images/NoImage.png";
                 }
                 if (isset($_SESSION['rol']) && $_SESSION['rol'] == "admin" && isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
-                    echo '<div class="A-kantine-item-card ' . strtolower($item["categorie"]) . '-card" id="' . strtolower($item["categorie"]) . '">
+                    echo '<div class="kantine-item-card A-kantine-item-card ' . strtolower($item["categorie"]) . '-card" id="' . strtolower($item["categorie"]) . '">
                     <div class="item_Card-Top">
                         <div class="img-container" style="background-image: url(../' . $foto . '");;">
                             <div class="identifier ' . strtolower($item["categorie"]) . '">
