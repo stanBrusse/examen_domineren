@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST["submit"])) {
         $check = getimagesize($_FILES["foto"]["tmp_name"]);
         if ($check !== false) {
-            echo "File is an image - " . $check["mime"] . ".";
+            
             $uploadOk = 1;
         } else {
             echo "File is not an image.";
@@ -92,7 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // if everything is ok, try to upload file
     } else {
         if (move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file)) {
-            echo "The file " . htmlspecialchars(basename($_FILES["foto"]["name"])) . " has been uploaded.";
+            //echo "The file " . htmlspecialchars(basename($_FILES["foto"]["name"])) . " has been uploaded.";
             try {
                 $db = new db;
                 $stmt = $db->query("INSERT INTO `artikelen` (naam, descriptie, foto, prijs, categorie) VALUES (?, ?, ?, ?, ?)");
