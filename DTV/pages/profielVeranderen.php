@@ -1,11 +1,7 @@
 <?php
         include('header.php');
 $info = "";
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "dtv";
-$charset = "utf8mb4";
+
 function PostcodeCheck($postcode)
 {
     $remove = str_replace(" ","", $postcode);
@@ -17,10 +13,7 @@ function PostcodeCheck($postcode)
         return false;
     }
 }
-//maakt de connectie aan 
-$dsn = "mysql:host=" . $servername . "; dbname=" . $dbname . "; charset=" . $charset;
-$pdo = new PDO($dsn, $username, $password);
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
+
 if (isset($_POST['huidigwachtwoord']) && isset($_POST['nieuwWachtwoord']) && isset($_POST['herhaalWachtwoord'])) {
     if($_POST['nieuwWachtwoord'] == $_POST['herhaalWachtwoord'])
     {
