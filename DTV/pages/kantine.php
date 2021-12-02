@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                         </div>
                     </div>
                     <div class="card-info">
-                        <p><strong>Naam:</strong> <span>' . $item["naam"] . '</span><br><strong>Prijs:</strong> <span>€' . $item["prijs"] . '</span></p>
+                        <p><strong>Naam:</strong> <span>' . $item["naam"] . '</span><br/><strong>Prijs:</strong> <span>€' . $item["prijs"] . '</span></p>
                     </div>
                     <div class="A-kantine-button">
                     <a href="kantine_change.php?nummer=' . $item["nummer"] . '"><img class="change" type="button" src="../images/icons/change.svg"></a>
@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                         </div>
                     </div>
                     <div class="card-info">
-                        <p><strong>Naam:</strong> <span>' . $item["naam"] . '</span> <strong>Prijs:</strong> <span>€' . $item["prijs"] . '</span></p>
+                        <p><strong>Naam:</strong> <span>' . $item["naam"] . '</span><br/><strong>Prijs:</strong> <span>€' . $item["prijs"] . '</span></p>
                     </div>
                     </div>';
                 }
