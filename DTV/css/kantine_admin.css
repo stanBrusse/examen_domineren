@@ -45,8 +45,8 @@
     background-color: rgb(168, 75, 75);
 }
 
-.kantine-item-card{
-    max-height: 265px;
+.A-kantine-item-card{
+    min-height: 288px;
 }
 
 a.button {
