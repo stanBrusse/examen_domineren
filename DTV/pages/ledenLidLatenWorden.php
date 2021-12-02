@@ -71,7 +71,7 @@ table{
                 <form action="adminLeden.php">
                     <input class="terug" type="submit" value="terug">
                 </form>
-                <table  class="table  table-striped table-hover">
+                <table  class="table  table-striped table-hover  table-responsive">
                     <thead class=" thead-rood">
                         <th>voornaam achternaam</th>
                         <th>email</th>  
