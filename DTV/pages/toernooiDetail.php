@@ -129,7 +129,7 @@ if (isset($_GET['nummer'])) {
                     echo "<td> het toernooi is op: " . $row['datum_activiteit'] ."</td>";
                     echo "</tr>";  
                     echo "<tr>"; 
-                    echo "<td> het toernooi begint om ".$row['tijd_start'] . " en eindigd om " .$row['tijd_eind'] . "<br> het toernooi is op: " . $row['datum_activiteit'] ."</td>";
+                    echo "<td> het toernooi begint om ".substr_replace($row['tijd_start'], ':', 2, 0) . " en eindigd om " .substr_replace($row['tijd_eind'], ':', 2, 0) . "<br> het toernooi is op: " . $row['datum_activiteit'] ."</td>";
                     echo "</tr>";                     
                     echo "<tr>";
                     $aantaldeelnemers = $pdo->query("select count(*) FROM registratie_activiteit WHERE activiteit_nummer=".$_GET['nummer']."")->fetchColumn(); 
