@@ -65,8 +65,8 @@ $result = $stmt;
                         <td>' . $baan['afmeting_lengte'] . '</td>
                         <td>' . $baan['afmeting_breedte'] . '</td>
                         <td>' . $baan['vloer'] . '</td>
-                        <td>' . strftime("%A %d %B %Y", strtotime($baan['check_datum'])) . '</td>
-                        <td>' . strftime("%A %d %B %Y", strtotime($baan['service_datum'])) . '</td>
+                        <td>' . strftime("%a %d %b %Y", strtotime($baan['check_datum'])) . '</td>
+                        <td>' . strftime("%a %d %b %Y", strtotime($baan['service_datum'])) . '</td>
                         <td><a href="banen_edit.php?nummer=' . $baan['nummer'] . '"><img class="change" type="button" src="../images/icons/change.svg"></a></td>
                     </tr>';
                 } ?>
